@@ -7,17 +7,11 @@ parser = argparse.ArgumentParser(description='Popular banco do Nao Nasci pra ser
 parser.add_argument('--caminho-dados', type=str, default='../data/')
 
 
-FILES = ['candidatos'] 
-YEARS = ['2016']
-
-
-def main(args):
+def main(args, files=['candidatos', 'eleitores']):
     populator = Populator()
-    for f in FILES:
-        for year in YEARS:
-            filename = os.path.join(args.caminho_dados, f + '_' + year + '.csv')
-            populator.populate(f, filename)
-
+    for f in files:
+        filename = os.path.join(args.caminho_dados, f + '.csv')
+        populator.populate(f, filename)
 
 
 if __name__ == '__main__':

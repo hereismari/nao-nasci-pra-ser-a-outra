@@ -18,11 +18,13 @@ client = Client(app)
 # Rotas
 @app.route('/zerovotos', methods=['GET'])
 def zero_votos():
-    return utils.jsonify(client.zero_votos())
-
-@app.route('/zerovotos/mulheres', methods=['GET'])
-def zero_votos_mulheres():
-    return utils.jsonify(client.zero_votos_mulheres())
+    args = {
+      'sexo': request.args.get('sexo', default=None, type=str),
+      'partido': request.args.get('partido', default=None, type=str),
+      'sigla_uf': request.args.get('sigla_uf', default=None, type=str),
+      'nome_municipio': request.args.get('nome_municipio', default=None, type=str),
+    }
+    return utils.jsonify(client.zero_votos(args))
 
 
 
