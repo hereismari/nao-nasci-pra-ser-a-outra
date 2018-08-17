@@ -3,9 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "d3": "^5.5.0",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
-    "react-scripts": "1.1.4"
+    "react-nvd3": "^0.5.7",
+    "react-scripts": "1.1.4",
+    "react-vis": "^1.10.4"
   },
   "scripts": {
     "start": "react-scripts start",
