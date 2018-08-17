@@ -25,3 +25,9 @@ class Client(object):
         query = {'total_votos': {'$lte': poucos_votos}}
         query = self._update_query(query, args)
         return [data for data in self.client.db.candidatos.find(query, {'_id': False})]
+
+
+    def ranking_zero_votos(self, args):
+        # TODO: faltando sexo = 'feminino'
+        query = [{'$match': {'total_votos': 0}}, {'$group': {'_id': {'sigla_partido': '$sigla_partido'}, 'total_zeros': {'$sum': 1}}}]
+        return [data for data in self.client.db.candidatos.aggregate(query)]

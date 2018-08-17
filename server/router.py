@@ -16,13 +16,19 @@ app.config['MONGO_URI'] = 'mongodb://localhost:27017/%s' % app.config['MONGO_DBN
 client = Client(app)
 
 # Rotas
-@app.route('/zerovotos', methods=['GET'])
+@app.route('/partidos/ranking/zerovotos', methods=['GET'])
+def rankin_zero_votos():
+    _args = utils.mount_request(args.CANDIDATOS)
+    return utils.jsonify(client.ranking_zero_votos(_args))
+
+
+@app.route('/candidatos/zerovotos', methods=['GET'])
 def zero_votos():
     _args = utils.mount_request(args.CANDIDATOS)
     return utils.jsonify(client.zero_votos(_args))
 
 
-@app.route('/poucosvotos', methods=['GET'])
+@app.route('/candidatos/poucosvotos', methods=['GET'])
 def poucos_votos():
     _args = utils.mount_request(args.CANDIDATOS)
     poucos_votos = request.args.get('poucos_votos', default=3, type=int)
