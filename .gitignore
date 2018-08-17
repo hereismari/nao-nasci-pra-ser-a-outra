@@ -1,0 +1,9 @@
+
+/data/
+*.Rhistory
+*.RData
+
+*.pyc
+*.csv
+*.csv#
+
