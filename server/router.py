@@ -2,7 +2,7 @@
 from flask import Flask
 from flask import request
 
-from bd import Client
+from database import Client
 import utils
 
 
