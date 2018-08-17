@@ -1,0 +1,33 @@
+---
+title: "processa_eleitores"
+output: html_document
+---
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, error=FALSE}
+library(tidyverse)
+```
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, error=FALSE}
+perfil_eleitorado_2012 = readr::read_csv2(here::here("data/Eleitores/perfil_eleitorado_2012/perfil_eleitorado_2012.csv"), local=readr::locale(encoding="latin1"), col_names = FALSE)
+
+perfil_eleitorado_2014 = readr::read_csv2(here::here("data/Eleitores/perfil_eleitorado_2014/perfil_eleitorado_2014.csv"), local=readr::locale(encoding="latin1"), col_names = FALSE)
+
+perfil_eleitorado_2016 = readr::read_csv2(here::here("data/Eleitores/perfil_eleitorado_2016/perfil_eleitorado_2016.csv"), local=readr::locale(encoding="latin1"), col_names = FALSE)
+
+perfil_eleitorado_ATUAL = readr::read_csv2(here::here("data/Eleitores/perfil_eleitorado_ATUAL/perfil_eleitorado_ATUAL.csv"), local=readr::locale(encoding="latin1"), col_names = FALSE)
+```
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, error=FALSE}
+df = rbind(perfil_eleitorado_2012, perfil_eleitorado_2014)
+df = rbind(df, perfil_eleitorado_2016)
+df = rbind(df, perfil_eleitorado_ATUAL)
+```
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, error=FALSE}
+colnames(df) = c("nome", "uf", "cidade", "x4", "x5", "genero", "faixa_etaria", "escolaridade", "idade")
+```
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, error=FALSE}
+df = df %>%
+  select(-c("x4", "x5"))
+```
