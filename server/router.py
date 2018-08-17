@@ -1,9 +1,10 @@
 # Dependencias
 from flask import Flask
 from flask import request
-
 from database import Client
-import utils
+
+import utilities.utils as utils
+import utilities.args as args
 
 
 # App
@@ -14,18 +15,18 @@ app.config['MONGO_URI'] = 'mongodb://localhost:27017/%s' % app.config['MONGO_DBN
 # Client MongoDB
 client = Client(app)
 
-
 # Rotas
 @app.route('/zerovotos', methods=['GET'])
 def zero_votos():
-    args = {
-      'sexo': request.args.get('sexo', default=None, type=str),
-      'partido': request.args.get('partido', default=None, type=str),
-      'sigla_uf': request.args.get('sigla_uf', default=None, type=str),
-      'nome_municipio': request.args.get('nome_municipio', default=None, type=str),
-    }
-    return utils.jsonify(client.zero_votos(args))
+    _args = utils.mount_request(args.CANDIDATOS)
+    return utils.jsonify(client.zero_votos(_args))
 
+
+@app.route('/poucosvotos', methods=['GET'])
+def poucos_votos():
+    _args = utils.mount_request(args.CANDIDATOS)
+    poucos_votos = request.args.get('poucos_votos', default=3, type=int)
+    return utils.jsonify(client.poucos_votos(_args, poucos_votos))
 
 
 # Main
