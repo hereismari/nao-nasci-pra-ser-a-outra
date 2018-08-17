@@ -6,6 +6,9 @@ munzona_candidatos_data <- readr::read_csv2(here::here("data/votacao_candidato_m
 munzona_partidos_data <- readr::read_csv2(here::here("data/votacao_partido_munzona_2016/votacao_partido_munzona_2016_PB.csv"),
                                             local=readr::locale(encoding="latin1"),
                                             col_names = FALSE)
+perfil_eleitorado_2016 <- readr::read_csv2(here::here("data/perfil_eleitorado_2016/perfil_eleitorado_2016.csv"),
+                                           local=readr::locale(encoding="latin1"),
+                                           col_names = FALSE)
 
 col_names_candidatos <- tolower(c("DATA_GERACAO", "HORA_GERACAO","ANO_ELEICAO", "NUM_TURNO",
                "DESCRICAO_ELEICAO", "SIGLA_UF", "SIGLA_UE", "CODIGO_MUNICIPIO",
@@ -20,9 +23,12 @@ col_names_partidos <- tolower(c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "
                                 "CODIGO_CARGO", "DESCRICAO_CARGO", "TIPO_LEGENDA", "NOME_COLIGACAO",
                                 "COMPOSICAO_LEGENDA", "SIGLA_PARTIDO", "NUMERO_PARTIDO", "NOME_PARTIDO",
                                 "QTDE_VOTOS_NOMINAIS", "QTDE_VOTOS_LEGENDA", "TRANSITO", "SEQUENCIAL_COLIGACAO"))
+col_names_eleitorado <- tolower(c("PERIODO", "UF", "MUNICIPIO", "COD_MUNICIPIO_TSE", "NR_ZONA", "SEXO",
+                                  "FAIXA_ETARIA", "GRAU_DE_ESCOLARIDADE", "QTD_ELEITORES_NO_PERFIL"))
 
 names(munzona_candidatos_data) <- col_names_candidatos
 names(munzona_partidos_data) <- col_names_partidos
+names(perfil_eleitorado_2016) <- col_names_eleitorado
 
 munzona_candidatos_data <- 
   munzona_candidatos_data %>%
@@ -33,5 +39,8 @@ munzona_partidos_data <-
   munzona_partidos_data %>%
   dplyr::select(ano_eleicao, num_turno, sigla_uf, nome_municipio, descricao_cargo, nome_coligacao, composicao_legenda, sigla_partido,
                 numero_partido, qtde_votos_nominais, qtde_votos_legenda, transito)
+perfil_eleitorado_2016 <-
+  perfil_eleitorado_2016 %>%
+  dplyr::select(-c(cod_municipio_tse, nr_zona))
 
 
