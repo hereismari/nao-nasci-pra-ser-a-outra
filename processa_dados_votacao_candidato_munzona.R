@@ -15,12 +15,23 @@ col_names_candidatos <- tolower(c("DATA_GERACAO", "HORA_GERACAO","ANO_ELEICAO", 
                "CODIGO_SIT_CAND_TOT", "DESC_SIT_CAND_TOT", "NUMERO_PARTIDO", "SIGLA_PARTIDO",
                "NOME_PARTIDO", "SEQUENCIAL_LEGENDA", "NOME_COLIGACAO", "COMPOSICAO_LEGENDA",
                "TOTAL_VOTOS", "TRANSITO"))
-col_names_partidos <- tolower(c("DATA_GERACAO", ""))
+col_names_partidos <- tolower(c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "NUM_TURNO", "DESCRICAO_ELEICAO",
+                                "SIGLA_UF", "SIGLA_UE", "CODIGO_MUNICIPIO", "NOME_MUNICIPIO", "NUMERO_ZONA",
+                                "CODIGO_CARGO", "DESCRICAO_CARGO", "TIPO_LEGENDA", "NOME_COLIGACAO",
+                                "COMPOSICAO_LEGENDA", "SIGLA_PARTIDO", "NUMERO_PARTIDO", "NOME_PARTIDO",
+                                "QTDE_VOTOS_NOMINAIS", "QTDE_VOTOS_LEGENDA", "TRANSITO", "SEQUENCIAL_COLIGACAO"))
 
 names(munzona_candidatos_data) <- col_names_candidatos
+names(munzona_partidos_data) <- col_names_partidos
 
 munzona_candidatos_data <- 
   munzona_candidatos_data %>%
   dplyr::select(ano_eleicao, num_turno, sigla_uf, nome_municipio, nome_candidato, nome_urna_candidato, descricao_cargo, numero_cand,
                 desc_sit_cand_superior, desc_sit_candidato, desc_sit_cand_tot, sigla_partido, nome_coligacao, composicao_legenda,
                 total_votos,transito)
+munzona_partidos_data <-
+  munzona_partidos_data %>%
+  dplyr::select(ano_eleicao, num_turno, sigla_uf, nome_municipio, descricao_cargo, nome_coligacao, composicao_legenda, sigla_partido,
+                numero_partido, qtde_votos_nominais, qtde_votos_legenda, transito)
+
+
