@@ -7,10 +7,17 @@ class Client(object):
     def __init__(self, app):
         self.client = PyMongo(app)
 
-    def zero_votos(self):
-        return [data for data in self.client.db.candidatos.find({'total_votos': 0}, {'_id': False})]
-    
-    
-    def zero_votos_mulheres(self):
-        # TODO
-        return [data for data in self.client.db.candidatos.find({'total_votos': 0}, {'_id': False})]
+
+    def _update_query(self, query, args):
+        print(args)
+        for arg in args:
+            if args[arg] is not None:
+                query[arg] = args[arg]
+        return query
+
+
+    def zero_votos(self, args):
+        query = {'total_votos': 0}
+        query = self._update_query(query, args)
+        print(query)
+        return [data for data in self.client.db.candidatos.find(query, {'_id': False})]
