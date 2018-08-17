@@ -15,7 +15,6 @@ class Populator(object):
             'candidatos': self.default_preprocess
         }
 
-        import ipdb; ipdb.set_trace()
         self._clean_up()
 
 

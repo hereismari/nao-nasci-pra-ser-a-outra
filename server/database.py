@@ -6,12 +6,11 @@ class Client(object):
     '''Wrapper para operacoes com banco de dados.'''
     def __init__(self, app):
         self.client = PyMongo(app)
-    
+
     def zero_votos(self):
-        zero_votos = self.client.db.zero_votos
-        output = []
-        for s in zero_votos.find():
-            output.append({'nome' : s['nome']})
-        return output
-
-
+        return [data for data in self.client.db.candidatos.find({'total_votos': 0}, {'_id': False})]
+    
+    
+    def zero_votos_mulheres(self):
+        # TODO
+        return [data for data in self.client.db.candidatos.find({'total_votos': 0}, {'_id': False})]

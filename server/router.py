@@ -20,6 +20,11 @@ client = Client(app)
 def zero_votos():
     return utils.jsonify(client.zero_votos())
 
+@app.route('/zerovotos/mulheres', methods=['GET'])
+def zero_votos_mulheres():
+    return utils.jsonify(client.zero_votos_mulheres())
+
+
 
 # Main
 if __name__ == '__main__':
