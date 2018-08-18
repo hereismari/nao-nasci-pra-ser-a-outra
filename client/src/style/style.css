@@ -1,0 +1,7 @@
+.background-degrade {
+  background-image: linear-gradient(to right, #c0392b, #8e44ad);
+}
+
+.row {
+  display: flex;
+}

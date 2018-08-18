@@ -1,0 +1,5 @@
+flask
+pymongo
+flask_pymongo
+argparse
+gunicorn
