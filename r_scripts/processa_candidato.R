@@ -1,22 +1,22 @@
 library(tidyverse)
 
-munzona_candidatos_data <- readr::read_csv2(here::here("data/votacao_candidato_munzona_2016/votacao_candidato_munzona_2016_PB.csv"),
+munzona_candidatos_data <- readr::read_csv2(here::here("data/Votacoes/votacao_candidato_munzona_2016/votacao_candidato_munzona_2016_PB.csv"),
                                  local=readr::locale(encoding="latin1"),
                                  col_names = FALSE)
 
-munzona_partidos_data <- readr::read_csv2(here::here("data/votacao_partido_munzona_2016/votacao_partido_munzona_2016_PB.csv"),
+munzona_partidos_data <- readr::read_csv2(here::here("data/Votacoes/votacao_partido_munzona_2016/votacao_partido_munzona_2016_PB.csv"),
                                             local=readr::locale(encoding="latin1"),
                                             col_names = FALSE)
 
-perfil_eleitorado_2016 <- readr::read_csv2(here::here("data/perfil_eleitorado_2016/perfil_eleitorado_2016.csv"),
+perfil_eleitorado_2016 <- readr::read_csv2(here::here("data/Eleitores/perfil_eleitorado_2016/perfil_eleitorado_2016.csv"),
                                            local=readr::locale(encoding="latin1"),
                                            col_names = FALSE)
 
-all_munzona_candidatos_data <- readr::read_csv2(here::here("data/votacao_candidato_munzona_2016/merged.csv"),
+all_munzona_candidatos_data <- readr::read_csv2(here::here("data/Votacoes/votacao_candidato_munzona_2016/merged.csv"),
                                             local=readr::locale(encoding="latin1"),
                                             col_names = FALSE)
 all_munzona_partidos_data <- 
-  readr::read_csv2(here::here("data/votacao_partido_munzona_2016/merged.csv"),
+  readr::read_csv2(here::here("data/Votacoes/votacao_partido_munzona_2016/merged.csv"),
                                           local=readr::locale(encoding="latin1"),
                                           col_names = FALSE) 
 
@@ -61,20 +61,6 @@ formata_eleitorado <- function(ano = 2016, data) {
     dplyr::select(-c(cod_municipio_tse, nr_zona))
 }
 
-all_munzona_candidatos_data <- formata_candidatos_munzona(2016, all_munzona_candidatos_data)
-all_munzona_partidos_data <- formata_partidos_munzona(2016, all_munzona_partidos_data)
-perfil_eleitorado_2016 <-formata_eleitorado(2016, perfil_eleitorado_2016)
-
-
-
-
-
-data <- left_join(all_munzona_candidatos_data, sexo_raca_df, by=c("numero_cand", "nome_municipio", "descricao_cargo", "sigla_uf"))
-
-write.csv2(data, "data/preprocessed/candidatos_2016.csv")
-write.csv2(all_munzona_candidatos_data, "data/preprocessed/all_munzona_candidatos_2016.csv")
-
-
 fetch_gender_info <- function(ano = 2016) {
   data_path <- here::here(paste0("data/Candidatos/consulta_cand_", ano, "/merged.csv"))
   candidatos_data <- readr::read_csv2(data_path, local=locale(encoding = "latin1")) 
@@ -112,7 +98,7 @@ fetch_gender_info <- function(ano = 2016) {
                    "CODIGO_MUNICIPIO_NASCIMENTO", "NOME_MUNICIPIO_NASCIMENTO",
                    "DESPESA_MAX_CAMPANHA","COD_SIT_TOT_TURNO",
                    "DESC_SIT_TOT_TURNO", "NM_EMAIL") %>% tolower()
-
+    
   } else if (ano >= 2014) {
     col_names <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "NUM_TURNO",
                    "DESCRICAO_ELEICAO", "SIGLA_UF",
@@ -133,10 +119,22 @@ fetch_gender_info <- function(ano = 2016) {
                    "DESC_SIT_TOT_TURNO", "NM_EMAIL") %>% tolower()
   }
   names(candidatos_data) <- col_names
-  candidatos_data %>% dplyr::select(numero_cand, sexo, nome_municipio, sigla_uf, descricao_cargo)
+  dados_2000 <- candidatos_data %>% dplyr::select(numero_cand, sexo, nome_municipio, sigla_uf, descricao_cargo, des_situacao_candidatura)
 }
 
-process_candidato <- function(ano=2016) {
+export_candidato <- function(ano=2016) {
   genero_data <- fetch_gender_info(ano)
+  write_csv(genero_data, here::here(paste0("data/preprocessed/generos_processados/genero_", ano, ".csv")))
 }
+
+all_munzona_candidatos_data <- formata_candidatos_munzona(2016, all_munzona_candidatos_data)
+all_munzona_partidos_data <- formata_partidos_munzona(2016, all_munzona_partidos_data)
+perfil_eleitorado_2016 <-formata_eleitorado(2016, perfil_eleitorado_2016)
+
+genero_df <- fetch_gender_info(ano=2016)
+
+data <- left_join(all_munzona_candidatos_data, genero_df, by=c("numero_cand", "nome_municipio", "descricao_cargo", "sigla_uf"))
+
+write.csv2(data, "data/preprocessed/candidatos_2016.csv")
+write.csv2(all_munzona_candidatos_data, "data/preprocessed/all_munzona_candidatos_2016.csv")
 
