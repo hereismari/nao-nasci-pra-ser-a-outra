@@ -51,8 +51,8 @@ const dados = [
         n_mulheres: 12
     },
     {_id:{sigla_partido:"pmdb"},
-        investimento: 4, 
-        votos: 0, 
+        investimento: 40, 
+        votos: 2, 
         n_mulheres: 65
     },
     {_id:{sigla_partido:"psol"},
@@ -77,15 +77,28 @@ export default class VotosVSInvestimentos extends React.Component {
                     x: elem.investimento,
                     y: elem.votos,
                     partido: elem._id.sigla_partido,
-                    size: elem.n_mulheres
+                    size: elem.n_mulheres,
+                    color: Math.random()
                 }
         });
 
+        const partidos = dataPlot.map(elem =>{
+            return elem.partido
+        }
+        )
+        const colors = dataPlot.map(elem =>{
+            return elem.color
+        })
+        
         return (
             <div className="canvas-wrapper">
                     {<XYPlot
                         width={300}
-                        height={300}>
+                        height={300}
+                        colorType={"category"}
+                        colorDomain={[0,1,2]}
+                        colorRange={['#F57F17','#4A148C', '#12939a', '#12939a']}
+                        >
                         <XAxis />
                         <YAxis />
                         <MarkSeries
@@ -103,13 +116,12 @@ export default class VotosVSInvestimentos extends React.Component {
                         {this.state.value ? <Hint value={this.state.value}>
                             <div style={tipStyle}>
                                 <div style={{...boxStyle}}/>                    
-                                Partido {this.state.value.partido} com investimento de <br/>
-                                {this.state.value.x} milhões <br/>
-                                e {this.state.value.y} mil votos em {this.state.value.size} <br/>
+                                Partido {this.state.value.partido} com investimento de
+                                {this.state.value.x} milhões
+                                e {this.state.value.y} mil votos em {this.state.value.size}
                                 mulheres do partido.  
                             </div>
                         </ Hint> : null}
-                        
                     </XYPlot>}
             </div>
         );
