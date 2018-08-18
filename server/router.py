@@ -11,8 +11,7 @@ import os
 
 # App
 app = Flask(__name__)
-app.config['MONGO_DBNAME'] = 'nao-nasci'
-app.config['MONGO_URI'] = 'mongodb://localhost:27017/%s' % app.config['MONGO_DBNAME']
+app.config['MONGO_URI'] = os.environ['MONGODB_URI']
 
 # Client MongoDB
 client = Client(app)
