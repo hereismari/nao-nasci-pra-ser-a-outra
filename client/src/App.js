@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import "./diamonds.css";
 import $ from 'jquery'
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
@@ -71,12 +70,79 @@ class App extends Component {
           <div className="row part4">
             <h1 className="col-md-12 col-xs-12 col-12 col-sm-12">Lorem Ipsum dollor sit amet</h1>
             <div className="col-md-12 col-xs-12 col-12 col-sm-12">
-              <div className="diamond-grid">
-                <div className="item"></div>
-                <div className="item"></div>
-                <div className="item"></div>
-                <div className="item"></div>
-                <div className="item"></div>
+              <div className="row">
+                <div className="col-md-4 col-xs-4 col-12 col-sm-12">
+                  <div className="card">
+                    <div className="row rr-1">
+                      <div className="rr1-img-part">
+                        <img src={require("./img/r1.jpg")} />
+                      </div>
+                      <div className="rr1-partido">
+                        <p className="nomepartido">PSDB</p>
+                      </div>
+                    </div>
+                    <div className="row rr-2">
+                      <div className="ghost-size">
+                        <img src={require("./img/pac-man-ghost.svg")} />
+                      </div>
+                      <div className="nota"><h3>321 fantasmas</h3></div>
+                    </div>
+                    <div className="btn">
+                      <div className="denuncia">
+                        <p>Exiga explicações!</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                 <div className="col-md-4 col-xs-4 col-12 col-sm-12">
+                  <div className="card">
+                    <div className="row rr-1">
+                      <div className="rr1-img-part">
+                        <img src={require("./img/r1.jpg")} />
+                      </div>
+                      <div className="rr1-partido">
+                        <p className="nomepartido">PSDB</p>
+                      </div>
+                    </div>
+                    <div className="row rr-2">
+                      <div className="ghost-size">
+                        <img src={require("./img/pac-man-ghost.svg")} />
+                      </div>
+                      <div className="nota"><h3>321 fantasmas</h3></div>
+                    </div>
+                    <div className="btn">
+                      <div className="denuncia">
+                        <p>Exiga explicações!</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+            <div className="col-md-4 col-xs-4 col-12 col-sm-12">
+                  <div className="card">
+                    <div className="row rr-1">
+                      <div className="rr1-img-part">
+                        <img src={require("./img/r1.jpg")} />
+                      </div>
+                      <div className="rr1-partido">
+                        <p className="nomepartido">PSDB</p>
+                      </div>
+                    </div>
+                    <div className="row rr-2">
+                      <div className="ghost-size">
+                        <img src={require("./img/pac-man-ghost.svg")} />
+                      </div>
+                      <div className="nota"><h3>321 fantasmas</h3></div>
+                    </div>
+                    <div className="btn">
+                      <div className="denuncia">
+                        <p>Exiga explicações!</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
               </div>
             </div>
           </div>
@@ -84,21 +150,7 @@ class App extends Component {
       </div>
     );
   }
-
-  componentDidMount () {
-    const script = document.createElement("script");
-      script.src = "./jquery.diamonds";
-      script.async = true;
-
-      document.body.appendChild(script);
-  }
-
 }
 
-  $(document).ready(function(){
-   $(".diamond-grid").click(function(){
-      alert("The paragraph is now hidden");
-    });
-  });
 
 export default App;

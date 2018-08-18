@@ -118,7 +118,7 @@
 }
 
 .part4 h1{
-	padding-bottom: 20px;
+	padding-bottom: 50px;
 }
 
 .text-3-part3 div{
@@ -145,4 +145,97 @@
 
 .ajuste-porcent-sub h3{
 	font-size: 20px;
+}
+
+.card{
+	background-color: black;
+}
+
+.rr-1{
+	margin-right: auto;
+    text-align: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-top: 20%;
+    margin-bottom: 20%;
+}
+
+.rr1-img-part{
+	width: 40%;
+    margin-left: 5%;
+    padding-right: 5%;
+}
+
+.rr1-partido{
+    width: 40%;
+    margin-right: 5%;
+    margin-top: auto;
+    padding-left: 5%;
+    margin-bottom: auto;
+    -ms-flex-align: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.nomepartido{
+	-ms-flex-line-pack: center;
+    align-content: center;
+    font-size: 3em;
+    margin-top: auto;
+    margin-bottom: auto;
+    font-family: 'GoBold';
+    color: white;
+}
+
+.rr1-img-part img{
+	width: 100%;
+    border-radius: 50%;
+}
+
+.ghost-size{
+	width: 50%;
+    padding: 10%;
+}
+
+.ghost-size img{
+	width: 100%;
+}
+
+.nota{
+	margin: auto;
+    width: 40%;
+    padding-right: 10%;
+}
+
+.nota h3{
+	margin: auto;
+    font-size: 2em;
+    text-align: left;
+}
+
+.denuncia{
+	border-style: solid;
+    border-width: 3px;
+    border-color: white;
+    padding: 5%;
+    margin-bottom: 15%;
+    transition: .5s;
+}
+
+.denuncia:hover{
+	background-color: white;
+}
+
+.denuncia p{
+	font-family: 'GoBold';
+	margin: auto;
+	color: white;
+}
+
+.denuncia p:hover{
+	color: black;
+}
+
+.btn{
+
 }
