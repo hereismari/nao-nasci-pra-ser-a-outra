@@ -15,24 +15,11 @@ import {
 import red from "@material-ui/core/colors/red";
 import blue from "@material-ui/core/colors/blue";
 import purple from "@material-ui/core/colors/purple";
+import lightBlue from "@material-ui/core/colors/lightBlue";
 import xAxis from "react-vis/dist/plot/axis/x-axis";
 
-const getColorGrafico = nVotos => {
-  let saturacao = nVotos % 100;
-  let corFinal;
-
-  if (saturacao === 0) {
-    return nVotos;
-  } else if (saturacao < 50) {
-    return 50;
-  } else {
-    corFinal = nVotos / 100;
-    if (corFinal > 900) {
-      return 900;
-    } else {
-      return Math.round(corFinal) * 100;
-    }
-  }
+const getColorGrafico = porcMulheresPartido => {
+  return parseInt(porcMulheresPartido * 10) * 100;
 };
 
 const dataMulheres = [
@@ -40,7 +27,7 @@ const dataMulheres = [
     _id: {
       sigla_partido: "PMB"
     },
-    porcentagem_mulheres: 0.4373259052924791,
+    porcentagem_mulheres: 0.1373259052924791,
     total: 1795,
     total_mulheres: 785
   },
@@ -48,7 +35,63 @@ const dataMulheres = [
     _id: {
       sigla_partido: "PSTU"
     },
-    porcentagem_mulheres: 0.3983050847457627,
+    porcentagem_mulheres: 0.2783050847457627,
+    total: 118,
+    total_mulheres: 47
+  },
+  {
+    _id: {
+      sigla_partido: "PMED"
+    },
+    porcentagem_mulheres: 0.3883050847457627,
+    total: 118,
+    total_mulheres: 47
+  },
+  {
+    _id: {
+      sigla_partido: "PR"
+    },
+    porcentagem_mulheres: 0.4883050847457627,
+    total: 118,
+    total_mulheres: 47
+  },
+  {
+    _id: {
+      sigla_partido: "PMA"
+    },
+    porcentagem_mulheres: 0.583050847457627,
+    total: 118,
+    total_mulheres: 47
+  },
+  {
+    _id: {
+      sigla_partido: "PAK"
+    },
+    porcentagem_mulheres: 0.6883050847457627,
+    total: 118,
+    total_mulheres: 47
+  },
+  {
+    _id: {
+      sigla_partido: "PPP"
+    },
+    porcentagem_mulheres: 0.7883050847457627,
+    total: 118,
+    total_mulheres: 47
+  },
+  {
+    _id: {
+      sigla_partido: "PPPA"
+    },
+    porcentagem_mulheres: 0.8883050847457627,
+    total: 118,
+    total_mulheres: 47
+  },
+  {
+    _id: {
+      sigla_partido: "PPPaaa"
+    },
+    porcentagem_mulheres: 0.9883050847457627,
     total: 118,
     total_mulheres: 47
   }
@@ -74,12 +117,47 @@ export default class GraficoBarras extends Component {
     this.state = { value: false };
   }
   render() {
-    const dataPlot = dataMulheres.map(elem => {
-      return {
-        x: elem._id.sigla_partido,
-        y: -elem.total_mulheres,
-        color: purple[getColorGrafico(elem.total_mulheres)]
-      };
+    const maisMulheres = [];
+    const menosMulheres = [];
+    dataMulheres.map(elem => {
+      if (elem.porcentagem_mulheres < 0.5) {
+        menosMulheres.push({
+          x: elem._id.sigla_partido,
+          y: -(1 - elem.porcentagem_mulheres),
+          color: lightBlue[getColorGrafico(1 - elem.porcentagem_mulheres)],
+          legenda: "Porcentagem de homens: " + (1 - elem.porcentagem_mulheres)
+        });
+      } else
+        maisMulheres.push({
+          x: elem._id.sigla_partido,
+          y: -elem.porcentagem_mulheres,
+          color: purple[getColorGrafico(elem.porcentagem_mulheres)],
+          legenda: "Porcentagem de mulheres: " + elem.porcentagem_mulheres
+        });
+    });
+
+    menosMulheres.sort((a, b) => {
+      if (Math.abs(a.y) > Math.abs(b.y)) return 1;
+      else if (Math.abs(a.y) < Math.abs(b.y)) return -1;
+      else return 0;
+    });
+
+    maisMulheres.sort((a, b) => {
+      if (Math.abs(a.y) > Math.abs(b.y)) return -1;
+      else if (Math.abs(a.y) < Math.abs(b.y)) return 1;
+      else return 0;
+    });
+
+    console.log(maisMulheres);
+    console.log(menosMulheres);
+
+    var finalData = [];
+
+    maisMulheres.map(elem => {
+      finalData.push(elem);
+    });
+    menosMulheres.map(elem => {
+      finalData.push(elem);
     });
 
     return (
@@ -89,10 +167,10 @@ export default class GraficoBarras extends Component {
           <div className="col">
             <XYPlot width={400} height={400} xType="ordinal">
               <VerticalBarSeries
-                width={50}
                 colorType="literal"
-                stroke="blue"
-                data={dataPlot}
+                opacity={0.8}
+                strokeWidth="500px"
+                data={finalData}
                 onValueMouseOver={v =>
                   this.setState({ value: v.x && v.y ? v : false })
                 }
@@ -104,18 +182,16 @@ export default class GraficoBarras extends Component {
                     <div style={{ ...boxStyle }} />
                     {"Partido: " +
                       this.state.value.x +
-                      " Total de mulheres: " +
-                      this.state.value.y * -1}
+                      " " +
+                      this.state.value.legenda}
                   </div>
                 </Hint>
               ) : null}
               <XAxis
                 orientation="top"
-                title="<- Partidos que contém mais mulheres VS Partidos que contém mais homens ->"
                 hideTicks
                 style={{
-                  line: { stroke: "#ADDDE1" },
-                  ticks: { stroke: "#ADDDE1" },
+                  line: { stroke: purple },
                   text: {
                     stroke: "none",
                     fill: "#6b6b76",
