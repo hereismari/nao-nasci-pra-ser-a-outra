@@ -1,31 +1,32 @@
 library(tidyverse)
 library(data.table)
 
-despesas_candidatos_2016 <- readr::read_csv2(here::here("data/prestacao_brasil/despesas_candidatos_prestacao_contas_final_2016_brasil.csv"),
-                                             local=readr::locale(encoding="latin1"))
-despesas_partidos_2016 <- readr::read_csv2(here::here("data/prestacao_brasil/despesas_partidos_prestacao_contas_final_2016_brasil.csv"),
-                                             local=readr::locale(encoding="latin1"))
 receitas_candidatos_2016 <- readr::read_csv2(here::here("data/prestacao_brasil/receitas_candidatos_prestacao_contas_final_2016_brasil.csv"),
                                              local=readr::locale(encoding="latin1"))
-receitas_partidos_2016 <- readr::read_csv2(here::here("data/prestacao_brasil/receitas_partidos_prestacao_contas_final_2016_brasil.csv"),
+receitas_candidatos_2014 <- readr::read_csv2(here::here("data/prestacao_final_2014/receitas_candidatos_2014_brasil.csv"),
                                              local=readr::locale(encoding="latin1"))
 all_munzona_candidatos_data <- readr::read_csv2(here::here("all_munzona_candidatos_2016.csv"),
                                                 local=readr::locale(encoding="latin1"))
 
 generos_2016 <- readr::read_csv(here::here("data/generos_processados/genero_2016.csv"))
 
-to_underscore <- function(x) {
-  gsub('([A-Za-z])([A-Z])([a-z])', '\\1_\\2\\3', x) %>%
-    gsub('\\s+', '_', .) %>%
-    gsub('.', '_', ., fixed = TRUE) %>%
-    gsub('([a-z])([A-Z])', '\\1_\\2', .) %>%
-    tolower()
+formata_colunas_receitas <- function(receitas) {
+  to_underscore <- function(x) {
+    gsub('([A-Za-z])([A-Z])([a-z])', '\\1_\\2\\3', x) %>%
+      gsub('\\s+', '_', .) %>%
+      gsub('.', '_', ., fixed = TRUE) %>%
+      gsub('([a-z])([A-Z])', '\\1_\\2', .) %>%
+      tolower()
+  }
+  
+  new_names = names(receitas) %>%
+    to_underscore()
+  
+  new_names
 }
 
-new_names = names(receitas_candidatos_2016) %>%
-  to_underscore()
-
-names(receitas_candidatos_2016) <- new_names
+names(receitas_candidatos_2014) <- formata_colunas_receitas(receitas_candidatos_2014)
+names(receitas_candidatos_2016) <- formata_colunas_receitas(receitas_candidatos_2016)
 
 #Quanto cada candidato teve de receita
 receitas_por_candidatos <- 
