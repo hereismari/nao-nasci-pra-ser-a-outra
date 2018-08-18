@@ -1,10 +1,11 @@
 # Dependencias
 from flask import Flask
 from flask import request
-from database import Client
 
-import utilities.utils as utils
-import utilities.args as args
+from server.database import Client
+import server.utilities.utils as utils
+import server.utilities.args as args
+
 
 import os
 
