@@ -19,12 +19,14 @@
 // THE SOFTWARE.
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   XYPlot,
   XAxis,
   YAxis,
   MarkSeries,
-  Hint
+  Hint,
+  makeWidthFlexible
 } from 'react-vis';
 
 
@@ -89,11 +91,8 @@ export default class VotosVSInvestimentos extends React.Component {
         const colors = dataPlot.map(elem =>{
             return elem.color
         })
-        
-        return (
-            <div className="canvas-wrapper">
-                    {<XYPlot
-                        width={300}
+        const bubblePlot = ({ width }) => <XYPlot
+                        width={width}
                         height={300}
                         colorType={"category"}
                         colorDomain={[0,1,2]}
@@ -122,7 +121,17 @@ export default class VotosVSInvestimentos extends React.Component {
                                 mulheres do partido.  
                             </div>
                         </ Hint> : null}
-                    </XYPlot>}
+                    </XYPlot>;
+        bubblePlot.propTypes = {
+            width: PropTypes.number,
+            measurements: PropTypes.array
+          };
+        const FlexibleBubblePlot = makeWidthFlexible(bubblePlot);
+        return (
+            <div className="canvas-wrapper">
+                  <div className="col-12 col-sm-12 col-md-12 col-xs-12">
+                    <FlexibleBubblePlot />
+                </div>  
             </div>
         );
     }
