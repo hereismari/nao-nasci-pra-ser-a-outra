@@ -19,11 +19,19 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header />
-        <div className="row">
-          <div className="col-md-6 col-xs-6">
-            <GraficoBarras />
+        <div className="container">
+          <div className="container">
+            <div className="row">
+              <div className="col-md-6 col-xs-6 col-12 col-sm-12">
+                <GraficoBarras />
+              </div>
+              <div className="col-md-6 col-xs-6 col-12 col-sm-12">
+                <img src={require("./img/logo.png")} width="90%" />
+              </div>
+            </div>
           </div>
+        </div>
+        <div className="row">
           <div className="col-md-6 col-xs-6">
             <GraficoPontos />
           </div>
