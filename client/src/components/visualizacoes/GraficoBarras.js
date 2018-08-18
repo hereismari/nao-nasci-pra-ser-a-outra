@@ -166,8 +166,6 @@ export default class GraficoBarras extends Component {
       else return 0;
     });
 
-    console.log(maisMulheres);
-    console.log(menosMulheres);
 
     var finalData = [];
 
