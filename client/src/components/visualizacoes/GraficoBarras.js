@@ -1,3 +1,5 @@
+import React, { Component } from "react";
+
 import {
   XYPlot,
   XAxis,
@@ -8,10 +10,40 @@ import {
   MarkSeries
 } from "react-vis";
 
-import React, { Component } from "react";
+import red from "@material-ui/core/colors/red";
+import blue from "@material-ui/core/colors/blue";
+import purple from "@material-ui/core/colors/purple";
+
+const dataMulheres = [
+  {
+    _id: {
+      sigla_partido: "PMB"
+    },
+    porcentagem_mulheres: 0.4373259052924791,
+    total: 1795,
+    total_mulheres: 785
+  },
+  {
+    _id: {
+      sigla_partido: "PSTU"
+    },
+    porcentagem_mulheres: 0.3983050847457627,
+    total: 118,
+    total_mulheres: 47
+  }
+];
 
 export default class GraficoBarras extends Component {
   render() {
+    const dataPlot = dataMulheres.map(elem => {
+      console.log(elem);
+      return {
+        x: elem._id.sigla_partido,
+        y: elem.total_mulheres,
+        color: purple[900]
+      };
+    });
+
     return (
       <div className="GraficoBarras container">
         <div className="row">
@@ -19,14 +51,10 @@ export default class GraficoBarras extends Component {
           <div className="col">
             <XYPlot width={400} height={400} xType="ordinal">
               <VerticalBarSeries
-                fill="blue"
-                line="black"
+                colorType="literal"
                 stroke="blue"
-                data={[
-                  { x: "pt", y: -10 },
-                  { x: "pmdb", y: -5 },
-                  { x: "psdb", y: -15 }
-                ]}
+                data={dataPlot}
+                onSeriesMouseOver={() => console.log(dataPlot)}
               />
               <XAxis />
               <YAxis />
