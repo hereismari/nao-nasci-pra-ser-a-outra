@@ -27,28 +27,29 @@ import {
   VerticalGridLines,
   HorizontalGridLines,
   MarkSeries,
-  Hint
+  Hint,
+  DiscreteColorLegend 
 } from 'react-vis';
+
 
 const tipStyle = {
     display: 'flex',
     color: '#fff',
     background: '#000',
     alignItems: 'center',
-    padding: '5px'
+    padding: '2px'
   };
-const boxStyle = {height: '10px', width: '10px'};
-
+const boxStyle = {height: '2px', width: '2px'};
 function buildValue(value) {
     return value
   }
 
 const dados = [
-    {x: 1, y: 10, size: 30},    
-    {x: 1.7, y: 12, size: 10},
-    {x: 2, y: 5, size: 1},
-    {x: 3, y: 15, size: 12},
-    {x: 2.5, y: 7, size: 4}
+    {x: 1, y: 10, size: 30, partido: "pt"},    
+    {x: 1.7, y: 12, size: 10, partido: "pmdb"},
+    {x: 2, y: 5, size: 1, partido: "novo"},
+    {x: 3, y: 15, size: 12, partido: "PSOL"},
+    {x: 2.5, y: 7, size: 4, partido: "arena"}
 ]
 
 export default class VotosVSInvestimentos extends React.Component {
@@ -74,15 +75,16 @@ export default class VotosVSInvestimentos extends React.Component {
             onValueMouseOver={v =>  this.setState({value: v.x && v.y ? v: false})  }
             onSeriesMouseOut={() => this.setState({value: false})}
             >
+            
+            
+            </MarkSeries>  
             {this.state.value ? <Hint value={buildValue(this.state.value)}>
                 <div style={tipStyle}>
-                    <div style={{...boxStyle, background: 'black'}}/>                    
-                    <h3>Value of hint</h3>
-                    <p>{this.state.value.size}</p>
+                    <div style={{...boxStyle}}/>                    
+                    {this.state.value.partido}
                         
                 </div>
             </ Hint> : null}
-            </MarkSeries>    
         </XYPlot>
         );
     }
