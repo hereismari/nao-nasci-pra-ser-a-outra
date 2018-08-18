@@ -1,148 +1,158 @@
-.App {
+@font-face {
+  font-family: "GoBold";
+  src: local("GoBold"), url(./fonts/Gobold-Regular.otf) format("truetype");
 }
 
-.part1{
-	background-image: url(img/bg-part1.jpg);
-	background-size: cover;
+@font-face {
+  font-family: "Gloss And Bloom";
+  src: local("Gloss And Bloom"),
+    url(./fonts/Gloss_And_Bloom.ttf) format("truetype");
 }
 
-
-.part2{
-	background-image: url(img/bg-part2.jpg);
-	background-size: cover;
-	padding: 5%;
+.part1 {
+  background-image: url(img/bg-part1.jpg);
+  background-size: cover;
 }
 
-.part3{
-	background-image: url(img/bg-part3.jpg);
-	box-shadow: inset 0px 0px 1000px 0px rgba(0,0,0,1);
-	background-size: cover;
-	padding: 5%;
+.part2 {
+  background-image: url(img/bg-part2.jpg);
+  background-size: cover;
+  padding: 5%;
 }
 
-.part4{
-	background-image: url(img/bg-part4.jpg);
-	background-size: cover;
-	padding: 5%;
+.part3 {
+  background-image: url(img/bg-part3.jpg);
+  box-shadow: inset 0px 0px 1000px 0px rgba(0, 0, 0, 1);
+  background-size: cover;
+  padding: 5%;
 }
 
-.right-container{
-	padding-bottom: 50px; 
+.part4 {
+  background-image: url(img/bg-part4.jpg);
+  background-size: cover;
+  padding: 5%;
 }
 
-.right-container img{
-	width: 100%;
-	padding-top: 20%;
-    padding-right: 20%;
-    padding-left: 20%;
-    padding-bottom: 5%;
+.right-container {
+  padding-bottom: 50px;
 }
 
-.right-container h3{
-	font-size: 14px;
-    text-align: center;
-    padding-right: 5%;
-    padding-left: 5%;
-    color: white;
-    font-family: "GoBold";
+.right-container img {
+  width: 100%;
+  padding-top: 20%;
+  padding-right: 20%;
+  padding-left: 20%;
+  padding-bottom: 5%;
 }
 
-.left-container{
-	padding: 20%;
+.right-container h3 {
+  font-size: 14px;
+  text-align: center;
+  padding-right: 5%;
+  padding-left: 5%;
+  color: white;
+  font-family: "GoBold";
 }
 
-.left-container img{
+.left-container {
+  padding: 20%;
+}
+
+.left-container img {
   width: 100%;
   box-shadow: 10px 10px 0px 0px #fff43c;
 }
 
-.left-container h3{
-    position: absolute;
-    width: 20%;
-    color: white;
-    margin: 30px;
-    padding-top: 15%;
-    font-size: 1em;
-    font-family: "GoBold";
+.left-container h3 {
+  position: absolute;
+  width: 20%;
+  color: white;
+  margin: 30px;
+  padding-top: 15%;
+  font-size: 1em;
+  font-family: "GoBold";
 }
 
-.left-container span{
-	position: absolute;
-    width: 20%;
-    color: white;
-    margin: 30px;
-    font-size: 4em;
-    padding-top: 1%;
-    font-family: "Gloss and Bloom";
+.left-container span {
+  position: absolute;
+  width: 20%;
+  color: white;
+  margin: 30px;
+  font-size: 4em;
+  padding-top: 1%;
+  font-family: "Gloss and Bloom";
 }
 
 .container-part2 {
-    padding-top: 50px;
+  padding-top: 50px;
 }
 
-.part2 h3{
-    color: white;
-    font-size: 20px;
-    font-family: "GoBold";
+.part2 h3 {
+  color: white;
+  font-size: 20px;
+  font-family: "GoBold";
 }
 
-.part2 span{
-    color: white;
-    font-size: 100px;
-    font-family: "Gloss and Bloom";
+.part2 span {
+  color: white;
+  font-size: 100px;
+  font-family: "Gloss and Bloom";
 }
 
-.text1-part2 div{
-	width: 50%;
-    margin: auto;
+.text1-part2 div {
+  width: 50%;
+  margin: auto;
 }
 
-.text2-part2{
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	padding: 50px;
+.text2-part2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
 }
 
-.text-part3{
-	margin: auto;
+.text-part3 {
+  margin: auto;
 }
 
-.part3,.part4 h1{
-	font-family: "Gobold";
-    color: white;
+.part3,
+.part4 h1 {
+  font-family: "Gobold";
+  color: white;
 }
 
-.part3 h1{
-	padding-bottom: 20px;
+.part3 h1 {
+  padding-bottom: 20px;
 }
 
-.part4 h1{
-	padding-bottom: 20px;
+.part4 h1 {
+  padding-bottom: 20px;
 }
 
-.text-3-part3 div{
-	width: 50%;
-	margin: auto;
+.text-3-part3 div {
+  width: 50%;
+  margin: auto;
 }
 
-.text-part3, h3{
-    font-family: "Gobold";
-    color: white;
-    font-size: 20px;
+.text-part3,
+h3 {
+  font-family: "Gobold";
+  color: white;
+  font-size: 20px;
 }
 
-.text-part3, span{
-    font-family: "Gloss and Bloom";
-    color: white;
-    font-size: 2em;
+.text-part3,
+span {
+  font-family: "Gloss and Bloom";
+  color: white;
+  font-size: 2em;
 }
 
-.ajuste-porcent-sub{
-	width: 40%;
-    margin: auto;
+.ajuste-porcent-sub {
+  width: 40%;
+  margin: auto;
 }
 
-.ajuste-porcent-sub h3{
-	font-size: 20px;
+.ajuste-porcent-sub h3 {
+  font-size: 20px;
 }
