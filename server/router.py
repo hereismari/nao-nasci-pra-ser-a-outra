@@ -68,9 +68,3 @@ def index():
 @app.route('/home', methods=['GET'])
 def home():
     return ''
-
-
-# Main
-if __name__ == '__main__':
-    PORT = int(os.environ['PORT'])
-    app.run(debug=True, port=PORT)
