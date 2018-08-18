@@ -1,3 +1,7 @@
 .App {
-  /*background-image: linear-gradient(to right, red, blue);*/
+  background-image: linear-gradient(
+    to left,
+    rgba(192, 57, 43, 0.7),
+    rgba(142, 68, 173, 0.7)
+  );
 }
