@@ -11,6 +11,6 @@ CANDIDATOS = {
 
 ELEITORES = {
   'sexo': ('sexo', None, str),
-  'sigla_uf': ('sigla_uf', None, str),
+  'uf': ('uf', None, str),
   'nome_municipio': ('nome_municipio', None, str),
 }

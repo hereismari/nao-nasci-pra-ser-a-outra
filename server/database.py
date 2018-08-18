@@ -13,9 +13,33 @@ class Client(object):
             if args[arg] is not None:
                 query[arg] = args[arg]
         return query
+    
+
+    def mulheres_eleitoras_vs_eleitas(self, args, ano):
+        match = {
+            'genero': 'FEMININO',
+            'ano': ano
+        }
+        match = self._update_query({}, args)
+        query = [{
+                    '$match': match
+                },
+                {
+                    '$group': {
+                        '_id': {}, 
+                        'eleitoras_mulheres': {
+                            '$sum': '$idade'
+                        }
+                    }
+                }
+        ]
+
+        x = [data for data in self.client.db.eleitores.aggregate(query)]
+        print(x)
 
 
-    def partidos_candidatos_poucos_votos(self, args, poucos_votos):
+
+    def candidatos_poucos_votos(self, args, poucos_votos):
         query = {'total_votos': {'$lte': poucos_votos}}
         query = self._update_query(query, args)
         return [data for data in self.client.db.candidatos.find(query, {'_id': False})]
@@ -97,6 +121,3 @@ class Client(object):
         ]
 
         return [data for data in self.client.db.candidatos.aggregate(query)]
-
-
-

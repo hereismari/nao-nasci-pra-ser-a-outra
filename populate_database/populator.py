@@ -17,20 +17,33 @@ class Populator(object):
 
     def _clean_up(self):
         self._db.candidatos.delete_many({})
+        self._db.eleitores.delete_many({})
 
 
     def populate(self, file_type, path):
         self.default_populate(path, self._dict_db[file_type])
 
+
     def default_populate(self, filename, doc):
         data = []
         with open(filename, encoding='utf-8') as csv_file:
-            csv_reader = csv.DictReader(csv_file)
+            csv_reader = csv.DictReader(csv_file, delimiter=';')
+
+            counter = 0
             for row in csv_reader:
+                data_row = {}
                 for key in row:
-                    try:
-                        row[key] = float(row[key])
-                    except:
+                    if key == '':
                         continue
-                data.append(row)
-        doc.insert_many(data)
+                    try:
+                        data_row[key] = float(row[key])
+                    except:
+                        data_row[key] = row[key]
+                data.append(data_row)
+        
+                counter += 1
+                if counter % 10000 == 0:
+                    print('Inserindo no banco %d...' % counter)
+                    doc.insert_many(data)
+                    data = []
+

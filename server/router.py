@@ -1,16 +1,18 @@
 # Dependencias
 from flask import Flask
 from flask import request
-from database import Client
 
-import utilities.utils as utils
-import utilities.args as args
+from server.database import Client
+import server.utilities.utils as utils
+import server.utilities.args as args
+
+
+import os
 
 
 # App
 app = Flask(__name__)
-app.config['MONGO_DBNAME'] = 'nao-nasci'
-app.config['MONGO_URI'] = 'mongodb://localhost:27017/%s' % app.config['MONGO_DBNAME']
+app.config['MONGO_URI'] = os.environ['MONGODB_URI']
 
 # Client MongoDB
 client = Client(app)
@@ -48,6 +50,22 @@ def candidatos_poucos_votos():
     return utils.jsonify(client.candidatos_poucos_votos(_args, poucos_votos))
 
 
-# Main
-if __name__ == '__main__':
-    app.run(debug=True)
+@app.route('/eleitores/mulheres', methods=['GET'])
+def mulheres_eleitoras_vs_eleitas():
+    _args = utils.mount_request(args.ELEITORES)
+    ano = request.args.get('ano', default=2016, type=int)
+    return utils.jsonify(client.mulheres_eleitoras_vs_eleitas(_args, ano))
+
+
+@app.route('/favicon.ico', methods=['GET'])
+def favicon():
+    return ''
+
+@app.route('/', methods=['GET'])
+def index():
+    return 'hello world'
+
+
+@app.route('/home', methods=['GET'])
+def home():
+    return ''
