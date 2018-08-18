@@ -11,6 +11,9 @@ receitas_partidos_2016 <- readr::read_csv2(here::here("data/prestacao_brasil/rec
                                              local=readr::locale(encoding="latin1"))
 all_munzona_candidatos_data <- readr::read_csv2(here::here("all_munzona_candidatos_2016.csv"),
                                                 local=readr::locale(encoding="latin1"))
+
+generos_2016 <- readr::read_csv(here::here("data/generos_processados/genero_2016.csv"))
+
 to_underscore <- function(x) {
   gsub('([A-Za-z])([A-Z])([a-z])', '\\1_\\2\\3', x) %>%
     gsub('\\s+', '_', .) %>%
