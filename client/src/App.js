@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import $ from 'jquery'
-import Header from "./components/layout/Header";
-import Footer from "./components/layout/Footer";
 import {
   XYPlot,
   XAxis,
@@ -15,6 +13,10 @@ import {
 } from "react-vis";
 import GraficoBarras from "./components/visualizacoes/GraficoBarras";
 import GraficoPontos from "./components/visualizacoes/GraficoPontos";
+import Header from "./components/layout/Header";
+import Footer from "./components/layout/Footer";
+import VotosVSInvestimentos from "./components/visualizacoes/VotosVSInvestimentos";
+
 
 class App extends Component {
   render() {
@@ -53,7 +55,7 @@ class App extends Component {
           <div className="row part3">
             <h1 className="col-md-12 col-xs-12 col-12 col-sm-12">Lorem Ipsum dollor sit amet</h1>
             <div className="col-md-8 col-xs-8 col-12 col-sm-12">
-                <GraficoBarras />
+                <VotosVSInvestimentos />
             </div>
             <div className="col-md-4 col-xs-4 col-12 col-sm-12 text-part3">
                 <div>
