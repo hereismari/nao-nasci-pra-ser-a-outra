@@ -6,6 +6,8 @@ from database import Client
 import utilities.utils as utils
 import utilities.args as args
 
+import os
+
 
 # App
 app = Flask(__name__)
@@ -48,6 +50,24 @@ def candidatos_poucos_votos():
     return utils.jsonify(client.candidatos_poucos_votos(_args, poucos_votos))
 
 
+@app.route('/eleitores/mulheres', methods=['GET'])
+def mulheres_eleitoras_vs_eleitas():
+    _args = utils.mount_request(args.ELEITORES)
+    ano = request.args.get('ano', default=2016, type=int)
+    return utils.jsonify(client.mulheres_eleitoras_vs_eleitas(_args, ano))
+
+
+@app.route('/', methods=['GET'])
+def index():
+    return 'hello world'
+
+
+@app.route('/home', methods=['GET'])
+def home():
+    return ''
+
+
 # Main
 if __name__ == '__main__':
-    app.run(debug=True)
+    PORT = int(os.environ['PORT'])
+    app.run(debug=True, port=PORT)
