@@ -15,48 +15,13 @@ class Client(object):
         return query
 
 
-    def zero_votos(self, args):
-        query = {'total_votos': 0}
-        query = self._update_query(query, args)
-        return [data for data in self.client.db.candidatos.find(query, {'_id': False})]
-    
-
-    def poucos_votos(self, args, poucos_votos):
+    def partidos_candidatos_poucos_votos(self, args, poucos_votos):
         query = {'total_votos': {'$lte': poucos_votos}}
         query = self._update_query(query, args)
         return [data for data in self.client.db.candidatos.find(query, {'_id': False})]
 
 
-    def ranking_zero_votos(self):
-        query = [{
-                    '$match': {
-                        'total_votos': 0,
-                        'sexo': 'FEMININO',
-                    }
-                }, 
-                {
-                    '$group': {
-                        '_id': {
-                            'sigla_partido': '$sigla_partido'
-                        }, 
-                        'total_zeros': {
-                            '$sum': 1
-                        }
-                    }
-                },
-                {
-                    '$sort': {
-                        'total_zeros': -1
-                    }
-                },
-                {
-                    '$limit': 3
-                }
-        ]
-        return [data for data in self.client.db.candidatos.aggregate(query)]
-
-
-    def ranking_poucos_votos(self, args, poucos_votos):
+    def partidos_ranking_poucos_votos(self, args, poucos_votos):
         match = {
                     'total_votos': {'$lte': poucos_votos},
                     'sexo': 'FEMININO'
@@ -70,25 +35,25 @@ class Client(object):
                         '_id': {
                             'sigla_partido': '$sigla_partido'
                         }, 
-                        'total_zeros': {
+                        'total_poucos_votos': {
                             '$sum': 1
                         }
                     }
                 },
                 {
                     '$sort': {
-                        'total_zeros': -1
+                        'total_poucos_votos': -1
                     }
                 },
                 {
                     '$limit': 3
                 }
         ]
+
         return [data for data in self.client.db.candidatos.aggregate(query)]
+    
 
-
-    def participacao_mulheres(self, args):
-        # TODO: faltando sexo = 'feminino'
+    def partidos_participacao_mulheres(self, args):
         match = self._update_query({}, args)
         query = [
                 {
@@ -130,6 +95,7 @@ class Client(object):
                     }
                 }
         ]
+
         return [data for data in self.client.db.candidatos.aggregate(query)]
 
 
