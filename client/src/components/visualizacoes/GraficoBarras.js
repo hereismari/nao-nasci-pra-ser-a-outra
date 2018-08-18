@@ -14,6 +14,7 @@ import {
 
 import red from "@material-ui/core/colors/red";
 import blue from "@material-ui/core/colors/blue";
+import yellow from "@material-ui/core/colors/yellow";
 import purple from "@material-ui/core/colors/purple";
 import lightBlue from "@material-ui/core/colors/lightBlue";
 import xAxis from "react-vis/dist/plot/axis/x-axis";
@@ -124,15 +125,21 @@ export default class GraficoBarras extends Component {
         menosMulheres.push({
           x: elem._id.sigla_partido,
           y: -(1 - elem.porcentagem_mulheres),
-          color: lightBlue[getColorGrafico(1 - elem.porcentagem_mulheres)],
-          legenda: "Porcentagem de homens: " + (1 - elem.porcentagem_mulheres)
+          color: yellow[getColorGrafico(1 - elem.porcentagem_mulheres)],
+          legenda:
+            "Porcentagem de homens: " +
+            Math.round((1 - elem.porcentagem_mulheres) * 100) +
+            "%"
         });
       } else
         maisMulheres.push({
           x: elem._id.sigla_partido,
           y: -elem.porcentagem_mulheres,
           color: purple[getColorGrafico(elem.porcentagem_mulheres)],
-          legenda: "Porcentagem de mulheres: " + elem.porcentagem_mulheres
+          legenda:
+            "Porcentagem de mulheres: " +
+            Math.round(elem.porcentagem_mulheres * 100) +
+            "%"
         });
     });
 
@@ -161,47 +168,40 @@ export default class GraficoBarras extends Component {
     });
 
     return (
-      <div className="GraficoBarras container">
-        <div className="row">
-          <div className="col">Texto Texto</div>
-          <div className="col">
-            <XYPlot width={400} height={400} xType="ordinal">
-              <VerticalBarSeries
-                colorType="literal"
-                opacity={0.8}
-                strokeWidth="500px"
-                data={finalData}
-                onValueMouseOver={v =>
-                  this.setState({ value: v.x && v.y ? v : false })
-                }
-                onSeriesMouseOut={() => this.setState({ value: false })}
-              />
-              {this.state.value ? (
-                <Hint value={buildValue(this.state.value)}>
-                  <div style={tipStyle}>
-                    <div style={{ ...boxStyle }} />
-                    {"Partido: " +
-                      this.state.value.x +
-                      " " +
-                      this.state.value.legenda}
-                  </div>
-                </Hint>
-              ) : null}
-              <XAxis
-                orientation="top"
-                hideTicks
-                style={{
-                  line: { stroke: purple },
-                  text: {
-                    stroke: "none",
-                    fill: "#6b6b76",
-                    fontWeight: 600
-                  }
-                }}
-              />
-            </XYPlot>
-          </div>
-        </div>
+      <div className="GraficoBarras">
+        <XYPlot width={400} height={400} xType="ordinal">
+          <VerticalBarSeries
+            colorType="literal"
+            opacity={0.8}
+            strokeWidth="500px"
+            data={finalData}
+            onValueMouseOver={v =>
+              this.setState({ value: v.x && v.y ? v : false })
+            }
+            onSeriesMouseOut={() => this.setState({ value: false })}
+          />
+          {this.state.value ? (
+            <Hint value={buildValue(this.state.value)}>
+              <div style={tipStyle}>
+                <div style={{ ...boxStyle }} />
+                {"Partido: " +
+                  this.state.value.x +
+                  " " +
+                  this.state.value.legenda}
+              </div>
+            </Hint>
+          ) : null}
+          <XAxis
+            style={{
+              line: { stroke: purple },
+              text: {
+                stroke: "white",
+                fill: "white",
+                fontWeight: 600
+              }
+            }}
+          />
+        </XYPlot>
       </div>
     );
   }
