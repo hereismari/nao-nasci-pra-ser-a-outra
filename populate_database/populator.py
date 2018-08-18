@@ -12,11 +12,6 @@ class Populator(object):
             'eleitores': self._db.eleitores
         }
 
-        self._populate = {
-            'candidatos': self.default_populate,
-            'eleitores': self.default_populate
-        }
-
         self._clean_up()
 
 
@@ -25,11 +20,7 @@ class Populator(object):
 
 
     def populate(self, file_type, path):
-        if file_type in self._populate:
-            self._populate[file_type](path, self._dict_db[file_type])
-        else:
-            raise Exception('Funcao para popular %s nao existe.' % file_type)
-
+        self.default_populate(path, self._dict_db[file_type])
 
     def default_populate(self, filename, doc):
         data = []
