@@ -9,8 +9,11 @@ import {
   HorizontalGridLines,
   MarkSeries,
   Hint,
-  DecorativeAxis
+  DecorativeAxis,
+  makeWidthFlexible
 } from "react-vis";
+
+import PropTypes from "prop-types";
 
 import red from "@material-ui/core/colors/red";
 import blue from "@material-ui/core/colors/blue";
@@ -21,6 +24,13 @@ import xAxis from "react-vis/dist/plot/axis/x-axis";
 
 const getColorGrafico = porcMulheresPartido => {
   return parseInt(porcMulheresPartido * 10) * 100;
+};
+
+const MARGIN = {
+  left: 10,
+  right: 10,
+  bottom: 80,
+  top: 60
 };
 
 const dataMulheres = [
@@ -120,6 +130,7 @@ export default class GraficoBarras extends Component {
   render() {
     const maisMulheres = [];
     const menosMulheres = [];
+    const partidos = dataMulheres.map(elem => elem._id.sigla_partido);
     dataMulheres.map(elem => {
       if (elem.porcentagem_mulheres < 0.5) {
         menosMulheres.push({
@@ -165,41 +176,56 @@ export default class GraficoBarras extends Component {
       finalData.push(elem);
     });
 
+    const barChart = ({ width }) => (
+      <XYPlot width={width} height={400} margin={MARGIN} xType="ordinal">
+        <XAxis
+          orientation="top"
+          hideLine
+          tickValues={partidos}
+          style={{
+            line: { stroke: purple },
+            text: {
+              stroke: "white",
+              fill: "white",
+              fontWeight: 100
+            }
+          }}
+        />
+        <VerticalBarSeries
+          colorType="literal"
+          opacity={0.8}
+          strokeWidth="500px"
+          data={finalData}
+          onValueMouseOver={v =>
+            this.setState({ value: v.x && v.y ? v : false })
+          }
+          onSeriesMouseOut={() => this.setState({ value: false })}
+        />
+        {this.state.value ? (
+          <Hint value={buildValue(this.state.value)}>
+            <div style={tipStyle}>
+              <div style={{ ...boxStyle }} />
+              {"Partido: " +
+                this.state.value.x +
+                " " +
+                this.state.value.legenda}
+            </div>
+          </Hint>
+        ) : null}
+      </XYPlot>
+    );
+    barChart.propTypes = {
+      width: PropTypes.number,
+      measurements: PropTypes.array
+    };
+
+    const FlexibleBarChart = makeWidthFlexible(barChart);
+
     return (
       <div className="GraficoBarras">
-        <XYPlot width={400} height={400} xType="ordinal">
-          <VerticalBarSeries
-            colorType="literal"
-            opacity={0.8}
-            strokeWidth="500px"
-            data={finalData}
-            onValueMouseOver={v =>
-              this.setState({ value: v.x && v.y ? v : false })
-            }
-            onSeriesMouseOut={() => this.setState({ value: false })}
-          />
-          {this.state.value ? (
-            <Hint value={buildValue(this.state.value)}>
-              <div style={tipStyle}>
-                <div style={{ ...boxStyle }} />
-                {"Partido: " +
-                  this.state.value.x +
-                  " " +
-                  this.state.value.legenda}
-              </div>
-            </Hint>
-          ) : null}
-          <XAxis
-            style={{
-              line: { stroke: purple },
-              text: {
-                stroke: "white",
-                fill: "white",
-                fontWeight: 600
-              }
-            }}
-          />
-        </XYPlot>
+        <div className="col-12 col-sm-12 col-md-12 col-xs-12">
+          <FlexibleBarChart />
+        </div>
       </div>
     );
   }
