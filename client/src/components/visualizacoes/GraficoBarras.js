@@ -23,6 +23,13 @@ const getColorGrafico = porcMulheresPartido => {
   return parseInt(porcMulheresPartido * 10) * 100;
 };
 
+const MARGIN = {
+  left: 10,
+  right: 10,
+  bottom: 80,
+  top: 60
+};
+
 const dataMulheres = [
   {
     _id: {
@@ -120,6 +127,7 @@ export default class GraficoBarras extends Component {
   render() {
     const maisMulheres = [];
     const menosMulheres = [];
+    const partidos = dataMulheres.map(elem => elem._id.sigla_partido);
     dataMulheres.map(elem => {
       if (elem.porcentagem_mulheres < 0.5) {
         menosMulheres.push({
@@ -169,7 +177,20 @@ export default class GraficoBarras extends Component {
 
     return (
       <div className="GraficoBarras">
-        <XYPlot width={400} height={400} xType="ordinal">
+        <XYPlot width={400} height={400} margin={MARGIN} xType="ordinal">
+          <XAxis
+            orientation="top"
+            hideLine
+            tickValues={partidos}
+            style={{
+              line: { stroke: purple },
+              text: {
+                stroke: "white",
+                fill: "white",
+                fontWeight: 600
+              }
+            }}
+          />
           <VerticalBarSeries
             colorType="literal"
             opacity={0.8}
@@ -191,16 +212,6 @@ export default class GraficoBarras extends Component {
               </div>
             </Hint>
           ) : null}
-          <XAxis
-            style={{
-              line: { stroke: purple },
-              text: {
-                stroke: "white",
-                fill: "white",
-                fontWeight: 600
-              }
-            }}
-          />
         </XYPlot>
       </div>
     );
