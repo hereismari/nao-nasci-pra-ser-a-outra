@@ -12,6 +12,7 @@ class App extends Component {
       <div className="App">
         <Header />
         <VotosVSInvestimentos />
+        <br/>
         <Footer />
       </div>
     );

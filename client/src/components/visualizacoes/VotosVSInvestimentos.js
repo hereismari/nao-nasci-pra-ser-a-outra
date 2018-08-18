@@ -19,7 +19,7 @@
 // THE SOFTWARE.
 
 import React from 'react';
-
+import ShowcaseButton from '../auxiliar/ShowcaseButton';
 import {
   XYPlot,
   XAxis,
@@ -27,8 +27,7 @@ import {
   VerticalGridLines,
   HorizontalGridLines,
   MarkSeries,
-  Hint,
-  DiscreteColorLegend 
+  Hint
 } from 'react-vis';
 
 
@@ -39,10 +38,14 @@ const tipStyle = {
     alignItems: 'center',
     padding: '2px'
   };
+
 const boxStyle = {height: '2px', width: '2px'};
-function buildValue(value) {
-    return value
-  }
+
+const nextFilter = {
+    estado: 'estado',
+    brasil: 'brasil'
+  };
+const filterModes = ['estado', 'brasil'];
 
 const dados = [
     {x: 1, y: 10, size: 30, partido: "pt"},    
@@ -52,40 +55,65 @@ const dados = [
     {x: 2.5, y: 7, size: 4, partido: "arena"}
 ]
 
+function montaGrafico(filter){
+    
+    //retorno da chamada ao grafico com filtro
+}
+
 export default class VotosVSInvestimentos extends React.Component {
     state = {
-        value: false
+        value: false,
+        filterMode: 0,
+        nextFilter: 'estado'
       }
     render() {
+        const {
+            nextFilter,
+            filterMode,
+            value
+          } = this.state;
+        const markLineProps = {};
+        const mode = filterModes[filterMode];
         return (
-        <XYPlot
-            width={300}
-            height={300}>
-            <VerticalGridLines />
-            <HorizontalGridLines />
-            <XAxis />
-            <YAxis />
-            <MarkSeries
-            className="mark-series-example"
-            strokeWidth={2}
-            opacity="0.8"
-            sizeRange={[5, 15]}
-            data={dados}
-            onValueClick={e => console.log(e)}
-            onValueMouseOver={v =>  this.setState({value: v.x && v.y ? v: false})  }
-            onSeriesMouseOut={() => this.setState({value: false})}
-            >
+            <div className="canvas-wrapper">
+                <div className="canvas-example-controls">
+                    <div> {`Mode: ${mode}`} </div>
+                    <ShowcaseButton
+                        onClick={() => this.setState({filterMode: (filterMode + 1) % 2})}
+                        buttonContent={nextFilter[mode]} />
+                    </div>
+                    {<XYPlot
+                        width={300}
+                        height={300}>
+                        <VerticalGridLines />
+                        <HorizontalGridLines />
+                        <XAxis />
+                        <YAxis />
+                        <MarkSeries
+                        className="mark-series-example"
+                        strokeWidth={2}
+                        opacity="0.8"
+                        sizeRange={[5, 15]}
+                        data={dados}
+                        onValueClick={e => console.log(e)}
+                        onValueMouseOver={v =>  this.setState({value: v.x && v.y ? v: false})  }
+                        onSeriesMouseOut={() => this.setState({value: false})}
+                        >
             
-            
-            </MarkSeries>  
-            {this.state.value ? <Hint value={buildValue(this.state.value)}>
-                <div style={tipStyle}>
-                    <div style={{...boxStyle}}/>                    
-                    {this.state.value.partido}
-                        
-                </div>
-            </ Hint> : null}
-        </XYPlot>
+                        </MarkSeries>  
+                        {this.state.value ? <Hint value={this.state.value}>
+                            <div style={tipStyle}>
+                                <div style={{...boxStyle}}/>                    
+                                {this.state.value.partido}
+                                    
+                            </div>
+                        </ Hint> : null}
+                        {mode === 'brasil' &&
+                            <p>Brasil</p> }
+                        {mode === 'estado' &&
+                            <p>Estado</p>}
+                    </XYPlot>}
+            </div>
         );
     }
 }
