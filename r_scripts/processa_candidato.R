@@ -54,7 +54,8 @@ formata_eleitorado <- function(ano = 2016, data) {
 
 fetch_gender_info <- function(ano = 2016) {
   data_path <- here::here(paste0("data/Candidatos/consulta_cand_", ano, "/merged.csv"))
-  candidatos_data <- readr::read_csv2(data_path, local=readr::locale(enconding=)) 
+  candidatos_data <- readr::read_csv2(data_path,  local=readr::locale(encoding="latin1"),
+                                      col_names = FALSE)) 
   
   if(ano <= 2010) {
     col_names <- col_names <- c("DATA_GERACAO", "HORA_GERACAO", "ANO_ELEICAO", "NUM_TURNO",
@@ -121,7 +122,7 @@ export_candidato <- function(ano=2016) {
 
 processa_candidatos <- function(ano=2016) {
   all_munzona_candidatos_data <- readr::read_csv2(here::here(paste0("data/Votacoes/votacao_candidato_munzona_", ano, "/merged.csv")),
-                                                  local=readr::locale("br"),
+                                                  local=readr::locale(encoding="latin1"),
                                                   col_names = FALSE)
   
   all_munzona_candidatos_data <- formata_candidatos_munzona(ano, all_munzona_candidatos_data)
@@ -131,46 +132,6 @@ processa_candidatos <- function(ano=2016) {
   data <- left_join(all_munzona_candidatos_data, genero_df, by=c("numero_cand", "nome_municipio", "descricao_cargo", "sigla_uf"))
   
   write.csv2(data, paste0("data/preprocessed/candidatos_", ano, ".csv"))
-  write.csv2(all_munzona_candidatos_data, "data/preprocessed/all_munzona_candidatos_2016.csv")
+  #write.csv2(all_munzona_candidatos_data, "data/preprocessed/all_munzona_candidatos_2016.csv")
   data
 }
-
-data_2000 <- readr::read_csv2(here::here("data/preprocessed/candidatos/candidatos_2000.csv"),
-                              local=readr::locale(encoding="latin1"))
-
-data_2002 <- readr::read_csv2(here::here("data/preprocessed/candidatos/candidatos_2002.csv"),
-                              local=readr::locale(encoding="latin1"))
-data_2004 <- readr::read_csv2(here::here("data/preprocessed/candidatos/candidatos_2004.csv"),
-                              local=readr::locale(encoding="latin1"))
-data_2006 <- readr::read_csv2(here::here("data/preprocessed/candidatos/candidatos_2006.csv"),
-                              local=readr::locale(encoding="latin1"))
-data_2008 <- readr::read_csv2(here::here("data/preprocessed/candidatos/candidatos_2008.csv"),
-                              local=readr::locale(encoding="latin1"))
-data_2010 <- readr::read_csv2(here::here("data/preprocessed/candidatos/candidatos_2010.csv"),
-                              local=readr::locale(encoding="latin1"))
-data_2012 <- readr::read_csv2(here::here("data/preprocessed/candidatos/candidatos_2012.csv"),
-                              local=readr::locale(encoding="latin1"))
-data_2014 <- readr::read_csv2(here::here("data/preprocessed/candidatos/candidatos_2014.csv"),
-                              local=readr::locale(encoding="latin1"))
-data_2016 <- readr::read_csv2(here::here("data/preprocessed/candidatos/candidatos_2016.csv"),
-                              local=readr::locale(encoding="latin1"))
-
-data <- rbind(data_2014, data_2016)
-                                             
-write.csv2(data, "data/preprocessed/all_candidatos_2014_e_2016.csv")
-
-data <- readr::read_csv2(here::here("data/preprocessed/all_candidatos_2010_a_2016.csv"),
-                              local=readr::locale("br"))
-
-mulheres <-  data %>% filter(sexo == "FEMININO") 
-
-data <- data %>% select(-nome_candidato)
-
-mulheres_zero <- mulheres %>% filter(total_votos == 0) %>% group_by(ano_eleicao) %>% summarise(cont_votos_zero = n())
-
-
-#all_munzona_partidos_data <- formata_partidos_munzona(2016, all_munzona_partidos_data)
-#perfil_eleitorado_2016 <-formata_eleitorado(2016, perfil_eleitorado_2016)
-
-
-

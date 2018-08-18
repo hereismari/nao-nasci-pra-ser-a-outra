@@ -1,6 +1,5 @@
 library(tidyverse)
 
-perfil_eleitorado_2010 = readr::read_csv2(here::here("data/Eleitores/perfil_eleitorado_2010/perfil_eleitorado_2010.csv"), local=readr::locale(encoding="latin1"), col_names = FALSE)
 perfil_eleitorado_2012 = readr::read_csv2(here::here("data/Eleitores/perfil_eleitorado_2012/perfil_eleitorado_2012.csv"), local=readr::locale(encoding="latin1"), col_names = FALSE)
 perfil_eleitorado_2014 = readr::read_csv2(here::here("data/Eleitores/perfil_eleitorado_2014/perfil_eleitorado_2014.csv"), local=readr::locale(encoding="latin1"), col_names = FALSE)
 perfil_eleitorado_2016 = readr::read_csv2(here::here("data/Eleitores/perfil_eleitorado_2016/perfil_eleitorado_2016.csv"), local=readr::locale(encoding="latin1"), col_names = FALSE)

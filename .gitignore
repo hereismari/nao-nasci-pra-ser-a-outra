@@ -1,6 +1,7 @@
 
 /data/
 *.Rhistory
+*.RData
 
 *.pyc
 *.csv

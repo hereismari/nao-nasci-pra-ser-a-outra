@@ -7,12 +7,14 @@ class Populator(object):
         self._client = MongoClient('localhost', 27017)
         self._db = self._client[db_name]
 
-        self._populate = {
-            'candidatos': self.populate_candidatos
+        self._dict_db = {
+            'candidatos': self._db.candidatos,
+            'eleitores': self._db.eleitores
         }
 
-        self._preprocess = {
-            'candidatos': self.default_preprocess
+        self._populate = {
+            'candidatos': self.default_populate,
+            'eleitores': self.default_populate
         }
 
         self._clean_up()
@@ -23,14 +25,13 @@ class Populator(object):
 
 
     def populate(self, file_type, path):
-        if file_type in self._preprocess and file_type in self._populate:
-            data = self._preprocess[file_type](path)
-            self._populate[file_type](data)
+        if file_type in self._populate:
+            self._populate[file_type](path, self._dict_db[file_type])
         else:
-            raise Exception('Funcao para preprocessar ou popular %s nao existe.' % file_type)
+            raise Exception('Funcao para popular %s nao existe.' % file_type)
 
 
-    def default_preprocess(self, filename):
+    def default_populate(self, filename, doc):
         data = []
         with open(filename, encoding='utf-8') as csv_file:
             csv_reader = csv.DictReader(csv_file)
@@ -41,10 +42,4 @@ class Populator(object):
                     except:
                         continue
                 data.append(row)
-        
-        return data
-    
-
-    def populate_candidatos(self, data):
-        for d in data:
-            self._db.candidatos.insert_one(d)
+        doc.insert_many(data)
