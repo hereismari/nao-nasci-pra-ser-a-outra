@@ -13,10 +13,7 @@ import React, { Component } from "react";
 export default class GraficoBarras extends Component {
   render() {
     return (
-      <div className="GraficoBarras container">
-        <div className="row">
-          <div className="col">Texto Texto</div>
-          <div className="col">
+      <div className="GraficoBarras">
             <XYPlot width={400} height={400} xType="ordinal">
               <VerticalBarSeries
                 fill="blue"
@@ -31,8 +28,6 @@ export default class GraficoBarras extends Component {
               <XAxis />
               <YAxis />
             </XYPlot>
-          </div>
-        </div>
       </div>
     );
   }
