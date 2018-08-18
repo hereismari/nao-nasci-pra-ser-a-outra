@@ -45,6 +45,19 @@ receitas_por_candidatos_dadas_pelo_partido <-
 receitas_por_candidatos <- data.table(receitas_por_candidatos)
 all_munzona_candidatos_data <- data.table(all_munzona_candidatos_data)
 receitas_por_candidatos_dadas_pelo_partido <- data.table(receitas_por_candidatos_dadas_pelo_partido)
+generos_2016 <- 
+  generos_2016 %>%
+  select(-c(sigla_uf, des_situacao_candidatura)) %>%
+  data.table()
 
-receitas_por_candidatos_merged <- merge(receitas_por_candidatos, all_munzona_candidatos_data, by = c("numero_cand", "nome_candidato"))
-receitas_por_candidatos_dadas_pelo_partido_merged <- merge(receitas_por_candidatos_dadas_pelo_partido, all_munzona_candidatos_data, by = c("numero_cand", "nome_candidato"))
+receitas_por_candidatos_merged <- 
+  merge(receitas_por_candidatos, all_munzona_candidatos_data, by = c("numero_cand", "nome_candidato"))
+receitas_por_candidatos_merged <-
+  merge(receitas_por_candidatos_merged, generos_2016, by = c("numero_cand", "nome_municipio", "descricao_cargo"))
+receitas_por_candidatos_dadas_pelo_partido_merged <-
+  merge(receitas_por_candidatos_dadas_pelo_partido, all_munzona_candidatos_data, by = c("numero_cand", "nome_candidato"))
+receitas_por_candidatos_dadas_pelo_partido_merged <-
+  merge(receitas_por_candidatos_dadas_pelo_partido_merged, generos_2016, by = c("numero_cand", "nome_municipio", "descricao_cargo"))
+
+write_csv(receitas_por_candidatos_merged, "receitas_por_candidato_merged_2016.csv")
+write.csv(receitas_por_candidatos_dadas_pelo_partido_merged, "receitas_por_candidatos_dadas_pelo_partido_merged_2016.csv")
