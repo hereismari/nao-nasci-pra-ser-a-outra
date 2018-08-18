@@ -57,6 +57,10 @@ def mulheres_eleitoras_vs_eleitas():
     return utils.jsonify(client.mulheres_eleitoras_vs_eleitas(_args, ano))
 
 
+@app.route('/favicon.ico', methods=['GET'])
+def favicon():
+    return ''
+
 @app.route('/', methods=['GET'])
 def index():
     return 'hello world'
