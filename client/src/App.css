@@ -277,3 +277,16 @@ span {
 
 .btn {
 }
+
+.axisWhite line{
+    stroke: white;
+}
+
+.axisWhite path {
+    stroke: white;
+    stroke-width: 1px;
+}
+
+.axisWhite text{
+    fill: white;
+}
