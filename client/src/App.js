@@ -16,6 +16,9 @@ import {
 } from "react-vis";
 import GraficoBarras from "./components/visualizacoes/GraficoBarras";
 import GraficoPontos from "./components/visualizacoes/GraficoPontos";
+import LineChart from './components/visualizacoes/GraficoLinhas'
+import LineChartData from './data.json'
+
 
 class App extends Component {
   render() {
@@ -54,7 +57,7 @@ class App extends Component {
           <div className="row part3">
             <h1 className="col-md-12 col-xs-12 col-12 col-sm-12">Lorem Ipsum dollor sit amet</h1>
             <div className="col-md-8 col-xs-8 col-12 col-sm-12">
-                <GraficoBarras />
+                <LineChart data={LineChartData} size={[500,500]} />
             </div>
             <div className="col-md-4 col-xs-4 col-12 col-sm-12 text-part3">
                 <div>
