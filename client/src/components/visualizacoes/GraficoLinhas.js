@@ -29,7 +29,7 @@ class LineChart extends Component {
     const node = this.node;
     
     const chart =  select(node)
-      .attr('viewBox', '100 0 '+(width + margin.left)+' '+(height + margin.top + margin.bottom))
+      .attr('viewBox', '150 0 '+(width + margin.left)+' '+(height + margin.top + margin.bottom))
       .attr('width', '90%');
     
     const x = d3.scaleLinear().range([0, width]);
