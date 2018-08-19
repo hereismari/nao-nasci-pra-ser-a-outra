@@ -206,6 +206,12 @@ span {
     stroke-width: 2px;
 }
 
+.line-linechart-gaxis {
+    fill: none;
+    stroke: #FF9B27;
+    stroke-width: 2px;
+}
+
 .card{
 	margin: auto;
     padding: 10%;
@@ -420,4 +426,13 @@ span {
 .axis text{
     fill: white;
     font-size: 10px;
+}
+
+.gaxis > text,
+.gaxis.tick > text {
+    stroke: none;
+    fill: #FF9B27;
+}
+.gaxis > path {
+    stroke: #FF9B27;
 }

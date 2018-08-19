@@ -64,7 +64,7 @@ class App extends Component {
               Lorem Ipsum dollor sit amet
             </h1>
             <div className="col-md-8 col-xs-8 col-12 col-sm-12">
-              <LineChart data={LineChartData} size={[500,500]} />
+              <LineChart data={LineChartData} size={[520,520]} />
             </div>
             <div className="col-md-4 col-xs-4 col-12 col-sm-12 text-part3">
               <div>

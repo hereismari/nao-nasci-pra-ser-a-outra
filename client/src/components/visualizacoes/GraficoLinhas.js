@@ -8,8 +8,8 @@ import axios from "axios";
 
 const margin = { top: 40, right: 10, bottom: 40, left: 10 };
 // const margin = {top: 20, right: 80, bottom: 30, left: 100};
-const width = 500 - margin.left - margin.right;
-const height = 500 - margin.top - margin.bottom;
+const width = 600 - margin.left - margin.right;
+const height = 600 - margin.top - margin.bottom;
 
 const API_DADOS = "http://naoaoutra.herokuapp.com/historico";
 
@@ -38,7 +38,7 @@ class LineChart extends Component {
     const node = this.node;
 
     const chart = select(node)
-      .attr("viewBox", "150 0 " + (width + margin.left) + " " + (height + margin.top + margin.bottom))
+      .attr("viewBox", "0 0 " + (width + margin.left) + " " + (height + margin.top + margin.bottom))
       .attr("width", "90%");
 
     const x = d3.scaleLinear().range([0, width]);
@@ -114,7 +114,7 @@ class LineChart extends Component {
       // Add the valueline path.
       g.append("path")
         .data([data])
-        .attr("class", "line-linechart")
+        .attr("class", "line-linechart-gaxis")
         .attr("d", valueline2);
 
       g.append("line")
@@ -124,7 +124,7 @@ class LineChart extends Component {
         .attr("y2", y(dataMax))
         .style("stroke-dasharray", "3, 3")
         .style("stroke-width", 2)
-        .style("stroke", "white")
+        .style("stroke", "#fff43c")
         .style("fill", "none");
 
       g.append("g")
@@ -141,8 +141,22 @@ class LineChart extends Component {
         .attr("y", 6)
         .attr("dy", ".71em")
         .attr("text-anchor", "end")
+        .attr("font-size", "23px")
         .attr("fill", "white")
         .text("Candidatas)");
+  
+      g.append("g")
+        .attr("class", "axis axis--y gaxis")
+        .attr("transform", "translate( " + width + ", 0 )")
+        .call(d3.axisRight(y).tickSize(0).tickFormat(""))
+        .attr("fill", "#FF9B27")
+        .append("text")
+        .attr("transform", "rotate(270)")
+        .attr("y", 10)
+        .attr("x", -height + 105)
+        .attr("dy", "0.71em")
+        .attr("text-anchor", "end")
+        .text("Candidatas fanstamas");
     }
     
     draw(this.props.data);
