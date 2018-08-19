@@ -47,11 +47,11 @@ class App extends Component {
               <div className="row">
                   <div className="col-md-6 col-xs-6 col-12 col-sm-12 text1-part2">
                     <div>
-                      <span className="blink_me">30%</span><h3>É o mínimo de candidatos de um gênero que um partido deve ter</h3>
+                      <span className="blink_me">30%</span><h3>É o mínimo de candidatos de um gênero que um partido ou coligação deve ter.</h3>
                     </div>
                   </div>
                   <div className="col-md-6 col-xs-6 col-12 col-sm-12 text2-part2">
-                      <h3>O gráfico acima exibe a participação das mulheres em cada partido. Quanto mais próximo do centro, mais igualitário é o partido.</h3>
+                      <h3>O gráfico acima exibe a participação das mulheres em cada partido. Quanto mais próximo da "fronteira" entre homens e mulheres mais igualitário é o partido.</h3>
                   </div>
                 </div>
               </div>
@@ -169,7 +169,7 @@ class App extends Component {
           <div className="row part3">
             <div className="col-md-6 col-xs-6 col-12 col-sm-12">
                 <div className="left-container">
-                   <span className="blink_me">30%</span><h3>É o mínimo de candidatos de um gênero que um partido deve ter</h3>
+                   <span className="blink_me">30%</span><h3>É o mínimo de candidatos de um gênero que um partido ou coligação deve ter.</h3>
                     <img src={require("./img/dilmae.gif")} />
                 </div>
             </div>
@@ -194,17 +194,21 @@ class App extends Component {
             </div>
           </div>
           <div className="row part6">
-            <img className="ajust-img-pocs" src={require("./img/bob.jpg")} />
-            <img className="ajust-img-pocs" src={require("./img/dan.jpg")} />
-            <img className="ajust-img-pocs" src={require("./img/hadri.jpg")} />
-            <img className="ajust-img-pocs" src={require("./img/italo.jpg")} />
-            <img className="ajust-img-pocs" src={require("./img/jair.jpg")} />
-            <img className="ajust-img-pocs" src={require("./img/mari.jpg")} />
-            <img className="ajust-img-pocs" src={require("./img/vini.jpg")} />
-            <div className="col-md-12 col-xs-12 col-12 col-sm-12 row logo-footer">
-              <img className="logo-hack" src={require("./img/hackfest.svg")} />
-              <img className="logo-nossa" src={require("./img/logo.png")} />
-            </div>
+              <div className='col-md-12 col-xs-12 col-12 col-sm-12 row bottom-padding'>
+                <h1>Este projeto foi desenvolvido no <a href='http://hackfest.com.br/'>4º hackfest contra a corrupção (2018).</a></h1>
+              </div>
+
+              <img className="ajust-img-pocs" src={require("./img/bob.jpg")} />
+              <img className="ajust-img-pocs" src={require("./img/dan.jpg")} />
+              <img className="ajust-img-pocs" src={require("./img/hadri.jpg")} />
+              <img className="ajust-img-pocs" src={require("./img/italo.jpg")} />
+              <img className="ajust-img-pocs" src={require("./img/jair.jpg")} />
+              <img className="ajust-img-pocs" src={require("./img/mari.jpg")} />
+              <img className="ajust-img-pocs" src={require("./img/vini.jpg")} />
+              <div className="col-md-12 col-xs-12 col-12 col-sm-12 row logo-footer">
+                <img className="logo-hack" src={require("./img/hackfest.svg")} />
+                <img className="logo-nossa" src={require("./img/logo.png")} />
+              </div>
           </div>
         </div>
     );

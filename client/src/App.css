@@ -38,8 +38,15 @@
 }
 
 .part6{
-	padding: 10%;
-    background-color: #001020;
+	padding-left: 10%;
+	padding-right: 10%;
+	padding-top: 2%;
+	padding-bottom: 2%;
+  background-color: #001020;
+}
+
+.bottom-padding {
+  padding-bottom: 5%;
 }
 
 .partItalo {
@@ -154,6 +161,7 @@
 }
 
 .part3,
+.part6,
 .part4 h1 {
   font-family: "Gobold";
   color: white;
@@ -170,6 +178,10 @@
 
 .part4 h1 {
   padding-bottom: 50px;
+}
+
+.part6 h1 {
+  font-size: 20px;
 }
 
 .text-3-part3 div {
