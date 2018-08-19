@@ -9,8 +9,11 @@ import {
   HorizontalGridLines,
   MarkSeries,
   Hint,
-  DecorativeAxis
+  DecorativeAxis,
+  makeWidthFlexible
 } from "react-vis";
+
+import PropTypes from "prop-types";
 
 import red from "@material-ui/core/colors/red";
 import blue from "@material-ui/core/colors/blue";
@@ -108,8 +111,8 @@ const dataMulheres = [
 const tipStyle = {
   display: "flex",
   color: "#fff",
-  background: purple[800],
-  alignItems: "center",
+  background: "#000",
+  alignItems: "right",
   padding: "2px"
 };
 
@@ -163,9 +166,6 @@ export default class GraficoBarras extends Component {
       else return 0;
     });
 
-    console.log(maisMulheres);
-    console.log(menosMulheres);
-
     var finalData = [];
 
     maisMulheres.map(elem => {
@@ -175,44 +175,65 @@ export default class GraficoBarras extends Component {
       finalData.push(elem);
     });
 
+    const barChart = ({ width }) => (
+      <XYPlot width={width} height={400} margin={MARGIN} xType="ordinal">
+        <XAxis
+          orientation="top"
+          hideLine
+          tickValues={partidos}
+          style={{
+            line: { stroke: purple },
+            text: {
+              stroke: "white",
+              fill: "white",
+              fontWeight: 100
+            }
+          }}
+        />
+        <VerticalBarSeries
+          colorType="literal"
+          opacity={0.8}
+          strokeWidth="500px"
+          data={finalData}
+          onValueMouseOver={v =>
+            this.setState({ value: v.x && v.y ? v : false })
+          }
+          onSeriesMouseOut={() => this.setState({ value: false })}
+        />
+        {this.state.value ? (
+          <Hint value={buildValue(this.state.value)}>
+            <div style={tipStyle} className="texto-termometro">
+              <div style={{ ...boxStyle }} />
+              {"Partido: " +
+                this.state.value.x +
+                " " +
+                this.state.value.legenda}
+            </div>
+          </Hint>
+        ) : null}
+      </XYPlot>
+    );
+    barChart.propTypes = {
+      width: PropTypes.number,
+      measurements: PropTypes.array
+    };
+
+    const FlexibleBarChart = makeWidthFlexible(barChart);
+
     return (
       <div className="GraficoBarras">
-        <XYPlot width={400} height={400} margin={MARGIN} xType="ordinal">
-          <XAxis
-            orientation="top"
-            hideLine
-            tickValues={partidos}
-            style={{
-              line: { stroke: purple },
-              text: {
-                stroke: "white",
-                fill: "white",
-                fontWeight: 600
-              }
-            }}
-          />
-          <VerticalBarSeries
-            colorType="literal"
-            opacity={0.8}
-            strokeWidth="500px"
-            data={finalData}
-            onValueMouseOver={v =>
-              this.setState({ value: v.x && v.y ? v : false })
-            }
-            onSeriesMouseOut={() => this.setState({ value: false })}
-          />
-          {this.state.value ? (
-            <Hint value={buildValue(this.state.value)}>
-              <div style={tipStyle}>
-                <div style={{ ...boxStyle }} />
-                {"Partido: " +
-                  this.state.value.x +
-                  " " +
-                  this.state.value.legenda}
-              </div>
-            </Hint>
-          ) : null}
-        </XYPlot>
+        <div className="row">
+          <div className="col-1 col-sm-1 col-md-1 col-xs-1 col-lg-1 texto-termometro">
+            Mulheres
+          </div>
+          <div className="col-1 col-sm-1 col-md-1 col-xs-1 offset-md-9 offset-9 offset-sm-9 offset-xs-9 offset-lg-10 texto-termometro">
+            Homens
+          </div>
+        </div>
+        <div className="col-12 col-sm-12 col-md-12 col-xs-12 col-lg-12">
+          <div className="termometro">.</div>
+          <FlexibleBarChart />
+        </div>
       </div>
     );
   }
