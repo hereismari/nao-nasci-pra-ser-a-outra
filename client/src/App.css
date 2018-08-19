@@ -318,8 +318,20 @@ span {
     font-size: 15px;
 }
 
+.denuncia a{
+    font-family: 'GoBold';
+    margin: auto;
+    color: white;
+    font-size: 15px;
+}
+
 .denuncia i{
 	font-size: 20px;
+   margin-left: 10%;
+}
+
+.twitter i{
+	font-size: 40px;
    margin-left: 10%;
 }
 
@@ -405,6 +417,35 @@ span {
 .logo-hack{
 	width: 25%;
 	margin-right: 60px;
+}
+
+.denuncia:hover a  {
+  color: black;
+}
+ .denuncia:hover i  {
+  color: black;
+}
+ .twitter {
+  -ms-flex-line-pack: center;
+  align-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  overflow: hidden;
+  font-weight: 200;
+  text-align: center;
+}
+ .twitter a {
+  color:white;
+  font-family: "Gobold";
+  vertical-align: middle;
+  font-size: 2rem;
+}
+ .twitter-logo-size {
+  width: 2.5rem;
+  filter: none;
+  margin-right: 4%;
+  vertical-align: middle;
+  transition: .1s;
 }
 
 .logo-nossa{
