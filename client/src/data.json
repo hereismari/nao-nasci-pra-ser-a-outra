@@ -1,89 +1,47 @@
-{
-  "Afghanistan": [
-    {
-      "Date": 1999,
-      "Imports": "15",
-      "Exports": "20"
-    },
-    {
-      "Date": 2008,
-      "Imports": "42",
-      "Exports": "115"
-    },
-    {
-      "Date": 2007,
-      "Imports": "29",
-      "Exports": "79"
-    },
-    {
-      "Date": 2009,
-      "Imports": "346",
-      "Exports": "324"
-    },
-    {
-      "Date": 2006,
-      "Imports": "44",
-      "Exports": "69"
-    },
-    {
-      "Date": 2010,
-      "Imports": "424",
-      "Exports": "503"
-    },
-    {
-      "Date": 2005,
-      "Imports": "28",
-      "Exports": "48"
-    },
-    {
-      "Date": 2011,
-      "Imports": "413",
-      "Exports": "603"
-    },
-    {
-      "Date": 2004,
-      "Imports": "34",
-      "Exports": "41"
-    },
-    {
-      "Date": 2012,
-      "Imports": "313",
-      "Exports": "517"
-    },
-    {
-      "Date": 2003,
-      "Imports": "21",
-      "Exports": "36"
-    },
-    {
-      "Date": 2013,
-      "Imports": "513",
-      "Exports": "615"
-    },
-    {
-      "Date": 2002,
-      "Imports": "18",
-      "Exports": "23"
-    },
-    {
-      "Date": 2014,
-      "Imports": "471",
-      "Exports": "766"
-    },
-    {
-      "Date": 2001,
-      "Imports": "17",
-      "Exports": "29"
-    },
-    {
-      "Date": 2015,
-      "Imports": "119",
-      "Exports": "181"
-    },
-    {
-      "Date": 2000,
-      "Imports": "25",
-      "Exports": "25"
-    }
-  ]
-}
+[
+  {
+    "ano_eleicao": 2000.0,
+    "porc_ghost_fem": 0,
+    "porc_ghost_masc": 0,
+    "total_candidate_fem": 68458.0,
+    "total_candidate_masc": 306403.0,
+    "total_ghosts_fem": 0,
+    "total_ghosts_masc": 0
+  },
+  {
+    "ano_eleicao": 2004.0,
+    "porc_ghost_fem": 0,
+    "porc_ghost_masc": 0,
+    "total_candidate_fem": 75163.0,
+    "total_candidate_masc": 280397.0,
+    "total_ghosts_fem": 0,
+    "total_ghosts_masc": 0
+  },
+  {
+    "ano_eleicao": 2008.0,
+    "porc_ghost_fem": "0,013",
+    "porc_ghost_masc": "0,006",
+    "total_candidate_fem": 71149.0,
+    "total_candidate_masc": 266103.0,
+    "total_ghosts_fem": 9.0,
+    "total_ghosts_masc": 15.0
+  },
+  {
+    "ano_eleicao": 2012.0,
+    "porc_ghost_fem": "16,42",
+    "porc_ghost_masc": "2,351",
+    "total_candidate_fem": 136519.0,
+    "total_candidate_masc": 301340.0,
+    "total_ghosts_fem": 22417.0,
+    "total_ghosts_masc": 7084.0
+  },
+  {
+    "ano_eleicao": 2016.0,
+    "porc_ghost_fem": "12,05",
+    "porc_ghost_masc": "2,474",
+    "total_candidate_fem": 147335.0,
+    "total_candidate_masc": 315471.0,
+    "total_ghosts_fem": 17754.0,
+    "total_ghosts_masc": 7804.0
+  }
+]

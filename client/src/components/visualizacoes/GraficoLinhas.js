@@ -9,7 +9,7 @@ import axios from "axios";
 const margin = { top: 40, right: 10, bottom: 40, left: 10 };
 // const margin = {top: 20, right: 80, bottom: 30, left: 100};
 const width = 500 - margin.left - margin.right;
-const height = 450 - margin.top - margin.bottom;
+const height = 500 - margin.top - margin.bottom;
 
 const API_DADOS = "http://naoaoutra.herokuapp.com/historico";
 
@@ -25,10 +25,7 @@ class LineChart extends Component {
     axios
       .get(API_DADOS)
       .then(res => res.data)
-      .then(data => {
-        console.log(data);
-        this.setState({ dados: data });
-      })
+      .then(data => this.setState({ dados: data }))
       .catch(err => console.log(err));
     this.createLineChart();
   }
@@ -41,13 +38,7 @@ class LineChart extends Component {
     const node = this.node;
 
     const chart = select(node)
-      .attr(
-        "viewBox",
-        "150 0 " +
-          (width + margin.left) +
-          " " +
-          (height + margin.top + margin.bottom)
-      )
+      .attr("viewBox", "150 0 " + (width + margin.left) + " " + (height + margin.top + margin.bottom))
       .attr("width", "90%");
 
     const x = d3.scaleLinear().range([0, width]);
@@ -73,8 +64,6 @@ class LineChart extends Component {
 
     function draw(mData) {
       var data = mData;
-
-      console.log(mData);
 
       // format the data
       data.forEach(function(d) {
@@ -102,7 +91,7 @@ class LineChart extends Component {
       ]);
 
       const dataIn2009 = data.filter(function(elem) {
-        return elem.Date === 2009;
+        return elem.ano_eleicao === 2009;
       });
 
       var dataMax = max(dataIn2009, function(d) {
@@ -111,7 +100,7 @@ class LineChart extends Component {
       var dataMin = min(dataIn2009, function(d) {
         return Math.min(d.total_candidate_fem, d.total_ghosts_fem);
       });
-
+      
       const g = chart
         .append("g")
         .attr("transform", "translate(" + 30 + ", " + 30 + ")");
@@ -139,20 +128,13 @@ class LineChart extends Component {
         .style("fill", "none");
 
       g.append("g")
-        .attr("class", "axis axis--x axisWhite")
+        .attr("class", "axis axis--x")
         .attr("transform", "translate(0, " + height + ")")
-        .call(axisBottom(x).ticks(10));
+        .call(axisBottom(x).ticks(6));
 
       g.append("g")
-        .attr("class", "axis axis--y axisWhite")
-        .call(
-          d3
-            .axisLeft(y)
-            .ticks(10)
-            .tickFormat(function(data) {
-              return parseInt(data / 1000) + "k";
-            })
-        )
+        .attr("class", "axis axis--y")
+        .call(d3.axisLeft(y).ticks(10).tickFormat(function(data) {return parseInt(data / 1000) + "k";}))
         .attr("fill", "#fff")
         .append("text")
         .attr("transform", "rotate(-90)")
@@ -160,30 +142,12 @@ class LineChart extends Component {
         .attr("dy", ".71em")
         .attr("text-anchor", "end")
         .attr("fill", "white")
-        .text("Population)");
-
-      // text label for the x axis
-      // select(node)
-      //   .append("text")
-      //   .attr("transform",
-      //     "translate(" + (width/2) + " ," +
-      //     (height + margin.top + 20) + ")")
-      //   .style("text-anchor", "middle")
-      //   .text("Date");
-
-      // text label for the y axis
-      // select(node)
-      //   .append("text")
-      //   .attr("transform", "rotate(-90)")
-      //   .attr("y", 0 - margin.left)
-      //   .attr("x",0 - (height / 2))
-      //   .attr("dy", "1em")
-      //   .style("text-anchor", "middle")
-      //   .text("Value");
+        .text("Candidatas)");
     }
-
-    draw(this.state.dados);
+    
+    draw(this.props.data);
   }
+  
   render() {
     return (
       <svg ref={node => (this.node = node)} width={width} height={height} />

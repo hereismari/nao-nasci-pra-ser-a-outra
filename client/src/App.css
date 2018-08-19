@@ -278,15 +278,18 @@ span {
 .btn {
 }
 
-.axisWhite line{
+.axis { font: 34px sans-serif; }
+
+.axis line{
     stroke: white;
 }
 
-.axisWhite path {
+.axis path {
     stroke: white;
     stroke-width: 1px;
 }
 
-.axisWhite text{
+.axis text{
     fill: white;
+    font-size: 10px;
 }
