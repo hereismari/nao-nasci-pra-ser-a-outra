@@ -202,7 +202,7 @@ export default class GraficoBarras extends Component {
         />
         {this.state.value ? (
           <Hint value={buildValue(this.state.value)}>
-            <div style={tipStyle}>
+            <div style={tipStyle} className="texto-termometro">
               <div style={{ ...boxStyle }} />
               {"Partido: " +
                 this.state.value.x +
