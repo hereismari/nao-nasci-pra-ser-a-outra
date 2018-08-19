@@ -4,20 +4,29 @@ import { select } from 'd3-selection'
 import { max, min } from 'd3-array'
 import { axisBottom } from 'd3-axis'
 import * as d3 from "d3";
+import axios from "axios";
 
 const margin = {top: 40, right: 10, bottom: 40, left: 10};
 // const margin = {top: 20, right: 80, bottom: 30, left: 100};
 const width = 500 - margin.left - margin.right;
 const height = 450 - margin.top - margin.bottom;
 
+const API_DADOS =
+  "http://naoaoutra.herokuapp.com/historico";
+
 class LineChart extends Component {
   
   constructor(props){
     super(props);
-    this.createLineChart = this.createLineChart.bind(this)
+    this.createLineChart = this.createLineChart.bind(this);
+    this.state = {isLoading: false, dados:[]};
   }
 
   componentDidMount() {
+    this.setState({isLoading: true});
+    axios.get(API_DADOS).then(res => res.data).then(data => 
+      {console.log(data);}
+    ).catch(err => console.log(err));
     this.createLineChart()
   }
 
