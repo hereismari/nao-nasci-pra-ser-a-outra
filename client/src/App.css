@@ -64,7 +64,17 @@
 }
 
 .right-container h3 {
-  font-size: 14px;
+  font-size: 18px;
+  text-align: center;
+  padding-right: 5%;
+  padding-left: 5%;
+  color: white;
+  font-family: "GoBold";
+}
+
+
+.right-container h1 {
+  font-size: 30px;
   text-align: center;
   padding-right: 5%;
   padding-left: 5%;
@@ -90,6 +100,7 @@
   font-size: 1em;
   font-family: "GoBold";
 }
+
 
 .left-container span {
   position: absolute;
