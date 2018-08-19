@@ -1,0 +1,47 @@
+[
+  {
+    "ano_eleicao": 2000.0,
+    "porc_ghost_fem": 0,
+    "porc_ghost_masc": 0,
+    "total_candidate_fem": 68458.0,
+    "total_candidate_masc": 306403.0,
+    "total_ghosts_fem": 0,
+    "total_ghosts_masc": 0
+  },
+  {
+    "ano_eleicao": 2004.0,
+    "porc_ghost_fem": 0,
+    "porc_ghost_masc": 0,
+    "total_candidate_fem": 75163.0,
+    "total_candidate_masc": 280397.0,
+    "total_ghosts_fem": 0,
+    "total_ghosts_masc": 0
+  },
+  {
+    "ano_eleicao": 2008.0,
+    "porc_ghost_fem": "0,013",
+    "porc_ghost_masc": "0,006",
+    "total_candidate_fem": 71149.0,
+    "total_candidate_masc": 266103.0,
+    "total_ghosts_fem": 9.0,
+    "total_ghosts_masc": 15.0
+  },
+  {
+    "ano_eleicao": 2012.0,
+    "porc_ghost_fem": "16,42",
+    "porc_ghost_masc": "2,351",
+    "total_candidate_fem": 136519.0,
+    "total_candidate_masc": 301340.0,
+    "total_ghosts_fem": 22417.0,
+    "total_ghosts_masc": 7084.0
+  },
+  {
+    "ano_eleicao": 2016.0,
+    "porc_ghost_fem": "12,05",
+    "porc_ghost_masc": "2,474",
+    "total_candidate_fem": 147335.0,
+    "total_candidate_masc": 315471.0,
+    "total_ghosts_fem": 17754.0,
+    "total_ghosts_masc": 7804.0
+  }
+]
