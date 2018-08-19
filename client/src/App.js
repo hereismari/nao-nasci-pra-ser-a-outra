@@ -37,7 +37,7 @@ class App extends Component {
                 <div className="col-md-6 col-xs-6 col-12 col-sm-12 right-container">
                   <img src={require("./img/logo.png")} />
                   <h3>
-                    O Não Nasci Pra Ser a Única oferece uma maneira fácil de monitorar o cumprimento efetivo da <a href='http://www.planalto.gov.br/ccivil_03/_Ato2007-2010/2009/Lei/L12034.ht'>lei 12.034/2009, </a> a qual exige que haja no mínimo de 30% e o máximo de 70% de candidatos de cada sexo em eleições proporcionais.
+                    O Não Nasci Pra Ser a Única oferece uma maneira fácil de monitorar o cumprimento efetivo da <a href='http://www.planalto.gov.br/ccivil_03/_Ato2007-2010/2009/Lei/L12034.ht'>lei 12.034/2009, </a> a qual exige que haja no mínimo 30% e o máximo 70% candidatos de cada sexo por partido ou coligação.
                   </h3>
                 </div>
           </div>
@@ -61,30 +61,25 @@ class App extends Component {
           </div>
           <div className="row partItalo">
             <h1 className="col-md-12 col-xs-12 col-12 col-sm-12">
-              Lorem Ipsum dollor sit amet
+              Evolução do número de candidatas
             </h1>
             <div className="col-md-8 col-xs-8 col-12 col-sm-12">
               <LineChart data={LineChartData} size={[520,520]} />
             </div>
             <div className="col-md-4 col-xs-4 col-12 col-sm-12 text-part3">
               <div>
-                <div className="row">
-                  <span>30%</span>
-                  <div className="ajuste-porcent-sub">
-                  <h3>É o mínimo de candidatos de um gênero que um partido deve ter</h3>
-                  </div>
-                </div>
                 <h3>
-                  Pesquisa quantitativa não probabilística. Formulário
-                  respondido no Google Docs e compartilhado organicamente entre
-                  mulheres que trabalham em agência de publicidade
+                  O gráfico ao lado mostra o número de candidatas no Brasil ao longo dos anos. A linha branca é o número de candidatas, já a linha amarela o número de candidatas com zero votos.
+                </h3>
+                <h3>
+                  A linha tracejada indica o ano de 2009, ano em que a lei de cotas entrou em vigor.
                 </h3>
               </div>
             </div>
           </div>
           <div className="row part4">
             <h1 className="col-md-12 col-xs-12 col-12 col-sm-12">
-              Raking dos partidos <br></br>com mais prováveis candidatas fantasmas
+              Raking dos partidos <br></br>com mais prováveis candidatas fantasmas em 2016
             </h1>
             <div className="col-md-12 col-xs-12 col-12 col-sm-12">
               <div className="row row-ranking">
