@@ -105,7 +105,8 @@ class App extends Component {
                       </div>
                       <div className="botao">
                         <div className="denuncia">
-                          <p>Exija explicações!<i class="fab fa-twitter"></i></p>
+                          <a href="https://twitter.com/intent/tweet/?text=Veja%20quais%20partidos%20cumprem%20efetivamente%20a%20cota%20dos%2030%25%20e%20quais%20possuem%20tend%C3%AAncias%20a%20candidaturas%20laranjas%20no%20N%C3%A3o%20nasci%20pra%20ser%20a%20outra%20:nao-nasci-pra-ser-a-outra.surge.sh.%20%23ContraCorrup%C3%A7%C3%A3o%20%23ContraCandidatoFantasma%20%23NaoNasciPraSerAOutra">
+                          Exija explicações!<i class="fab fa-twitter"></i></a>
                         </div>
                       </div>
                   </div>
@@ -130,7 +131,8 @@ class App extends Component {
                       </div>
                       <div className="botao">
                         <div className="denuncia">
-                          <p>Exija explicações!<i class="fab fa-twitter"></i></p>
+                        <a href="https://twitter.com/intent/tweet/?text=Veja%20quais%20partidos%20cumprem%20efetivamente%20a%20cota%20dos%2030%25%20e%20quais%20possuem%20tend%C3%AAncias%20a%20candidaturas%20laranjas%20no%20N%C3%A3o%20nasci%20pra%20ser%20a%20outra%20:nao-nasci-pra-ser-a-outra.surge.sh.%20%23ContraCorrup%C3%A7%C3%A3o%20%23ContraCandidatoFantasma%20%23NaoNasciPraSerAOutra">
+                        Exija explicações!<i class="fab fa-twitter"></i></a>
                         </div>
                       </div>
                   </div>
@@ -155,7 +157,8 @@ class App extends Component {
                       </div>
                       <div className="botao">
                         <div className="denuncia">
-                          <p>Exija explicações!<i class="fab fa-twitter"></i></p>
+                        <a href="https://twitter.com/intent/tweet/?text=Veja%20quais%20partidos%20cumprem%20efetivamente%20a%20cota%20dos%2030%25%20e%20quais%20possuem%20tend%C3%AAncias%20a%20candidaturas%20laranjas%20no%20N%C3%A3o%20nasci%20pra%20ser%20a%20outra%20:nao-nasci-pra-ser-a-outra.surge.sh.%20%23ContraCorrup%C3%A7%C3%A3o%20%23ContraCandidatoFantasma%20%23NaoNasciPraSerAOutra">
+                        Exija explicações!<i class="fab fa-twitter"></i></a>
                         </div>
                       </div>
                   </div>
@@ -178,6 +181,16 @@ class App extends Component {
                     <p className="ajust-margin2 blink_me">Como colaborar?</p>
                   </div>
                     <h3>Pesquisa quantitativa não probabilística. Formulário respondido no Google Docs e compartilhado organicamente entre mulheres que trabalham em agência de publicidade</h3>
+                    <div class="denuncia twitter">
+
+                      <a href="https://twitter.com/intent/tweet/?text=Veja%20quais%20partidos%20cumprem%20efetivamente%20a%20cota%20dos%2030%25%20e%20quais%20possuem%20tend%C3%AAncias%20a%20candidaturas%20laranjas%20no%20N%C3%A3o%20nasci%20pra%20ser%20a%20outra%20:nao-nasci-pra-ser-a-outra.surge.sh.%20%23ContraCorrup%C3%A7%C3%A3o%20%23ContraCandidatoFantasma%20%23NaoNasciPraSerAOutra"
+                        class="twitter-share-button" data-show-count="false">
+                          Tweet!
+                      </a>
+                      <i class="fab fa-twitter twitter-logo-size"></i>
+                      <script async src="https://platform.twitter.com/widgets.js" charset="utf-8">
+                      </script>
+                    </div>
                 </div>
             </div>
           </div>
