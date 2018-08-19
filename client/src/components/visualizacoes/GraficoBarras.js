@@ -111,8 +111,8 @@ const dataMulheres = [
 const tipStyle = {
   display: "flex",
   color: "#fff",
-  background: purple[800],
-  alignItems: "center",
+  background: "#000",
+  alignItems: "right",
   padding: "2px"
 };
 
@@ -165,7 +165,6 @@ export default class GraficoBarras extends Component {
       else if (Math.abs(a.y) < Math.abs(b.y)) return 1;
       else return 0;
     });
-
 
     var finalData = [];
 
@@ -223,7 +222,16 @@ export default class GraficoBarras extends Component {
 
     return (
       <div className="GraficoBarras">
-        <div className="col-12 col-sm-12 col-md-12 col-xs-12">
+        <div className="row">
+          <div className="col-1 col-sm-1 col-md-1 col-xs-1 col-lg-1 texto-termometro">
+            Mulheres
+          </div>
+          <div className="col-1 col-sm-1 col-md-1 col-xs-1 offset-md-9 offset-9 offset-sm-9 offset-xs-9 offset-lg-10 texto-termometro">
+            Homens
+          </div>
+        </div>
+        <div className="col-12 col-sm-12 col-md-12 col-xs-12 col-lg-12">
+          <div className="termometro">.</div>
           <FlexibleBarChart />
         </div>
       </div>

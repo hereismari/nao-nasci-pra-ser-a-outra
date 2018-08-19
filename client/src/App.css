@@ -40,6 +40,17 @@
   padding: 5%;
 }
 
+.termometro {
+  margin-bottom: -20px;
+  background-image: linear-gradient(to right, #4a148c, #f57f17);
+  color: #4a148c;
+}
+
+.texto-termometro {
+  font-family: "Gobold";
+  color: white;
+}
+
 .right-container {
   padding-bottom: 50px;
 }
