@@ -41,15 +41,15 @@ class App extends Component {
             <div className="bg col-md-12 col-xs-12 col-12 col-sm-12" />
             <div className="col-md-6 col-xs-6 col-12 col-sm-12">
               <div className="left-container">
-                <span className="blink_me">30%</span>
-                <h3 />
+                <span className="blink_me">10,5%</span>
+                <h3>Apenas 10,5% do congresso é feminino.</h3><h3 />
                 <img src={require("./img/img-left-part1.png")} />
               </div>
             </div>
             <div className="col-md-6 col-xs-6 col-12 col-sm-12 right-container">
               <img src={require("./img/logo.png")} />
               <h3>
-                O Não Nasci Pra Ser a Única oferece uma maneira fácil de
+                O Não Nasci Pra Ser a Outra oferece uma maneira fácil de
                 monitorar o cumprimento efetivo da{" "}
                 <a href="http://www.planalto.gov.br/ccivil_03/_Ato2007-2010/2009/Lei/L12034.htm">
                   lei 12.034/2009,{" "}
@@ -76,9 +76,11 @@ class App extends Component {
                 </div>
                 <div className="col-md-6 col-xs-6 col-12 col-sm-12 text2-part2">
                   <h3>
-                    O gráfico acima exibe a participação das mulheres em cada
-                    partido. Quanto mais próximo da "fronteira" entre homens e
-                    mulheres mais igualitário é o partido.
+                    A lei 12.034/2009 tem como um dos interesses aumentar a proporção de mulheres
+                    dentro da política. Acima, podemos ver como os partidos estão agindo com a
+                    representatividade feminina nas candidaturas de eleições.
+                    O tom roseado indica os partidos onde as mulheres são maioria.
+                    Em um universo ideal os partidos deveriam ter 50% de homens e 50% de mulheres.
                   </h3>
                 </div>
               </div>
@@ -95,13 +97,13 @@ class App extends Component {
           <div className="col-md-4 col-xs-4 col-12 col-sm-12 text-part3">
             <div>
               <h3>
-                O gráfico ao lado mostra o número de candidatas no Brasil ao
-                longo dos anos. A linha branca é o número de candidatas, já a
-                linha amarela o número de candidatas com zero votos.
-              </h3>
-              <h3>
-                A linha tracejada indica o ano de 2009, ano em que a lei de
-                cotas entrou em vigor.
+                Para entender o impacto de uma lei na representatividade feminina na política
+                precisamos também entender que nem tudo se resolve com proposições e porcentagens.
+                Ainda há no Brasil candidatas fantasmas, aquelas que não receberam voto algum.
+                Em geral, elas são colocadas para preencher a cota mas sem nenhuma intenção de se elegerem.
+                Observando esse cenário com o gráfico ao lado, a linha branca indica o número
+                de candidatas no total, a amarela o número de candidatas fantasmas. E, por último,
+                o tracejado vertical delimita em quando a lei 12.034/2009 entrou em vigor.
               </h3>
             </div>
           </div>
@@ -183,7 +185,6 @@ class App extends Component {
                     </div>
                   </div>
                 </div>
-
                 <div className="col-md-4 col-xs-4 col-12 col-sm-12">
                   <div className="row rr-1">
                     <div className="rr1-img-part">
@@ -220,18 +221,6 @@ class App extends Component {
                     </div>
                   </div>
                 </div>
-              </div>
-              <div>
-                <h3>
-                  Quer que sua denúncia chegue ao TRE? Utilize também o sistema
-                  pardal do seu estado! O sistema pardal permite que a Justiça
-                  Eleitoral receba, em tempo real, denúncias dos cidadãos
-                  relativas a irregularidades nas campanhas eleitorai Por
-                  exemplo o{" "}
-                  <a href="http://www.tre-es.jus.br/eleitor/denuncias-eleitorais-e-institucionais">
-                    sistema pardal do RS.
-                  </a>
-                </h3>
               </div>
             </div>
           </div>
@@ -277,6 +266,18 @@ class App extends Component {
                 />
               </div>
             </div>
+          </div>
+          <div>
+            <h3>
+              Quer que sua denúncia chegue ao TRE? Utilize o sistema
+              pardal do seu estado! O sistema pardal permite que a Justiça
+              Eleitoral receba, em tempo real, denúncias dos cidadãos
+              relativas a irregularidades nas campanhas eleitorai Por
+              exemplo o{" "}
+              <a href="http://www.tre-es.jus.br/eleitor/denuncias-eleitorais-e-institucionais">
+                sistema pardal do RS.
+              </a>
+            </h3>
           </div>
         </div>
         <div className="row part6">
