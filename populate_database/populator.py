@@ -5,9 +5,9 @@ import os
 
 
 class Populator(object):
-    def __init__(self, db_name='nao-nasci'):
+    def __init__(self):
         self._client = MongoClient(os.environ['MONGODB_URI'])
-        self._db = self._client[db_name]
+        self._db = self._client[os.environ['MONGODB_NAME']]
 
         self._populate = {
             'historico': self._default_populate,

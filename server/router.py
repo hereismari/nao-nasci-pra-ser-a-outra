@@ -36,6 +36,13 @@ def partidos_ranking_zero_votos():
     return utils.jsonify(client.partidos_ranking_zero_votos(_args))
 
 
+@app.route('/partidos/media/zerovotos', methods=['GET'])
+@cross_origin()
+def partidos_media_zero_votos():
+    _args = utils.mount_request(args.CANDIDATOS)
+    return utils.jsonify(client.partidos_media_zero_votos(_args))
+
+
 @app.route('/historico', methods=['GET'])
 @cross_origin()
 def historico():

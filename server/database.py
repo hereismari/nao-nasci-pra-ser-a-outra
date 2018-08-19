@@ -67,6 +67,34 @@ class Client(object):
         ]
 
         return [data for data in self.client.db.partidos.aggregate(query)]
+
+
+    def partidos_media_zero_votos(self, args):
+        match = self._update_query({}, args)
+        query = [{
+                    '$match': match
+                }, 
+                {
+                    '$group': {
+                        '_id': {
+                            'sigla_partido': '$sigla_partido'
+                        }, 
+                        'total': {
+                            '$sum': '$cont_candidatas_zero_voto'
+                        }
+                    }
+                },
+                {
+                    '$group': {
+                        '_id': {}, 
+                        'total': {
+                            '$avg': '$total'
+                        }
+                    }
+                }
+        ]
+
+        return [data for data in self.client.db.partidos.aggregate(query)]
     
 
     def partidos_participacao_mulheres(self, args):

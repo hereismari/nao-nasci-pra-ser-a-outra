@@ -28,6 +28,7 @@ Python 3.6.
 2. Iniciar mongodb: `sudo service mongod start`
 3. Instalar dependências: `chmod +x install_python_requeriments.sh; bash install_python_requeriments.sh`
 4. Definir variável MONGODB_URI: `export MONGODB_URI='mongodb://localhost:27017/nao-nasci'`
+5. Definir variável MONGODB_NAME no caso acima seria: `export MONGODB_NAME='nao_nasci'`
 5. `PORT=5000 python run.py`
 
 
