@@ -22,7 +22,7 @@
 
 .part3 {
   background-image: url(img/bg-part3.jpg);
-  box-shadow: inset 0px 0px 1000px 0px rgba(0, 0, 0, 1);
+  box-shadow: inset 0px 1000px 1000px 0px rgba(0, 0, 0, 0.7);
   background-size: cover;
   padding: 5%;
 }
@@ -31,6 +31,16 @@
   background-image: url(img/bg-part4.jpg);
   background-size: cover;
   padding: 5%;
+}
+
+.part5 {
+  background-image: linear-gradient(to right, #3b0d34 , #891233);
+}
+
+.part6{
+	padding: 10%;
+    margin: auto;
+    background-color: #001020;
 }
 
 .right-container {
@@ -125,11 +135,6 @@
   padding-bottom: 20px;
 }
 
-.part4 h1{
-	padding-bottom: 50px;
-
-}
-
 .text-3-part3 div {
   width: 50%;
   margin: auto;
@@ -159,7 +164,10 @@ span {
 }
 
 .card{
-	background-color: black;
+	margin: auto;
+    padding: 10%;
+    box-shadow: 10px 10px 0px 0px #fff43c;
+    background-color: #430d34;
 }
 
 .rr-1{
@@ -167,8 +175,8 @@ span {
     text-align: center;
     justify-content: center;
     margin-left: auto;
-    margin-top: 20%;
-    margin-bottom: 20%;
+    margin-top: 10%;
+    margin-bottom: 10%;
 }
 
 .rr1-img-part{
@@ -191,16 +199,25 @@ span {
 .nomepartido{
 	-ms-flex-line-pack: center;
     align-content: center;
-    font-size: 3em;
+    font-size: 2em;
     margin-top: auto;
     margin-bottom: auto;
     font-family: 'GoBold';
     color: white;
 }
 
+.ttpartido{
+	font-size: 1em;
+    font-family: 'GoBold';
+    color: #dee2e6;
+}
+
+.ttpartido i{
+	margin-right: 10px;
+}
+
 .rr1-img-part img{
 	width: 100%;
-    border-radius: 50%;
 }
 
 .ghost-size{
@@ -214,13 +231,13 @@ span {
 
 .nota{
 	margin: auto;
-    width: 40%;
-    padding-right: 10%;
+    width: 50%;
+    padding-right: 5%;
 }
 
 .nota h3{
 	margin: auto;
-    font-size: 2em;
+    font-size: 1em;
     text-align: left;
 }
 
@@ -229,24 +246,99 @@ span {
     border-width: 3px;
     border-color: white;
     padding: 5%;
-    margin-bottom: 15%;
-    transition: .5s;
+    -webkit-transition: .1s;
+    -o-transition: .1s;
+    transition: .1s;
 }
 
 .denuncia:hover{
 	background-color: white;
 }
 
-.denuncia p{
-	font-family: 'GoBold';
-	margin: auto;
-	color: white;
-}
-
-.denuncia p:hover{
+.denuncia:hover p{
 	color: black;
 }
 
-.btn{
 
+.denuncia p{
+    font-family: 'GoBold';
+    margin: auto;
+    color: white;
+    font-size: 15px;
+}
+
+.denuncia i{
+	font-size: 20px;
+   margin-left: 10%;
+}
+
+.botao{
+	text-align: center;
+}
+
+.row-ranking{
+	padding-left: 5%;
+    padding-right: 5%;
+    padding-bottom: 5%;
+}
+
+.ajust-margin{
+	margin: auto;
+}
+
+.ajust-margin2{
+	margin-top: auto;
+    margin-bottom: auto;
+}
+
+.colaborartext{
+	text-align: center;
+	margin: auto;
+}
+
+.colaborartext p{
+	color: white;
+	font-family: "GoBold";
+	font-size: 2em;
+	margin-bottom: 5%;	
+}
+
+.colaborartext img{
+	width: 35%;
+}
+
+.megaphonediv{
+	width: 30%;
+}
+
+.blink_me {
+  animation: blinker 0.2s cubic-bezier(0.99, 0, 0, 1.01) infinite;
+}
+
+@keyframes blinker {  
+  50% { color: #fff43c; }
+}
+
+.part5 h1{
+	font-family: "Gobold";
+    color: white;
+}
+
+.footer{
+	background-color: #001020;
+    padding-top: 10%;
+    padding-bottom: 10%;
+}
+
+.ajust-img-pocs{
+	width: 10%;
+	height: 10%;
+	border-radius: 50%;
+	margin: auto;
+}
+
+.text-footer{
+	font-family: "GoBold";
+	color: white;
+	font-size: 8px;
 }
