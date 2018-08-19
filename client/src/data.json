@@ -1,0 +1,89 @@
+{
+  "Afghanistan": [
+    {
+      "Date": 1999,
+      "Imports": "15",
+      "Exports": "20"
+    },
+    {
+      "Date": 2008,
+      "Imports": "42",
+      "Exports": "115"
+    },
+    {
+      "Date": 2007,
+      "Imports": "29",
+      "Exports": "79"
+    },
+    {
+      "Date": 2009,
+      "Imports": "346",
+      "Exports": "324"
+    },
+    {
+      "Date": 2006,
+      "Imports": "44",
+      "Exports": "69"
+    },
+    {
+      "Date": 2010,
+      "Imports": "424",
+      "Exports": "503"
+    },
+    {
+      "Date": 2005,
+      "Imports": "28",
+      "Exports": "48"
+    },
+    {
+      "Date": 2011,
+      "Imports": "413",
+      "Exports": "603"
+    },
+    {
+      "Date": 2004,
+      "Imports": "34",
+      "Exports": "41"
+    },
+    {
+      "Date": 2012,
+      "Imports": "313",
+      "Exports": "517"
+    },
+    {
+      "Date": 2003,
+      "Imports": "21",
+      "Exports": "36"
+    },
+    {
+      "Date": 2013,
+      "Imports": "513",
+      "Exports": "615"
+    },
+    {
+      "Date": 2002,
+      "Imports": "18",
+      "Exports": "23"
+    },
+    {
+      "Date": 2014,
+      "Imports": "471",
+      "Exports": "766"
+    },
+    {
+      "Date": 2001,
+      "Imports": "17",
+      "Exports": "29"
+    },
+    {
+      "Date": 2015,
+      "Imports": "119",
+      "Exports": "181"
+    },
+    {
+      "Date": 2000,
+      "Imports": "25",
+      "Exports": "25"
+    }
+  ]
+}
