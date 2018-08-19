@@ -27,8 +27,9 @@ Python 3.6.
 1. [Instalar mongodb](http://www.bogotobogo.com/python/MongoDB_PyMongo/python_MongoDB_pyMongo_tutorial_installing.php)
 2. Iniciar mongodb: `sudo service mongod start`
 3. Instalar dependências: `chmod +x install_python_requeriments.sh; bash install_python_requeriments.sh`
-4. `cd server`
-5. `python router.py`
+4. Definir variável MONGODB_URI: `export MONGODB_URI='mongodb://localhost:27017/nao-nasci'`
+5. `PORT=5000 python run.py`
+
 
 ## Popular banco
 
