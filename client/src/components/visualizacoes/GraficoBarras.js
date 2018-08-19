@@ -29,6 +29,37 @@ const getColorGrafico = porcMulheresPartido => {
   return parseInt(porcMulheresPartido * 10) * 100;
 };
 
+const estados = [
+  "TODOS",
+  "AC",
+  "AL",
+  "AM",
+  "AP",
+  "BA",
+  "CE",
+  "DF",
+  "ES",
+  "GO",
+  "MA",
+  "MT",
+  "MS",
+  "MG",
+  "PA",
+  "PB",
+  "PR",
+  "PE",
+  "PI",
+  "RJ",
+  "RN",
+  "RO",
+  "RS",
+  "RR",
+  "SC",
+  "SE",
+  "SP",
+  "TO"
+];
+
 const MARGIN = {
   left: 10,
   right: 10,
@@ -62,6 +93,7 @@ export default class GraficoBarras extends Component {
     this.state = {
       value: false,
       filterAno: "2016",
+      filterEstado: "Estado",
       dados2016: [],
       dados2014: [],
       isLoading: false,
@@ -97,19 +129,17 @@ export default class GraficoBarras extends Component {
     this.setState({ filterAno: e.target.id });
   }
 
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   return (
-  //     nextState.filterAno !== this.state.filterAno ||
-  //     nextState.dados.length !== this.state.dados.length
-  //   );
-  // }
+  filtraPorEstado(e) {
+    e.preventDefault();
+    this.setState({ filterEstado: e.target.id });
+  }
 
   render() {
     const maisMulheres = [];
     const menosMulheres = [];
 
     if (this.state.isLoading || this.state.dados.length === 0) {
-      return <div>Loadgin</div>;
+      return <div>Carregando........</div>;
     }
 
     console.log(this.state.dados);
@@ -226,6 +256,33 @@ export default class GraficoBarras extends Component {
               style={{ margin: 2 }}
             >
               2016
+            </div>
+            <div class="dropdown">
+              <button
+                class="btn btn-secondary dropdown-toggle"
+                type="button"
+                id="dropdownMenuButton"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                {this.state.filterEstado}
+              </button>
+              <div
+                class="dropdown-menu"
+                aria-labelledby="dropdownMenuButton"
+                style={{ height: "200px", overflowY: "scroll" }}
+              >
+                {estados.map(elem => (
+                  <a
+                    class="dropdown-item"
+                    id={elem}
+                    onClick={this.filtraPorEstado.bind(this)}
+                  >
+                    {elem}
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
         </div>
