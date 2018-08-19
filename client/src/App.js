@@ -47,11 +47,11 @@ class App extends Component {
               <div className="row">
                   <div className="col-md-6 col-xs-6 col-12 col-sm-12 text1-part2">
                     <div>
-                      <span className="blink_me">30%</span><h3>Lorem Ipsum dollor sit amet</h3>
+                      <span className="blink_me">30%</span><h3>É o mínimo de candidatos de um gênero que um partido deve ter</h3>
                     </div>
                   </div>
                   <div className="col-md-6 col-xs-6 col-12 col-sm-12 text2-part2">
-                      <h3>Pesquisa quantitativa não probabilística. Formulário respondido no Google Docs e compartilhado organicamente entre mulheres que trabalham em agência de publicidade</h3>
+                      <h3>O gráfico acima exibe a participação das mulheres em cada partido. Quanto mais próximo do centro, mais igualitário é o partido.</h3>
                   </div>
                 </div>
               </div>
@@ -69,7 +69,7 @@ class App extends Component {
                 <div className="row">
                   <span>30%</span>
                   <div className="ajuste-porcent-sub">
-                    <h3>Lorem Ipsum dollor sit amet</h3>
+                  <h3>É o mínimo de candidatos de um gênero que um partido deve ter</h3>
                   </div>
                 </div>
                 <h3>
@@ -82,7 +82,7 @@ class App extends Component {
           </div>
           <div className="row part4">
             <h1 className="col-md-12 col-xs-12 col-12 col-sm-12">
-              Lorem Ipsum dollor sit amet
+              Raking dos partidos <br></br>com mais prováveis candidatas fantasmas
             </h1>
             <div className="col-md-12 col-xs-12 col-12 col-sm-12">
               <div className="row row-ranking">
@@ -167,10 +167,9 @@ class App extends Component {
             </div>
           </div>
           <div className="row part3">
-            <h1 className="col-md-12 col-xs-12 col-12 col-sm-12">Lorem Ipsum dollor sit amet</h1>
             <div className="col-md-6 col-xs-6 col-12 col-sm-12">
                 <div className="left-container">
-                   <span className="blink_me">30%</span><h3>Lorem Ipsum dollor sit amet</h3>
+                   <span className="blink_me">30%</span><h3>É o mínimo de candidatos de um gênero que um partido deve ter</h3>
                     <img src={require("./img/dilmae.gif")} />
                 </div>
             </div>
@@ -180,7 +179,7 @@ class App extends Component {
                     <div className="megaphonediv"><img src={require("./img/megaphone.svg")} /></div>
                     <p className="ajust-margin2 blink_me">Como colaborar?</p>
                   </div>
-                    <h3>Pesquisa quantitativa não probabilística. Formulário respondido no Google Docs e compartilhado organicamente entre mulheres que trabalham em agência de publicidade</h3>
+                    <h3>Compartilhe no twitter utilizando a hashtag <i>#NaoNasciPraSerAOutra</i> para que a sociedade conheça quais são os partidos que possuem menos candidatas do sexo feminino e que candidatam mulheres apenas para o preenchimento dos 30%.</h3>
                     <div class="denuncia twitter">
 
                       <a href="https://twitter.com/intent/tweet/?text=Veja%20quais%20partidos%20cumprem%20efetivamente%20a%20cota%20dos%2030%25%20e%20quais%20possuem%20tend%C3%AAncias%20a%20candidaturas%20laranjas%20no%20N%C3%A3o%20nasci%20pra%20ser%20a%20outra%20:nao-nasci-pra-ser-a-outra.surge.sh.%20%23ContraCorrup%C3%A7%C3%A3o%20%23ContraCandidatoFantasma%20%23NaoNasciPraSerAOutra"
