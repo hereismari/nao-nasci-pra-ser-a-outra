@@ -111,9 +111,7 @@ export default class GraficoBarras extends Component {
     if (this.state.isLoading || this.state.dados.length === 0) {
       return <div>Loadgin</div>;
     }
-
-    console.log(this.state.dados);
-
+    
     const partidos = this.state.dados.map(elem => elem._id.sigla_partido);
 
     this.state.dados.map(elem => {
@@ -203,7 +201,6 @@ export default class GraficoBarras extends Component {
     const FlexibleBarChart = makeWidthFlexible(barChart);
 
     const filter = this.state.filterAno === "2014";
-    console.log(filter);
 
     return (
       <div className="GraficoBarras">
