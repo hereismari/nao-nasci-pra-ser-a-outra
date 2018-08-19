@@ -9,6 +9,8 @@ CANDIDATOS = {
   'desc_sit_cand_tot': ('desc_sit_cand_tot', None, str)
 }
 
+
+# nao utilizado
 ELEITORES = {
   'sexo': ('sexo', None, str),
   'uf': ('uf', None, str),
