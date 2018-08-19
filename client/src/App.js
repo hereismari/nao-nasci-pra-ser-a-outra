@@ -18,8 +18,21 @@ import LineChartData from './data.json'
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 import VotosVSInvestimentos from "./components/visualizacoes/VotosVSInvestimentos";
+import axios from "axios";
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { dadosRanking: [], isLoading: false };
+  }
+  componentDidMount() {
+    this.setState({ isLoading: true });
+    axios
+      .get("http://naoaoutra.herokuapp.com/partidos/ranking/zerovotos")
+      .then(res => res.data)
+      .then(data => this.setState({ dadosRanking: data, isLoading: false }));
+  }
+
   render() {
     return (
       <div className="App">
@@ -77,9 +90,12 @@ class App extends Component {
               </div>
             </div>
           </div>
+          {this.state.isLoading || this.state.dadosRanking.length === 0 ? (
+            <div>Carregando.......</div>
+          ) : (
           <div className="row part4">
             <h1 className="col-md-12 col-xs-12 col-12 col-sm-12">
-              Raking dos partidos <br></br>com mais prováveis candidatas fantasmas em 2016
+              Raking dos partidos <br></br>com maior proporção de prováveis candidatas fantasmas em 2016
             </h1>
             <div className="col-md-12 col-xs-12 col-12 col-sm-12">
               <div className="row row-ranking">
@@ -89,8 +105,9 @@ class App extends Component {
                         <img src={require("./img/s1.svg")} />
                       </div>
                       <div className="rr1-partido">
-                        <p className="nomepartido">PSDB</p>
-                        <span className="ttpartido"><i class="fa fa-twitter"></i>PSDB</span>
+                        <p className="nomepartido">
+                          {this.state.dadosRanking[0]._id.sigla_partido}
+                        </p>
                       </div>
                     </div>
                     <div className="card">
@@ -98,7 +115,12 @@ class App extends Component {
                         <div className="ghost-size">
                           <img src={require("./img/pac-man-ghost.svg")} />
                         </div>
-                        <div className="nota"><h3>321 candidatas fantasmas</h3></div>
+                        <div className="nota"> 
+                          <h3>
+                            Proporção de mulheres fantasmas:{" "}
+                            {this.state.dadosRanking[0].porcent_zero * 100} %
+                          </h3>
+                        </div>
                       </div>
                       <div className="botao">
                         <div className="denuncia">
@@ -115,8 +137,9 @@ class App extends Component {
                         <img src={require("./img/s2.svg")} />
                       </div>
                       <div className="rr1-partido">
-                        <p className="nomepartido">PSDB</p>
-                        <span className="ttpartido"><i class="fa fa-twitter"></i>PSDB</span>
+                        <p className="nomepartido">
+                          {this.state.dadosRanking[1]._id.sigla_partido}
+                        </p>
                       </div>
                     </div>
                     <div className="card">
@@ -124,7 +147,12 @@ class App extends Component {
                         <div className="ghost-size">
                           <img src={require("./img/pac-man-ghost.svg")} />
                         </div>
-                        <div className="nota"><h3>321 candidatas fantasmas</h3></div>
+                        <div className="nota"> 
+                          <h3>
+                            Proporção de mulheres fantasmas:{" "}
+                            {this.state.dadosRanking[1].porcent_zero * 100} %
+                          </h3>
+                        </div>
                       </div>
                       <div className="botao">
                         <div className="denuncia">
@@ -141,8 +169,9 @@ class App extends Component {
                         <img src={require("./img/s3.svg")} />
                       </div>
                       <div className="rr1-partido">
-                        <p className="nomepartido">PSDB</p>
-                        <span className="ttpartido"><i class="fa fa-twitter"></i>PSDB</span>
+                        <p className="nomepartido">
+                          {this.state.dadosRanking[2]._id.sigla_partido}
+                        </p>
                       </div>
                     </div>
                     <div className="card">
@@ -150,7 +179,12 @@ class App extends Component {
                         <div className="ghost-size">
                           <img src={require("./img/pac-man-ghost.svg")} />
                         </div>
-                        <div className="nota"><h3>321 candidatas fantasmas</h3></div>
+                        <div className="nota"> 
+                          <h3>
+                            Proporção de mulheres fantasmas:{" "}
+                            {Math.round(this.state.dadosRanking[2].porcent_zero * 100)} %
+                          </h3>
+                        </div>
                       </div>
                       <div className="botao">
                         <div className="denuncia">
@@ -168,7 +202,7 @@ class App extends Component {
                 </h3>
               </div>
             </div>
-          </div>
+          </div>)}
           <div className="row part3">
             <div className="col-md-6 col-xs-6 col-12 col-sm-12">
                 <div className="left-container">
@@ -182,7 +216,7 @@ class App extends Component {
                     <div className="megaphonediv"><img src={require("./img/megaphone.svg")} /></div>
                     <p className="ajust-margin2 blink_me">Como colaborar?</p>
                   </div>
-                    <h3>Compartilhe no twitter utilizando a hashtag <i>#NaoNasciPraSerAOutra</i> para que a sociedade conheça quais são os partidos que possuem menos candidatas do sexo feminino e que candidatam mulheres apenas para o preenchimento dos 30%.</h3>
+                    <h3>Compartilhe no twitter utilizando a hashtag <i>#NaoNasciPraSerAOutra</i> para que a outros conheçam quais são os partidos que possuem menos candidatas do sexo feminino e que candidatam mulheres apenas para o preenchimento dos 30%.</h3>
                     <div class="denuncia twitter">
 
                       <a href="https://twitter.com/intent/tweet/?text=Veja%20quais%20partidos%20cumprem%20efetivamente%20a%20cota%20dos%2030%25%20e%20quais%20possuem%20tend%C3%AAncias%20a%20candidaturas%20laranjas%20no%20N%C3%A3o%20nasci%20pra%20ser%20a%20outra%20:nao-nasci-pra-ser-a-outra.surge.sh.%20%23ContraCorrup%C3%A7%C3%A3o%20%23ContraCandidatoFantasma%20%23NaoNasciPraSerAOutra"
