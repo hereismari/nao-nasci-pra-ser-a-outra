@@ -4,7 +4,27 @@ Monitoramento do cumprimento da Lei nº 9504/97 que diz que, "cada partido ou co
 
 ## Preprocessamento
 
-TODO (@hadrizia)
+Todos os dados utilizados estão disponíveis no site do [TSE](http://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais). 
+
+Para gerar os arquivos .csv é necessário executar os seguintes passos:
+
+1. Baixar os dados no site do [TSE](http://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais). Dados utilizados:
+ * Candidatos (formato zip)
+ * Eleitorado (formato zip)
+ * Votação nominal por município e zona (formato zip)
+ * Relatórios financeiros (formato zip)
+2. Renomear os arquivos `.txt` para `.csv`;
+3. Unir os arquivos em um único arquivo csv chamado `merged.csv`. Pode-se utilizar o seguinte comando, dentro de cada diretório dos dados:
+```
+cat *.csv > merged.csv
+```
+4. Executar os scripts em R que processam os dados, localizados no diretório `r_scripts`. São eles:
+ * `processa_candidatos.R`: Gera CSV com informações dos candidatos, como município, estado, partido, gênero, situação e total de votos; 
+ * `processa_eleitores.R`: Gera CSV com informações dos eleitores, como cidade, estado, gênero, faixa etária e escolaridade.
+ 
+ **TODO** Terminar 
+
+
 
 ## Front End
 
