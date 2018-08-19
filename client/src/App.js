@@ -90,7 +90,7 @@ class App extends Component {
                       </div>
                       <div className="rr1-partido">
                         <p className="nomepartido">PSDB</p>
-                        <span className="ttpartido"><i class="fab fa-twitter"></i>PSDB</span>
+                        <span className="ttpartido"><i class="fa fa-twitter"></i>PSDB</span>
                       </div>
                     </div>
                     <div className="card">
@@ -103,7 +103,7 @@ class App extends Component {
                       <div className="botao">
                         <div className="denuncia">
                           <a href="https://twitter.com/intent/tweet/?text=Veja%20quais%20partidos%20cumprem%20efetivamente%20a%20cota%20dos%2030%25%20e%20quais%20possuem%20tend%C3%AAncias%20a%20candidaturas%20laranjas%20no%20N%C3%A3o%20nasci%20pra%20ser%20a%20outra%20:nao-nasci-pra-ser-a-outra.surge.sh.%20%23ContraCorrup%C3%A7%C3%A3o%20%23ContraCandidatoFantasma%20%23NaoNasciPraSerAOutra">
-                          Exija explicações!<i class="fab fa-twitter"></i></a>
+                          Exija explicações!<i class="fa fa-twitter"></i></a>
                         </div>
                       </div>
                   </div>
@@ -116,7 +116,7 @@ class App extends Component {
                       </div>
                       <div className="rr1-partido">
                         <p className="nomepartido">PSDB</p>
-                        <span className="ttpartido"><i class="fab fa-twitter"></i>PSDB</span>
+                        <span className="ttpartido"><i class="fa fa-twitter"></i>PSDB</span>
                       </div>
                     </div>
                     <div className="card">
@@ -129,7 +129,7 @@ class App extends Component {
                       <div className="botao">
                         <div className="denuncia">
                         <a href="https://twitter.com/intent/tweet/?text=Veja%20quais%20partidos%20cumprem%20efetivamente%20a%20cota%20dos%2030%25%20e%20quais%20possuem%20tend%C3%AAncias%20a%20candidaturas%20laranjas%20no%20N%C3%A3o%20nasci%20pra%20ser%20a%20outra%20:nao-nasci-pra-ser-a-outra.surge.sh.%20%23ContraCorrup%C3%A7%C3%A3o%20%23ContraCandidatoFantasma%20%23NaoNasciPraSerAOutra">
-                        Exija explicações!<i class="fab fa-twitter"></i></a>
+                        Exija explicações!<i class="fa fa-twitter"></i></a>
                         </div>
                       </div>
                   </div>
@@ -142,7 +142,7 @@ class App extends Component {
                       </div>
                       <div className="rr1-partido">
                         <p className="nomepartido">PSDB</p>
-                        <span className="ttpartido"><i class="fab fa-twitter"></i>PSDB</span>
+                        <span className="ttpartido"><i class="fa fa-twitter"></i>PSDB</span>
                       </div>
                     </div>
                     <div className="card">
@@ -155,11 +155,17 @@ class App extends Component {
                       <div className="botao">
                         <div className="denuncia">
                         <a href="https://twitter.com/intent/tweet/?text=Veja%20quais%20partidos%20cumprem%20efetivamente%20a%20cota%20dos%2030%25%20e%20quais%20possuem%20tend%C3%AAncias%20a%20candidaturas%20laranjas%20no%20N%C3%A3o%20nasci%20pra%20ser%20a%20outra%20:nao-nasci-pra-ser-a-outra.surge.sh.%20%23ContraCorrup%C3%A7%C3%A3o%20%23ContraCandidatoFantasma%20%23NaoNasciPraSerAOutra">
-                        Exija explicações!<i class="fab fa-twitter"></i></a>
+                        Exija explicações!<i class="fa fa-twitter"></i></a>
                         </div>
                       </div>
                   </div>
                 </div>
+              </div>
+              <div>
+                <h3>Quer que sua denúncia chegue ao TRE? Utilize também o sistema pardal do seu estado!
+                    O sistema pardal permite que a Justiça Eleitoral receba, em tempo real, denúncias dos cidadãos relativas a irregularidades nas campanhas eleitorai
+                    Por exemplo o <a href='http://www.tre-es.jus.br/eleitor/denuncias-eleitorais-e-institucionais'>sistema pardal do RS.</a>
+                </h3>
               </div>
             </div>
           </div>
@@ -183,7 +189,7 @@ class App extends Component {
                         class="twitter-share-button" data-show-count="false">
                           Tweet!
                       </a>
-                      <i class="fab fa-twitter twitter-logo-size"></i>
+                      <i class="fa fa-twitter twitter-logo-size"></i>
                       <script async src="https://platform.twitter.com/widgets.js" charset="utf-8">
                       </script>
                     </div>
