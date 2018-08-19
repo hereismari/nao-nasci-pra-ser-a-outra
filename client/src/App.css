@@ -22,7 +22,7 @@
 
 .part3 {
   background-image: url(img/bg-part3.jpg);
-  box-shadow: inset 0px 0px 1000px 0px rgba(0, 0, 0, 1);
+  box-shadow: inset 0px 1000px 1000px 0px rgba(0, 0, 0, 0.7);
   background-size: cover;
   padding: 5%;
 }
@@ -31,6 +31,15 @@
   background-image: url(img/bg-part4.jpg);
   background-size: cover;
   padding: 5%;
+}
+
+.part5 {
+  background-image: linear-gradient(to right, #3b0d34 , #891233);
+}
+
+.part6{
+	padding: 10%;
+    background-color: #001020;
 }
 
 .partItalo {
@@ -191,23 +200,28 @@ span {
   font-size: 20px;
 }
 
-.card {
-  background-color: black;
+.card{
+	margin: auto;
+    padding: 10%;
+    box-shadow: 10px 10px 0px 0px #fff43c;
+    background-color: #430d34;
 }
 
-.rr-1 {
-  margin-right: auto;
-  text-align: center;
-  justify-content: center;
-  margin-left: auto;
-  margin-top: 20%;
-  margin-bottom: 20%;
+.rr-1{
+	margin-right: auto;
+    text-align: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-top: 10%;
+    margin-bottom: 10%;
 }
 
 .rr1-img-part {
-  width: 40%;
+  width: 20%;
   margin-left: 5%;
   padding-right: 5%;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .rr1-partido {
@@ -221,19 +235,28 @@ span {
   justify-content: center;
 }
 
-.nomepartido {
-  -ms-flex-line-pack: center;
-  align-content: center;
-  font-size: 3em;
-  margin-top: auto;
-  margin-bottom: auto;
-  font-family: "GoBold";
-  color: white;
+.nomepartido{
+	-ms-flex-line-pack: center;
+    align-content: center;
+    font-size: 2em;
+    margin-top: auto;
+    margin-bottom: auto;
+    font-family: 'GoBold';
+    color: white;
 }
 
-.rr1-img-part img {
-  width: 100%;
-  border-radius: 50%;
+.ttpartido{
+	font-size: 1em;
+    font-family: 'GoBold';
+    color: #dee2e6;
+}
+
+.ttpartido i{
+	margin-right: 10px;
+}
+
+.rr1-img-part img{
+	width: 100%;
 }
 
 .ghost-size {
@@ -245,40 +268,134 @@ span {
   width: 100%;
 }
 
-.nota {
-  margin: auto;
-  width: 40%;
-  padding-right: 10%;
+.nota{
+	margin: auto;
+    width: 50%;
+    padding-right: 5%;
 }
 
-.nota h3 {
-  margin: auto;
-  font-size: 2em;
-  text-align: left;
+.nota h3{
+	margin: auto;
+    font-size: 1em;
+    text-align: left;
 }
 
-.denuncia {
-  border-style: solid;
-  border-width: 3px;
-  border-color: white;
-  padding: 5%;
-  margin-bottom: 15%;
-  transition: 0.5s;
+.denuncia{
+	border-style: solid;
+    border-width: 3px;
+    border-color: white;
+    padding: 5%;
+    -webkit-transition: .1s;
+    -o-transition: .1s;
+    transition: .1s;
 }
 
 .denuncia:hover {
   background-color: white;
 }
 
-.denuncia p {
-  font-family: "GoBold";
-  margin: auto;
-  color: white;
+.denuncia:hover p{
+	color: black;
 }
 
-.denuncia p:hover {
-  color: black;
+
+.denuncia p{
+    font-family: 'GoBold';
+    margin: auto;
+    color: white;
+    font-size: 15px;
 }
 
-.btn {
+.denuncia i{
+	font-size: 20px;
+   margin-left: 10%;
+}
+
+.botao{
+	text-align: center;
+}
+
+.row-ranking{
+	padding-left: 5%;
+    padding-right: 5%;
+    padding-bottom: 5%;
+}
+
+.ajust-margin{
+	margin: auto;
+}
+
+.ajust-margin2{
+	margin-top: auto;
+    margin-bottom: auto;
+}
+
+.colaborartext{
+	text-align: center;
+	margin: auto;
+}
+
+.colaborartext p{
+	color: white;
+	font-family: "GoBold";
+	font-size: 2em;
+	margin-bottom: 5%;
+}
+
+.colaborartext img{
+	width: 35%;
+}
+
+.megaphonediv{
+	width: 30%;
+}
+
+.blink_me {
+  animation: blinker 0.2s cubic-bezier(0.99, 0, 0, 1.01) infinite;
+}
+
+@keyframes blinker {
+  50% { color: #fff43c; }
+}
+
+.part5 h1{
+	font-family: "Gobold";
+    color: white;
+}
+
+.footer{
+	background-color: #001020;
+    padding-top: 10%;
+    padding-bottom: 10%;
+}
+
+.ajust-img-pocs{
+	width: 10%;
+	height: 10%;
+	border-radius: 50%;
+	margin: auto;
+}
+
+.text-footer{
+	font-family: "GoBold";
+	color: white;
+	font-size: 8px;
+}
+
+.logo-footer{
+	text-align: center;
+	align-items: center;
+	justify-content: center;
+	margin: auto;
+	margin-top: 5%;
+}
+
+.logo-hack{
+	width: 25%;
+	margin-right: 60px;
+}
+
+.logo-nossa{
+	width: 20%;
+    margin-left: 60px;
 }
