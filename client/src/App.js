@@ -193,6 +193,37 @@ class App extends Component {
               </div>
             </div>
           </div>
+          <div className="row part5">
+            <div className="col-md-12 col-xs-12 col-12 col-sm-12 hadri">
+
+            </div>
+            <div className="col-md-8 col-xs-8 col-12 col-sm-12">
+            </div>
+            <div className="col-md-4 col-xs-4 col-12 col-sm-12 text-part3">
+              <div>
+                <div className="row">
+                  <span>30%</span>
+                  <div className="ajuste-porcent-sub">
+                    <h3></h3>
+                  </div>
+                </div>
+                <h3>
+                  Pesquisa quantitativa não probabilística. Formulário
+                  respondido no Google Docs e compartilhado organicamente entre
+                  mulheres que trabalham em agência de publicidade
+                </h3>
+                <div class="denuncia twitter">
+                  <i class="fab fa-twitter twitter-logo-size"></i>
+                  <a href="https://twitter.com/intent/tweet?text=Hello%20world"
+                    class="twitter-share-button" data-show-count="false">
+                      Tweet
+                  </a>
+                  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8">
+                  </script>
+                </div>
+                </div>
+            </div>
+          </div>
         </div>
       </div>
     );

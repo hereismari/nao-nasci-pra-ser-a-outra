@@ -40,6 +40,38 @@
   padding: 5%;
 }
 
+.part5 {
+  background-image: linear-gradient(to right, #340c32, #881132);
+  background-size: cover;
+  padding: 5%;
+}
+
+.twitter {
+  -ms-flex-line-pack: center;
+  align-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  overflow: hidden;
+  font-weight: 200;
+  text-align: center;
+}
+
+.twitter a {
+  color:white;
+  font-family: "Gobold";
+  vertical-align: middle;
+  font-size: 2rem;
+}
+
+.twitter-logo-size {
+  width: 2.5rem;
+  filter: none;
+  margin-right: 4%;
+  vertical-align: middle;
+  transition: .1s;
+}
+
+
 .termometro {
   margin-bottom: -20px;
   background-image: linear-gradient(to right, #4a148c, #f57f17);
@@ -255,8 +287,17 @@ span {
   transition: 0.5s;
 }
 
-.denuncia:hover {
+.denuncia:hover  {
   background-color: white;
+}
+
+
+.denuncia:hover a  {
+  color: black;
+}
+
+.denuncia:hover i  {
+  color: black;
 }
 
 .denuncia p {
