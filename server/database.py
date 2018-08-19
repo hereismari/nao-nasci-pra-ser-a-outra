@@ -50,15 +50,28 @@ class Client(object):
                     '$group': {
                         '_id': {
                             'sigla_partido': '$sigla_partido'
-                        }, 
-                        'total': {
+                        },
+                        'total_mulheres': {
+                            '$sum': '$total_candidatas'
+                        },
+                        'total_mulheres_zero': {
                             '$sum': '$cont_candidatas_zero_voto'
                         }
                     }
                 },
                 {
+                    '$project': {
+                        '_id': '$_id',
+                        'porcent_zero': {
+                            '$divide': ['$total_mulheres_zero', '$total_mulheres']
+                        },
+                        'total_mulheres': '$total_mulheres',
+                        'total_mulheres_zero': '$total_mulheres_zero'
+                    }
+                },
+                {
                     '$sort': {
-                        'total': -1
+                        'porcent_zero': -1
                     }
                 },
                 {
