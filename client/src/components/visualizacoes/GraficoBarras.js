@@ -16,11 +16,14 @@ import {
 import PropTypes from "prop-types";
 
 import red from "@material-ui/core/colors/red";
+import pink from "@material-ui/core/colors/pink";
 import blue from "@material-ui/core/colors/blue";
 import yellow from "@material-ui/core/colors/yellow";
 import purple from "@material-ui/core/colors/purple";
 import lightBlue from "@material-ui/core/colors/lightBlue";
 import xAxis from "react-vis/dist/plot/axis/x-axis";
+import axios from "axios";
+import classnames from "classnames";
 
 const getColorGrafico = porcMulheresPartido => {
   return parseInt(porcMulheresPartido * 10) * 100;
@@ -33,86 +36,17 @@ const MARGIN = {
   top: 60
 };
 
-const dataMulheres = [
-  {
-    _id: {
-      sigla_partido: "PMB"
-    },
-    porcentagem_mulheres: 0.1373259052924791,
-    total: 1795,
-    total_mulheres: 785
-  },
-  {
-    _id: {
-      sigla_partido: "PSTU"
-    },
-    porcentagem_mulheres: 0.2783050847457627,
-    total: 118,
-    total_mulheres: 47
-  },
-  {
-    _id: {
-      sigla_partido: "PMED"
-    },
-    porcentagem_mulheres: 0.3883050847457627,
-    total: 118,
-    total_mulheres: 47
-  },
-  {
-    _id: {
-      sigla_partido: "PR"
-    },
-    porcentagem_mulheres: 0.4883050847457627,
-    total: 118,
-    total_mulheres: 47
-  },
-  {
-    _id: {
-      sigla_partido: "PMA"
-    },
-    porcentagem_mulheres: 0.583050847457627,
-    total: 118,
-    total_mulheres: 47
-  },
-  {
-    _id: {
-      sigla_partido: "PAK"
-    },
-    porcentagem_mulheres: 0.6883050847457627,
-    total: 118,
-    total_mulheres: 47
-  },
-  {
-    _id: {
-      sigla_partido: "PPP"
-    },
-    porcentagem_mulheres: 0.7883050847457627,
-    total: 118,
-    total_mulheres: 47
-  },
-  {
-    _id: {
-      sigla_partido: "PPPA"
-    },
-    porcentagem_mulheres: 0.8883050847457627,
-    total: 118,
-    total_mulheres: 47
-  },
-  {
-    _id: {
-      sigla_partido: "PPPaaa"
-    },
-    porcentagem_mulheres: 0.9883050847457627,
-    total: 118,
-    total_mulheres: 47
-  }
-];
+const API_DADOS_2014 =
+  "http://naoaoutra.herokuapp.com/partidos/participacao/mulheres?ano_eleicao=2014";
+
+const API_DADOS_2016 =
+  "http://naoaoutra.herokuapp.com/partidos/participacao/mulheres?ano_eleicao=2016";
 
 const tipStyle = {
   display: "flex",
   color: "#fff",
-  background: purple[800],
-  alignItems: "center",
+  background: "#000",
+  alignItems: "right",
   padding: "2px"
 };
 
@@ -125,18 +59,69 @@ function buildValue(value) {
 export default class GraficoBarras extends Component {
   constructor(props) {
     super(props);
-    this.state = { value: false };
+    this.state = {
+      value: false,
+      filterAno: "2016",
+      dados2016: [],
+      dados2014: [],
+      isLoading: false,
+      dados: []
+    };
   }
+
+  componentDidMount() {
+    this.setState({ isLoading: true });
+
+    axios
+      .get(API_DADOS_2014)
+      .then(res => res.data)
+      .then(data => this.setState({ dados2014: data }))
+      .catch(err => console.log(err));
+
+    axios
+      .get(API_DADOS_2016)
+      .then(res => res.data)
+      .then(data =>
+        this.setState({ dados: data, dados2016: data, isLoading: false })
+      )
+      .catch(err => console.log(err));
+  }
+
+  filtraPorAno(e) {
+    e.preventDefault();
+    if (e.target.id === "2014") {
+      this.setState({ dados: this.state.dados2014 });
+    } else if (e.target.id === "2016") {
+      this.setState({ dados: this.state.dados2016 });
+    }
+    this.setState({ filterAno: e.target.id });
+  }
+
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   return (
+  //     nextState.filterAno !== this.state.filterAno ||
+  //     nextState.dados.length !== this.state.dados.length
+  //   );
+  // }
+
   render() {
     const maisMulheres = [];
     const menosMulheres = [];
-    const partidos = dataMulheres.map(elem => elem._id.sigla_partido);
-    dataMulheres.map(elem => {
+
+    if (this.state.isLoading || this.state.dados.length === 0) {
+      return <div>Loadgin</div>;
+    }
+
+    console.log(this.state.dados);
+
+    const partidos = this.state.dados.map(elem => elem._id.sigla_partido);
+
+    this.state.dados.map(elem => {
       if (elem.porcentagem_mulheres < 0.5) {
         menosMulheres.push({
           x: elem._id.sigla_partido,
           y: -(1 - elem.porcentagem_mulheres),
-          color: yellow[getColorGrafico(1 - elem.porcentagem_mulheres)],
+          color: blue[getColorGrafico(1 - elem.porcentagem_mulheres)],
           legenda:
             "Porcentagem de homens: " +
             Math.round((1 - elem.porcentagem_mulheres) * 100) +
@@ -146,7 +131,7 @@ export default class GraficoBarras extends Component {
         maisMulheres.push({
           x: elem._id.sigla_partido,
           y: -elem.porcentagem_mulheres,
-          color: purple[getColorGrafico(elem.porcentagem_mulheres)],
+          color: pink[getColorGrafico(elem.porcentagem_mulheres)],
           legenda:
             "Porcentagem de mulheres: " +
             Math.round(elem.porcentagem_mulheres * 100) +
@@ -165,7 +150,6 @@ export default class GraficoBarras extends Component {
       else if (Math.abs(a.y) < Math.abs(b.y)) return 1;
       else return 0;
     });
-
 
     var finalData = [];
 
@@ -203,12 +187,9 @@ export default class GraficoBarras extends Component {
         />
         {this.state.value ? (
           <Hint value={buildValue(this.state.value)}>
-            <div style={tipStyle}>
+            <div style={tipStyle} className="texto-termometro">
               <div style={{ ...boxStyle }} />
-              {"Partido: " +
-                this.state.value.x +
-                " " +
-                this.state.value.legenda}
+              {this.state.value.legenda}
             </div>
           </Hint>
         ) : null}
@@ -221,9 +202,43 @@ export default class GraficoBarras extends Component {
 
     const FlexibleBarChart = makeWidthFlexible(barChart);
 
+    const filter = this.state.filterAno === "2014";
+    console.log(filter);
+
     return (
       <div className="GraficoBarras">
-        <div className="col-12 col-sm-12 col-md-12 col-xs-12">
+        <div className="row">
+          <div className="col-12 col-sm-12 col-md-12 col-xs-12 col-lg-12 texto-termometro text-center">
+            <div
+              className={classnames("btn btn-dark", {
+                "btn-light": true
+              })}
+              onClick={this.filtraPorAno.bind(this)}
+              style={{ margin: 2 }}
+              id={2014}
+            >
+              2014
+            </div>
+            <div
+              className="btn btn-dark"
+              onClick={this.filtraPorAno.bind(this)}
+              id={2016}
+              style={{ margin: 2 }}
+            >
+              2016
+            </div>
+          </div>
+        </div>
+        <div className="row">
+          <div className="offset-md-1 col-2 col-sm-2 col-md-2 col-xs-2 col-lg-2 texto-termometro">
+            % Mulheres
+          </div>
+          <div className="col-2 col-sm-2 col-md-2 col-xs-2 offset-md-7 offset-7 offset-sm-7 offset-xs-7 offset-lg-7 texto-termometro">
+            % Homens
+          </div>
+        </div>
+        <div className="col-12 col-sm-12 col-md-12 col-xs-12 col-lg-12">
+          <div className="termometro">.</div>
           <FlexibleBarChart />
         </div>
       </div>

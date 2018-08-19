@@ -42,6 +42,24 @@
     background-color: #001020;
 }
 
+.partItalo {
+  background-image: linear-gradient(to right, #340c32, #881132);
+  box-shadow: inset 0px 0px 1000px 0px rgba(0, 0, 0, 1);
+  background-size: cover;
+  padding: 5%;
+}
+
+.termometro {
+  margin-bottom: -20px;
+  background-image: linear-gradient(to right, #bc1f3f, #008aac);
+  color: #4a148c;
+}
+
+.texto-termometro {
+  font-family: "Gobold";
+  color: white;
+}
+
 .right-container {
   padding-bottom: 50px;
 }
@@ -55,7 +73,17 @@
 }
 
 .right-container h3 {
-  font-size: 14px;
+  font-size: 18px;
+  text-align: center;
+  padding-right: 5%;
+  padding-left: 5%;
+  color: white;
+  font-family: "GoBold";
+}
+
+
+.right-container h1 {
+  font-size: 30px;
   text-align: center;
   padding-right: 5%;
   padding-left: 5%;
@@ -81,6 +109,7 @@
   font-size: 1em;
   font-family: "GoBold";
 }
+
 
 .left-container span {
   position: absolute;
@@ -130,8 +159,17 @@
   color: white;
 }
 
+.partItalo h1 {
+  font-family: "Gobold";
+  color: white;
+}
+
 .part3 h1 {
   padding-bottom: 20px;
+}
+
+.part4 h1 {
+  padding-bottom: 50px;
 }
 
 .text-3-part3 div {
@@ -158,8 +196,8 @@ span {
   margin: auto;
 }
 
-.ajuste-porcent-sub h3{
-	font-size: 20px;
+.ajuste-porcent-sub h3 {
+  font-size: 20px;
 }
 
 .card{
@@ -178,21 +216,23 @@ span {
     margin-bottom: 10%;
 }
 
-.rr1-img-part{
-	width: 40%;
-    margin-left: 5%;
-    padding-right: 5%;
+.rr1-img-part {
+  width: 20%;
+  margin-left: 5%;
+  padding-right: 5%;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
-.rr1-partido{
-    width: 40%;
-    margin-right: 5%;
-    margin-top: auto;
-    padding-left: 5%;
-    margin-bottom: auto;
-    -ms-flex-align: center;
-    -ms-flex-pack: center;
-    justify-content: center;
+.rr1-partido {
+  width: 40%;
+  margin-right: 5%;
+  margin-top: auto;
+  padding-left: 5%;
+  margin-bottom: auto;
+  -ms-flex-align: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 
 .nomepartido{
@@ -219,13 +259,13 @@ span {
 	width: 100%;
 }
 
-.ghost-size{
-	width: 50%;
-    padding: 10%;
+.ghost-size {
+  width: 50%;
+  padding: 10%;
 }
 
-.ghost-size img{
-	width: 100%;
+.ghost-size img {
+  width: 100%;
 }
 
 .nota{
@@ -250,8 +290,8 @@ span {
     transition: .1s;
 }
 
-.denuncia:hover{
-	background-color: white;
+.denuncia:hover {
+  background-color: white;
 }
 
 .denuncia:hover p{
@@ -299,7 +339,7 @@ span {
 	color: white;
 	font-family: "GoBold";
 	font-size: 2em;
-	margin-bottom: 5%;	
+	margin-bottom: 5%;
 }
 
 .colaborartext img{
@@ -314,7 +354,7 @@ span {
   animation: blinker 0.2s cubic-bezier(0.99, 0, 0, 1.01) infinite;
 }
 
-@keyframes blinker {  
+@keyframes blinker {
   50% { color: #fff43c; }
 }
 

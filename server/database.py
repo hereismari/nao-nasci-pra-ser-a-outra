@@ -13,6 +13,10 @@ class Client(object):
             if args[arg] is not None:
                 query[arg] = args[arg]
         return query
+
+
+    def historico(self):
+        return [data for data in self.client.db.historico.find({}, {'_id': False})]
     
 
     def mulheres_eleitoras_vs_eleitas(self, args, ano):
@@ -34,23 +38,52 @@ class Client(object):
                 }
         ]
 
-        x = [data for data in self.client.db.eleitores.aggregate(query)]
-        print(x)
+        return [data for data in self.client.db.eleitores.aggregate(query)]
 
 
-
-    def candidatos_poucos_votos(self, args, poucos_votos):
-        query = {'total_votos': {'$lte': poucos_votos}}
-        query = self._update_query(query, args)
-        return [data for data in self.client.db.candidatos.find(query, {'_id': False})]
-
-
-    def partidos_ranking_poucos_votos(self, args, poucos_votos):
-        match = {
-                    'total_votos': {'$lte': poucos_votos},
-                    'sexo': 'FEMININO'
+    def partidos_ranking_zero_votos(self, args):
+        match = self._update_query({}, args)
+        query = [{
+                    '$match': match
+                }, 
+                {
+                    '$group': {
+                        '_id': {
+                            'sigla_partido': '$sigla_partido'
+                        },
+                        'total_mulheres': {
+                            '$sum': '$total_candidatas'
+                        },
+                        'total_mulheres_zero': {
+                            '$sum': '$cont_candidatas_zero_voto'
+                        }
+                    }
+                },
+                {
+                    '$project': {
+                        '_id': '$_id',
+                        'porcent_zero': {
+                            '$divide': ['$total_mulheres_zero', '$total_mulheres']
+                        },
+                        'total_mulheres': '$total_mulheres',
+                        'total_mulheres_zero': '$total_mulheres_zero'
+                    }
+                },
+                {
+                    '$sort': {
+                        'porcent_zero': -1
+                    }
+                },
+                {
+                    '$limit': 3
                 }
-        match = self._update_query(match, args)
+        ]
+
+        return [data for data in self.client.db.partidos.aggregate(query)]
+
+
+    def partidos_media_zero_votos(self, args):
+        match = self._update_query({}, args)
         query = [{
                     '$match': match
                 }, 
@@ -59,22 +92,22 @@ class Client(object):
                         '_id': {
                             'sigla_partido': '$sigla_partido'
                         }, 
-                        'total_poucos_votos': {
-                            '$sum': 1
+                        'total': {
+                            '$sum': '$cont_candidatas_zero_voto'
                         }
                     }
                 },
                 {
-                    '$sort': {
-                        'total_poucos_votos': -1
+                    '$group': {
+                        '_id': {}, 
+                        'total': {
+                            '$avg': '$total'
+                        }
                     }
-                },
-                {
-                    '$limit': 3
                 }
         ]
 
-        return [data for data in self.client.db.candidatos.aggregate(query)]
+        return [data for data in self.client.db.partidos.aggregate(query)]
     
 
     def partidos_participacao_mulheres(self, args):
@@ -82,14 +115,6 @@ class Client(object):
         query = [
                 {
                     '$match': match
-                }, 
-                {
-                    '$project': {
-                        'total_mulheres': {
-                            '$cond': [{'$eq': ['$sexo', 'FEMININO']}, 1, 0]
-                        },
-                        'sigla_partido': '$sigla_partido'
-                    }
                 },
                 {
                     '$group': {
@@ -97,10 +122,10 @@ class Client(object):
                             'sigla_partido': '$sigla_partido'
                         }, 
                         'total': {
-                            '$sum': 1
+                            '$sum': '$total_candidatos'
                         },
                         'total_mulheres': {
-                            '$sum':  '$total_mulheres'
+                            '$sum':  '$total_candidatas'
                         }
                     }
                 },
@@ -120,4 +145,4 @@ class Client(object):
                 }
         ]
 
-        return [data for data in self.client.db.candidatos.aggregate(query)]
+        return [data for data in self.client.db.partidos.aggregate(query)]
