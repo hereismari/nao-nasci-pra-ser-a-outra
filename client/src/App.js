@@ -171,20 +171,16 @@ class App extends Component {
           </div>
           <div className="row part6">
             <img className="ajust-img-pocs" src={require("./img/bob.jpg")} />
-              <span className="text-footer">Bob Henrique Farias</span>
             <img className="ajust-img-pocs" src={require("./img/dan.jpg")} />
-              <span className="text-footer">Dandara Maria da Costa</span>
             <img className="ajust-img-pocs" src={require("./img/hadri.jpg")} />
-              <span className="text-footer">Hadrizia Santos</span>
             <img className="ajust-img-pocs" src={require("./img/italo.jpg")} />
-              <span className="text-footer">Italo Medeiros</span>
             <img className="ajust-img-pocs" src={require("./img/jair.jpg")} />
-              <span className="text-footer">Jair Guetes Neto</span>
             <img className="ajust-img-pocs" src={require("./img/mari.jpg")} />
-              <span className="text-footer">Marianne Linhares Monteiro</span>
             <img className="ajust-img-pocs" src={require("./img/vini.jpg")} />
-              <span className="text-footer">Paulo Vinícios Soares</span>
-
+            <div className="col-md-12 col-xs-12 col-12 col-sm-12 row logo-footer">
+              <img className="logo-hack" src={require("./img/hackfest.svg")} />
+              <img className="logo-nossa" src={require("./img/logo.png")} />
+            </div>
           </div>
         </div>
       </div>

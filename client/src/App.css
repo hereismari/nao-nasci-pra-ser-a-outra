@@ -39,7 +39,6 @@
 
 .part6{
 	padding: 10%;
-    margin: auto;
     background-color: #001020;
 }
 
@@ -341,4 +340,22 @@ span {
 	font-family: "GoBold";
 	color: white;
 	font-size: 8px;
+}
+
+.logo-footer{
+	text-align: center;
+	align-items: center;
+	justify-content: center;
+	margin: auto;
+	margin-top: 5%;
+}
+
+.logo-hack{
+	width: 25%;
+	margin-right: 60px;
+}
+
+.logo-nossa{
+	width: 20%;
+    margin-left: 60px;
 }
