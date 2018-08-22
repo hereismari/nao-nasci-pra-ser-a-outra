@@ -1,6 +1,11 @@
 # nao-nasci-pra-ser-a-outra
 
+### [www.naonascipraseraoutra.surge.sh](http://www.naonascipraseraoutra.surge.sh)
+
 Monitoramento do cumprimento da Lei nº 9504/97 que diz que, "cada partido ou coligação deve preencher, nas eleições proporcionais, o mínimo de 30% e o máximo de 70% para candidaturas de cada sexo".
+
+Projeto desenvolvido no [4º Hackfest contra a corrupção](http://hackfest.com.br/).
+![](http://www.jornaldaparaiba.com.br/app/uploads/2018/07/24-07-2018-hacfest.jpeg)
 
 ## Obtendo os dados
 
