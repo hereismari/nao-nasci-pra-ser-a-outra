@@ -406,13 +406,13 @@ span {
 }
 
 @media only screen and (min-width : 990px) {
-    .galeria-imagem {
+    .contributor-image {
         padding-left: 15px;
         padding-right: 15px;
     }
 }
 
-.galeria-titulo {
+.contributor-name {
     margin: 0;
     margin-top: 10px;
     padding: 0;

@@ -19,6 +19,7 @@ import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 import VotosVSInvestimentos from "./components/visualizacoes/VotosVSInvestimentos";
 import axios from "axios";
+import Contributor from "./components/auxiliar/Contributor"
 
 class App extends Component {
   constructor(props) {
@@ -291,62 +292,13 @@ class App extends Component {
           </div>
   
           <div className="row">
-            <div className="col">
-              <div className="galeria-imagem">
-                <img alt="" class="ajust-img-pocs" src={require("./img/bob.jpg")} />
-              </div>
-              <p className="galeria-titulo">
-                <a href="https://github.com/BobFarias" target="_blank">Bob Farias</a>
-              </p>
-            </div>
-            <div className="col">
-              <div className="galeria-imagem">
-                <img alt="" className="ajust-img-pocs" src={require("./img/dan.jpg")}/>
-              </div>
-              <p className="galeria-titulo">
-                <a href="https://github.com/dandaramcsousa" target="_blank">Dandara Sousa</a>
-              </p>
-            </div>
-            <div className="col">
-              <div className="galeria-imagem">
-                <img alt="" className="ajust-img-pocs" src={require("./img/hadri.jpg")}/>
-              </div>
-              <p className="galeria-titulo">
-                <a href="https://github.com/hadrizia" target="_blank">Hadrizia Santos</a>
-              </p>
-            </div>
-            <div className="col">
-              <div className="galeria-imagem">
-                <img alt="" className="ajust-img-pocs" src={require("./img/italo.jpg")}/>
-              </div>
-              <p className="galeria-titulo">
-                <a href="https://github.com/italo-batista" target="_blank">Ítalo Medeiros</a>
-              </p>
-            </div>
-            <div className="col">
-              <div className="galeria-imagem">
-                <img alt="" className="ajust-img-pocs" src={require("./img/jair.jpg")}/>
-              </div>
-              <p className="galeria-titulo">
-                <a href="https://github.com/jairNeto" target="_blank">Jair Neto</a>
-              </p>
-            </div>
-            <div className="col">
-              <div className="galeria-imagem">
-                <img alt="" className="ajust-img-pocs" src={require("./img/mari.jpg")}/>
-              </div>
-              <p className="galeria-titulo">
-                <a href="https://github.com/mari-linhares" target="_blank">Marianne Linhares</a>
-              </p>
-            </div>
-            <div className="col">
-              <div className="galeria-imagem">
-                <img alt="" className="ajust-img-pocs" src={require("./img/vini.jpg")}/>
-              </div>
-              <p className="galeria-titulo">
-                <a href="https://github.com/paul0vinicius" target="_blank">Paulo Vinícius</a>
-              </p>
-            </div>
+            <Contributor name="Bob Farias" image_url={require("./img/bob.jpg")} github_url="https://github.com/BobFarias" />
+            <Contributor name="Dandara Sousa" image_url={require("./img/dan.jpg")} github_url="https://github.com/dandaramcsousa" />
+            <Contributor name="Hadrizia Santos" image_url={require("./img/hadri.jpg")} github_url="https://github.com/hadrizia" />
+            <Contributor name="Ítalo Medeiros" image_url={require("./img/italo.jpg")} github_url="https://github.com/italo-batista" />
+            <Contributor name="Jair Neto" image_url={require("./img/jair.jpg")} github_url="https://github.com/jairNeto" />
+            <Contributor name="Marianne Linhares" image_url={require("./img/mari.jpg")} github_url="https://github.com/mari-linhares" />
+            <Contributor name="Paulo Vinícius" image_url={require("./img/vini.jpg")} github_url="https://github.com/paul0vinicius" />
           </div>
           <div className="col-md-12 col-xs-12 col-12 col-sm-12 row logo-footer">
             <img className="logo-hack" src={require("./img/hackfest.svg")} />
