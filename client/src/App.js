@@ -19,7 +19,7 @@ import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 import VotosVSInvestimentos from "./components/visualizacoes/VotosVSInvestimentos";
 import axios from "axios";
-import Contributor from "./components/auxiliar/Contributor"
+import ContributorsGallery from "./components/auxiliar/ContributorsGallery";
 
 class App extends Component {
   constructor(props) {
@@ -291,15 +291,7 @@ class App extends Component {
             </h1>
           </div>
   
-          <div className="row">
-            <Contributor name="Bob Farias" image_url={require("./img/bob.jpg")} github_url="https://github.com/BobFarias" />
-            <Contributor name="Dandara Sousa" image_url={require("./img/dan.jpg")} github_url="https://github.com/dandaramcsousa" />
-            <Contributor name="Hadrizia Santos" image_url={require("./img/hadri.jpg")} github_url="https://github.com/hadrizia" />
-            <Contributor name="Ítalo Medeiros" image_url={require("./img/italo.jpg")} github_url="https://github.com/italo-batista" />
-            <Contributor name="Jair Neto" image_url={require("./img/jair.jpg")} github_url="https://github.com/jairNeto" />
-            <Contributor name="Marianne Linhares" image_url={require("./img/mari.jpg")} github_url="https://github.com/mari-linhares" />
-            <Contributor name="Paulo Vinícius" image_url={require("./img/vini.jpg")} github_url="https://github.com/paul0vinicius" />
-          </div>
+          <ContributorsGallery />
           <div className="col-md-12 col-xs-12 col-12 col-sm-12 row logo-footer">
             <img className="logo-hack" src={require("./img/hackfest.svg")} />
             <img className="logo-nossa" src={require("./img/logo.png")} />
