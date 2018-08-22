@@ -72,8 +72,7 @@ class App extends Component {
               </div>
             </div>
           </div>
-        </div>
-        <div className="row partItalo">
+          <div className="row partItalo">
           <h1 className="col-md-12 col-xs-12 col-12 col-sm-12">
             Evolução do número de candidatas
           </h1>
@@ -281,6 +280,7 @@ class App extends Component {
             <img className="logo-hack" src={require("./img/hackfest.svg")} />
             <img className="logo-nossa" src={require("./img/logo.png")} />
           </div>
+        </div>    
         </div>
       </div>
     );
