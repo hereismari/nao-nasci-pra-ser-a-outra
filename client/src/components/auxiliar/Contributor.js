@@ -1,8 +1,5 @@
 import React, { Component } from "react";
 import "./../../App.css";
-import {axisBottom} from "d3-axis";
-import * as d3 from "d3";
-import axios from "axios/index";
 
 class Contributor extends Component {
   constructor(props) {

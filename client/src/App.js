@@ -1,23 +1,8 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
 import "./App.css";
-import $ from "jquery";
-import {
-  XYPlot,
-  XAxis,
-  YAxis,
-  VerticalBarSeries,
-  VerticalGridLines,
-  HorizontalGridLines,
-  MarkSeries
-} from "react-vis";
 import GraficoBarras from "./components/visualizacoes/GraficoBarras";
-import GraficoPontos from "./components/visualizacoes/GraficoPontos";
 import LineChart from "./components/visualizacoes/GraficoLinhas";
 import LineChartData from "./data.json";
-import Header from "./components/layout/Header";
-import Footer from "./components/layout/Footer";
-import VotosVSInvestimentos from "./components/visualizacoes/VotosVSInvestimentos";
 import axios from "axios";
 import ContributorsGallery from "./components/auxiliar/ContributorsGallery";
 
