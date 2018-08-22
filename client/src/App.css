@@ -405,9 +405,24 @@ span {
     padding-bottom: 10%;
 }
 
-.ajust-img-pocs{
-	width: 10%;
-	height: 10%;
+@media only screen and (min-width : 990px) {
+    .galeria-imagem {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
+
+.galeria-titulo {
+    margin: 0;
+    margin-top: 10px;
+    padding: 0;
+    text-align: center;
+    font-size: 0.8em;
+    font-weight: bold;
+}
+
+.ajust-img-pocs {
+	width: 100%;
 	border-radius: 50%;
 	margin: auto;
 }

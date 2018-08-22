@@ -289,14 +289,65 @@ class App extends Component {
               </a>
             </h1>
           </div>
-
-          <img className="ajust-img-pocs" src={require("./img/bob.jpg")} />
-          <img className="ajust-img-pocs" src={require("./img/dan.jpg")} />
-          <img className="ajust-img-pocs" src={require("./img/hadri.jpg")} />
-          <img className="ajust-img-pocs" src={require("./img/italo.jpg")} />
-          <img className="ajust-img-pocs" src={require("./img/jair.jpg")} />
-          <img className="ajust-img-pocs" src={require("./img/mari.jpg")} />
-          <img className="ajust-img-pocs" src={require("./img/vini.jpg")} />
+  
+          <div className="row">
+            <div className="col">
+              <div className="galeria-imagem">
+                <img alt="" class="ajust-img-pocs" src={require("./img/bob.jpg")} />
+              </div>
+              <p className="galeria-titulo">
+                <a href="https://github.com/BobFarias" target="_blank">Bob Farias</a>
+              </p>
+            </div>
+            <div className="col">
+              <div className="galeria-imagem">
+                <img alt="" className="ajust-img-pocs" src={require("./img/dan.jpg")}/>
+              </div>
+              <p className="galeria-titulo">
+                <a href="https://github.com/dandaramcsousa" target="_blank">Dandara Sousa</a>
+              </p>
+            </div>
+            <div className="col">
+              <div className="galeria-imagem">
+                <img alt="" className="ajust-img-pocs" src={require("./img/hadri.jpg")}/>
+              </div>
+              <p className="galeria-titulo">
+                <a href="https://github.com/hadrizia" target="_blank">Hadrizia Santos</a>
+              </p>
+            </div>
+            <div className="col">
+              <div className="galeria-imagem">
+                <img alt="" className="ajust-img-pocs" src={require("./img/italo.jpg")}/>
+              </div>
+              <p className="galeria-titulo">
+                <a href="https://github.com/italo-batista" target="_blank">Ítalo Medeiros</a>
+              </p>
+            </div>
+            <div className="col">
+              <div className="galeria-imagem">
+                <img alt="" className="ajust-img-pocs" src={require("./img/jair.jpg")}/>
+              </div>
+              <p className="galeria-titulo">
+                <a href="https://github.com/jairNeto" target="_blank">Jair Neto</a>
+              </p>
+            </div>
+            <div className="col">
+              <div className="galeria-imagem">
+                <img alt="" className="ajust-img-pocs" src={require("./img/mari.jpg")}/>
+              </div>
+              <p className="galeria-titulo">
+                <a href="https://github.com/mari-linhares" target="_blank">Marianne Linhares</a>
+              </p>
+            </div>
+            <div className="col">
+              <div className="galeria-imagem">
+                <img alt="" className="ajust-img-pocs" src={require("./img/vini.jpg")}/>
+              </div>
+              <p className="galeria-titulo">
+                <a href="https://github.com/paul0vinicius" target="_blank">Paulo Vinícius</a>
+              </p>
+            </div>
+          </div>
           <div className="col-md-12 col-xs-12 col-12 col-sm-12 row logo-footer">
             <img className="logo-hack" src={require("./img/hackfest.svg")} />
             <img className="logo-nossa" src={require("./img/logo.png")} />
