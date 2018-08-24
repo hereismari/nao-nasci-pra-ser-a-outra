@@ -162,6 +162,12 @@ export default class GraficoBarras extends Component {
       else return 0;
     });
 
+    const defineTamFonte = () => {
+      if (this.state.width < 500) return 6;
+      else if (this.state.width < 645) return 11;
+      else return 14;
+    };
+
     var finalData = [];
 
     maisMulheres.map(elem => {
@@ -185,7 +191,7 @@ export default class GraficoBarras extends Component {
               stroke: "white",
               fill: "white",
               fontFamily: "Roboto Thin",
-              fontSize: this.state.width >= 500 ? 11 : 6
+              fontSize: defineTamFonte()
             }
           }}
         />
@@ -251,7 +257,7 @@ export default class GraficoBarras extends Component {
           </div>
         </div>
         <div className="col-12 col-sm-12 col-md-12 col-xs-12 col-lg-12">
-          <div className="termometro" style={{ marginBottom: "0.1vh" }}>
+          <div className="termometro" style={{ marginBottom: "1vh" }}>
             .
           </div>
           <FlexibleBarChart />
