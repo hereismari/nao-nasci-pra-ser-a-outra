@@ -41,5 +41,7 @@ Python 3.6.
 
 ```bash
 cd populate_database
-python populate --caminho-dados <pasta onde os dados estao armazenados>
+export MONGODB_URI='mongodb://localhost:27017/nao-nasci'  # para o deploy buscar URI no heroku
+export MONGODB_NAME='nao_nasci'  # para o deploy buscar o nome no heroku
+python populate --caminho-dados <pasta onde os dados estão armazenados>
 ```

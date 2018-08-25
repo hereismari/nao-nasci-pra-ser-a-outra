@@ -1,3 +1,10 @@
+# Author: Jair Neto, jair.neto@ccc.ufcg.edu.br
+# Last change: 08/2018 
+# ------------------------- Entrada -----------------------------
+# Recebe como entrada dados do TSE: receitas_candidatos_prestacao_contas_final_<ano>_brasil.csv, onde ano pertence a [2000, 2018]. 
+# ------------------------- Saída -------------------------------
+# TODO
+
 library(tidyverse)
 library(data.table)
 

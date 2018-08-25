@@ -1,3 +1,12 @@
+# Author: Italo Medeiros, italo.batista@ccc.ufcg.edu.br
+# Last change: 08/2018 
+# ------------------------- Entrada -----------------------------
+# Recebe como entrada dados do TSE de candidatos preprocessados pelo script X.
+# Dados de entrada tem caminho ../data/candidatos/candidatos_<ano>.csv, onde ano pertence a [2000, 2018]. 
+# ------------------------- Saída -------------------------------
+# Produz como resultado um arquivo denominado ../data/historico.csv que contém o sumário com o número de mulheres candidatas,
+# número de mulheres eleitas e número de candidatas com zero votos por ano.
+
 library(tidyverse)
 library(stringr)
 
@@ -62,15 +71,15 @@ preprocess = function(df) {
            head(1))
 }
 
-data_2000 = readr::read_csv2(here::here("data/candidatos/candidatos_2000.csv"), local=readr::locale("br"))
-data_2002 = readr::read_csv2(here::here("data/candidatos/candidatos_2002.csv"), local=readr::locale("br"))
-data_2004 = readr::read_csv2(here::here("data/candidatos/candidatos_2004.csv"), local=readr::locale("br"))
-data_2006 = readr::read_csv2(here::here("data/candidatos/candidatos_2006.csv"), local=readr::locale("br"))
-data_2008 = readr::read_csv2(here::here("data/candidatos/candidatos_2008.csv"), local=readr::locale("br"))
-data_2010 = readr::read_csv2(here::here("data/candidatos/candidatos_2010.csv"), local=readr::locale("br"))
-data_2012 = readr::read_csv2(here::here("data/candidatos/candidatos_2012.csv"), local=readr::locale("br"))
-data_2014 = readr::read_csv2(here::here("data/candidatos/candidatos_2014.csv"), local=readr::locale("br"))
-data_2016 = readr::read_csv2(here::here("data/candidatos/candidatos_2016.csv"), local=readr::locale("br"))
+data_2000 = readr::read_csv2(here::here("../data/candidatos/candidatos_2000.csv"), local=readr::locale("br"))
+data_2002 = readr::read_csv2(here::here("../data/candidatos/candidatos_2002.csv"), local=readr::locale("br"))
+data_2004 = readr::read_csv2(here::here("../data/candidatos/candidatos_2004.csv"), local=readr::locale("br"))
+data_2006 = readr::read_csv2(here::here("../data/candidatos/candidatos_2006.csv"), local=readr::locale("br"))
+data_2008 = readr::read_csv2(here::here("../data/candidatos/candidatos_2008.csv"), local=readr::locale("br"))
+data_2010 = readr::read_csv2(here::here("../data/candidatos/candidatos_2010.csv"), local=readr::locale("br"))
+data_2012 = readr::read_csv2(here::here("../data/candidatos/candidatos_2012.csv"), local=readr::locale("br"))
+data_2014 = readr::read_csv2(here::here("../data/candidatos/candidatos_2014.csv"), local=readr::locale("br"))
+data_2016 = readr::read_csv2(here::here("../data/candidatos/candidatos_2016.csv"), local=readr::locale("br"))
 
 data_2000 = preprocess(data_2000)
 data_2002 = preprocess(data_2002)
@@ -101,4 +110,4 @@ summarize_total_ghost_candidates = summarize_total_ghost_candidates %>%
       3)
   )
 
-write.csv2(summarize_total_ghost_candidates, "data/summarize_total_ghost_candidates.csv")
+write.csv2(summarize_total_ghost_candidates, "data/historico.csv")

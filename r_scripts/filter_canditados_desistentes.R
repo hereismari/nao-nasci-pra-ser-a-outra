@@ -1,3 +1,10 @@
+# Author:  Jair Neto, jair.neto@ccc.ufcg.edu.br
+# Last change: 08/2018 
+# ------------------------- Entrada -----------------------------
+# TODO 
+# ------------------------- Saída -------------------------------
+# TODO
+
 # ESSE SCRIPT TEM COMO OBJETIVO FILTRAR APENAS OS CANDIDATOS QUE RECEBERAM VERBAS DO PARTIDO.
 #  PARA AQUELES QUE N RECEBERAM, INSERIMOS COMO 0.
 

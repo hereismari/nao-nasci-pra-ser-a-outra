@@ -1,3 +1,11 @@
+# Author:  Hadrizia Santos, hadrizia@gmail.com
+# Last change: 08/2018 
+# ------------------------- Entrada -----------------------------
+# TODO 
+# ------------------------- Saída -------------------------------
+# TODO
+
+
 library(tidyverse)
 
 munzona_candidatos_data <- readr::read_csv2(here::here("data/votacao_candidato_munzona_2016/votacao_candidato_munzona_2016_PB.csv"),
