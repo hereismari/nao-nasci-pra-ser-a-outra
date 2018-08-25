@@ -16,14 +16,13 @@ def print_about():
     print('Isso pode levar alguns minutos... paciencia eh uma virtude :) ...')
 
 
-def download_data_from_url(url, output_dir, filename):
-    print('Downloading %s' % url)
-
+def download_data_from_url(url, output_dir, filename):    
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
 
     filename = os.path.join(output_dir, filename)
     if not os.path.exists(filename):
+        print('\nDownloading %s' % url)
         urllib.request.urlretrieve(url=url, filename=filename, reporthook=print_download_progress)
         maybe_unzip(filename, output_dir)
 
@@ -61,12 +60,12 @@ def busca_dados_eleitores(anos=[2012, 2014, 2016]):
 def busca_dados_candidatos(anos=[2012, 2014, 2016]):
     for ano in anos:
         url = 'http://agencia.tse.jus.br/estatistica/sead/odsele/votacao_candidato_munzona/votacao_candidato_munzona_%s.zip' % ano
-        download_data_from_url(url, '../data/candidatos/', 'votacao_%s.zip' % ano)
+        download_data_from_url(url, '../data/candidatos/%s' % ano, 'votacao_%s.zip' % ano)
 
 
     for ano in anos:
         url = 'http://agencia.tse.jus.br/estatistica/sead/odsele/consulta_cand/consulta_cand_%s.zip' % ano
-        download_data_from_url(url, '../data/candidatos/', 'info_%s.zip' % ano)
+        download_data_from_url(url, '../data/candidatos/%s' % ano, 'info_%s.zip' % ano)
 
 
 def main():
