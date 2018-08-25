@@ -8,8 +8,6 @@
 
 library(tidyverse)
 
-setwd("/home/italohmb/Área de Trabalho/hackfest-NNPSAO/nao-nasci-pra-ser-a-outra/")
-
 perfil_eleitorado_2012 = readr::read_csv2(here::here("../data/eleitores/perfil_eleitorado_2012/perfil_eleitorado_2012.csv"), local=readr::locale(encoding="latin1"), col_names = FALSE)
 perfil_eleitorado_2014 = readr::read_csv2(here::here("../data/eleitores/perfil_eleitorado_2014/perfil_eleitorado_2014.csv"), local=readr::locale(encoding="latin1"), col_names = FALSE)
 perfil_eleitorado_2016 = readr::read_csv2(here::here("../data/eleitores/perfil_eleitorado_2016/perfil_eleitorado_2016.csv"), local=readr::locale(encoding="latin1"), col_names = FALSE)
