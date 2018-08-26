@@ -4,18 +4,14 @@
 # Recebe como entrada dados do TSE de candidatos preprocessados pelo script X.
 # Dados de entrada tem caminho ../data/candidatos/candidatos_<ano>.csv, onde ano pertence a [2000, 2018]. 
 # ------------------------- Saída -------------------------------
-# Produz como resultado um arquivo denominado ../data/historico.csv que contém o sumário com o número de mulheres candidatas,
+# Produz como resultado um arquivo denominado ../data/preprocessed/historico.csv que contém o sumário com o número de mulheres candidatas,
 # número de mulheres eleitas e número de candidatas com zero votos por ano.
 
 library(tidyverse)
 library(stringr)
+source(here::here("r_scripts/utils/filters.R"))
 
-filter_desistentes = function(df) {
-  return(
-    df %>% filter(!str_detect(desc_sit_candidato, regex("RENÚNCIA|CANCELAMENTO", ignore_case = FALSE)))
-  )
-}
-
+# Deleta colunas desnecessárias
 dell_cols = function(df) {
   return(df %>%
            select(-c(X1, 
@@ -27,23 +23,8 @@ dell_cols = function(df) {
   )
 }
 
-filter_ghost_candidates = function(df) {
-  df %>%
-    filter(total_votos == 0)
-}
-
-filter_get_candidates_fem = function(df) {
-  return(
-    df %>% filter(str_detect(sexo, regex("FEMININO")))
-  )
-}
-
-filter_get_candidates_masc = function(df) {
-  return(
-    df %>% filter(str_detect(sexo, regex("MASCULINO")))
-  )
-}
-
+# Retorna um df contendo informações adicionais como total de candidatas femininas, total de candidatos masculinos,
+# total de candidatas fantasmas femininas e total de candidatos masculinos fantasmas.
 get_ghost_candidates = function(df) {
   df %>% mutate(
     total_candidate_fem = nrow(df %>% filter_get_candidates_fem),
@@ -53,6 +34,7 @@ get_ghost_candidates = function(df) {
   )
 }
 
+# Seleciona colunas importantes
 finish_clean = function(df) {
   return(df %>% 
            select(ano_eleicao,
@@ -62,6 +44,7 @@ finish_clean = function(df) {
                   total_ghosts_masc))
 }
 
+# Realiza o preprocessamento do dataframe
 preprocess = function(df) {
   return(df %>%
            filter_desistentes %>%
@@ -71,15 +54,25 @@ preprocess = function(df) {
            head(1))
 }
 
-data_2000 = readr::read_csv2(here::here("../data/candidatos/candidatos_2000.csv"), local=readr::locale("br"))
-data_2002 = readr::read_csv2(here::here("../data/candidatos/candidatos_2002.csv"), local=readr::locale("br"))
-data_2004 = readr::read_csv2(here::here("../data/candidatos/candidatos_2004.csv"), local=readr::locale("br"))
-data_2006 = readr::read_csv2(here::here("../data/candidatos/candidatos_2006.csv"), local=readr::locale("br"))
-data_2008 = readr::read_csv2(here::here("../data/candidatos/candidatos_2008.csv"), local=readr::locale("br"))
-data_2010 = readr::read_csv2(here::here("../data/candidatos/candidatos_2010.csv"), local=readr::locale("br"))
-data_2012 = readr::read_csv2(here::here("../data/candidatos/candidatos_2012.csv"), local=readr::locale("br"))
-data_2014 = readr::read_csv2(here::here("../data/candidatos/candidatos_2014.csv"), local=readr::locale("br"))
-data_2016 = readr::read_csv2(here::here("../data/candidatos/candidatos_2016.csv"), local=readr::locale("br"))
+preprocess_data <- function(filepath) {
+  df <- readr::read_csv2(filepath, local=readr::locale("br"), col_names = FALSE)
+  return(preprocess(df))
+}
+
+filenames <- list.files(path = here::here("data/preprocessed/candidatos"), recursive = TRUE, full.names = TRUE) 
+ans = do.call(rbind, lapply(filenames, read_csv2)) 
+
+a <- lapply(filenames, preprocess_data)
+
+data_2000 = readr::read_csv2(here::here("data/candidatos/candidatos_2000.csv"), local=readr::locale("br"))
+data_2002 = readr::read_csv2(here::here("data/candidatos/candidatos_2002.csv"), local=readr::locale("br"))
+data_2004 = readr::read_csv2(here::here("data/candidatos/candidatos_2004.csv"), local=readr::locale("br"))
+data_2006 = readr::read_csv2(here::here("data/candidatos/candidatos_2006.csv"), local=readr::locale("br"))
+data_2008 = readr::read_csv2(here::here("data/candidatos/candidatos_2008.csv"), local=readr::locale("br"))
+data_2010 = readr::read_csv2(here::here("data/candidatos/candidatos_2010.csv"), local=readr::locale("br"))
+data_2012 = readr::read_csv2(here::here("data/candidatos/candidatos_2012.csv"), local=readr::locale("br"))
+data_2014 = readr::read_csv2(here::here("data/candidatos/candidatos_2014.csv"), local=readr::locale("br"))
+data_2016 = readr::read_csv2(here::here("data/candidatos/candidatos_2016.csv"), local=readr::locale("br"))
 
 data_2000 = preprocess(data_2000)
 data_2002 = preprocess(data_2002)
@@ -100,6 +93,7 @@ summarize_total_ghost_candidates = rbind(summarize_total_ghost_candidates, data_
 summarize_total_ghost_candidates = rbind(summarize_total_ghost_candidates, data_2014)
 summarize_total_ghost_candidates = rbind(summarize_total_ghost_candidates, data_2016)
 
+# Sumariza a proporção de candidatos fantasmas masculinos e femininos
 summarize_total_ghost_candidates = summarize_total_ghost_candidates %>%
   mutate(
     porc_ghost_fem = round(
@@ -110,4 +104,4 @@ summarize_total_ghost_candidates = summarize_total_ghost_candidates %>%
       3)
   )
 
-write.csv2(summarize_total_ghost_candidates, "data/historico.csv")
+write.csv2(summarize_total_ghost_candidates, "data/preprocessed/historico.csv")
