@@ -134,7 +134,7 @@ class App extends Component {
                       </div>
                       <div className="botao">
                         <div className="denuncia">
-                          <a href="https://twitter.com/intent/tweet/?text=Veja%20quais%20partidos%20cumprem%20efetivamente%20a%20cota%20dos%2030%25%20e%20quais%20possuem%20tend%C3%AAncias%20a%20candidaturas%20laranjas%20no%20N%C3%A3o%20nasci%20pra%20ser%20a%20outra%20:naonascipraseraoutra.surge.sh.%20%23ContraCorrup%C3%A7%C3%A3o%20%23ContraCandidatoFantasma%20%23NaoNasciPraSerAOutra">
+                          <a href="https://twitter.com/intent/tweet/?text=Veja%20quais%20partidos%20cumprem%20efetivamente%20a%20cota%20dos%2030%25%20e%20quais%20possuem%20tend%C3%AAncias%20a%20candidaturas%20laranjas%20no%20N%C3%A3o%20nasci%20pra%20ser%20a%20outra%20:naonascipraseraoutra.com.%20%23ContraCorrup%C3%A7%C3%A3o%20%23ContraCandidatoFantasma%20%23NaoNasciPraSerAOutra">
                             Exija explicações!
                             <i className="fa fa-twitter" />
                           </a>
@@ -168,7 +168,7 @@ class App extends Component {
                       </div>
                       <div className="botao">
                         <div className="denuncia">
-                          <a href="https://twitter.com/intent/tweet/?text=Veja%20quais%20partidos%20cumprem%20efetivamente%20a%20cota%20dos%2030%25%20e%20quais%20possuem%20tend%C3%AAncias%20a%20candidaturas%20laranjas%20no%20N%C3%A3o%20nasci%20pra%20ser%20a%20outra%20:naonascipraseraoutra.surge.sh.%20%23ContraCorrup%C3%A7%C3%A3o%20%23ContraCandidatoFantasma%20%23NaoNasciPraSerAOutra">
+                          <a href="https://twitter.com/intent/tweet/?text=Veja%20quais%20partidos%20cumprem%20efetivamente%20a%20cota%20dos%2030%25%20e%20quais%20possuem%20tend%C3%AAncias%20a%20candidaturas%20laranjas%20no%20N%C3%A3o%20nasci%20pra%20ser%20a%20outra%20:naonascipraseraoutra.com.%20%23ContraCorrup%C3%A7%C3%A3o%20%23ContraCandidatoFantasma%20%23NaoNasciPraSerAOutra">
                             Exija explicações!
                             <i className="fa fa-twitter" />
                           </a>
@@ -204,7 +204,7 @@ class App extends Component {
                       </div>
                       <div className="botao">
                         <div className="denuncia">
-                          <a href="https://twitter.com/intent/tweet/?text=Veja%20quais%20partidos%20cumprem%20efetivamente%20a%20cota%20dos%2030%25%20e%20quais%20possuem%20tend%C3%AAncias%20a%20candidaturas%20laranjas%20no%20N%C3%A3o%20nasci%20pra%20ser%20a%20outra%20:naonascipraseraoutra.surge.sh.%20%23ContraCorrup%C3%A7%C3%A3o%20%23ContraCandidatoFantasma%20%23NaoNasciPraSerAOutra">
+                          <a href="https://twitter.com/intent/tweet/?text=Veja%20quais%20partidos%20cumprem%20efetivamente%20a%20cota%20dos%2030%25%20e%20quais%20possuem%20tend%C3%AAncias%20a%20candidaturas%20laranjas%20no%20N%C3%A3o%20nasci%20pra%20ser%20a%20outra%20:naonascipraseraoutra.com.%20%23ContraCorrup%C3%A7%C3%A3o%20%23ContraCandidatoFantasma%20%23NaoNasciPraSerAOutra">
                             Exija explicações!
                             <i className="fa fa-twitter" />
                           </a>
@@ -243,7 +243,7 @@ class App extends Component {
                 </h3>
                 <div className="denuncia twitter">
                   <a
-                    href="https://twitter.com/intent/tweet/?text=Veja%20quais%20partidos%20cumprem%20efetivamente%20a%20cota%20dos%2030%25%20e%20quais%20possuem%20tend%C3%AAncias%20a%20candidaturas%20laranjas%20no%20N%C3%A3o%20nasci%20pra%20ser%20a%20outra%20:naonascipraseraoutra.surge.sh.%20%23ContraCorrup%C3%A7%C3%A3o%20%23ContraCandidatoFantasma%20%23NaoNasciPraSerAOutra"
+                    href="https://twitter.com/intent/tweet/?text=Veja%20quais%20partidos%20cumprem%20efetivamente%20a%20cota%20dos%2030%25%20e%20quais%20possuem%20tend%C3%AAncias%20a%20candidaturas%20laranjas%20no%20N%C3%A3o%20nasci%20pra%20ser%20a%20outra%20:naonascipraseraoutra.com.%20%23ContraCorrup%C3%A7%C3%A3o%20%23ContraCandidatoFantasma%20%23NaoNasciPraSerAOutra"
                     className="twitter-share-button"
                     data-show-count="false"
                   >
