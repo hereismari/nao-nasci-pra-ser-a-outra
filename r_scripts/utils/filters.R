@@ -2,6 +2,10 @@
 
 library(tidyverse)
 
+filter_not_segundo_turno <- function(df) {
+  df %>% filter(!str_detect(desc_sit_cand_tot, regex('2º TURNO')))
+}
+
 filter_desistentes = function(df) {
   return(
     df %>% filter(!str_detect(desc_sit_candidato, regex("RENÚNCIA|CANCELAMENTO", ignore_case = FALSE)))

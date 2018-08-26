@@ -13,6 +13,7 @@
 library(tidyverse)
 library(data.table)
 source(here::here("r_scripts/utils/filters.R"))
+source(here::here("r_scripts/candidatos/preprocess_candidatos_auxiliares.R"))
 
 # Retorna as candidatas do sexo feminino com zero votos e sumariza o total dessas candidatas por partido, uf e ano de eleição.
 get_fem_ghost_candidates <- function(df) {
@@ -85,7 +86,7 @@ preprocess <- function(df) {
 #                         local=readr::locale("br"))
 
 # Processando os dados de 2016
-data <- read_csv2(here::here("data/preprocessed/candidatos_e_votacoes/candidatos_e_votacoes_2016.csv"))
+data <- read_csv2(here::here("data/preprocessed/candidatos/candidatos_auxiliar_2016.csv"))
 
 summarized_data <- preprocess(data)
 

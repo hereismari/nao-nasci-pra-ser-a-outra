@@ -9,7 +9,15 @@ Projeto desenvolvido no [4º Hackfest contra a corrupção](http://hackfest.com.
 
 ## Obtendo os dados
 
-Entre em contato com um dos desenvolvedores via email!
+```
+cd r_scripts
+# baixar dados do tse
+python buscar_dados_tse.py
+# preprocessar dados
+# TODO
+```
+
+Mais detalhes em [r_scripts/README.md](r_scripts/README.md).
 
 ## Front End
 
