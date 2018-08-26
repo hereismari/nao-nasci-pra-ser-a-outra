@@ -89,11 +89,7 @@ class App extends Component {
                   se resolve com proposições e porcentagens. Ainda há no Brasil
                   candidatas fantasmas, aquelas que não receberam voto algum. Em
                   geral, elas são colocadas para preencher a cota mas sem
-                  nenhuma intenção de se elegerem. Observando esse cenário com o
-                  gráfico ao lado, a linha branca indica o número de candidatas
-                  no total, a amarela o número de candidatas fantasmas. E, por
-                  último, o tracejado vertical delimita em quando a lei
-                  12.034/2009 entrou em vigor.
+                  nenhuma intenção de se elegerem.
                 </h3>
               </div>
             </div>

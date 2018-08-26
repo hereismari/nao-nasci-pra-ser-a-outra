@@ -124,6 +124,17 @@ class LineChart extends Component {
         .style("stroke-width", 2)
         .style("stroke", "#fff43c")
         .style("fill", "none");
+      
+      const lawYearTextOpacity = !isNaN(x(parsedYear2009)) ? 1 : 0;
+      g.append("text")
+        .attr("transform", "rotate(270)")
+        .attr("y", function(){ return x(parsedYear2009) + 15 })
+        .attr("x", function(){ return -(height / 2) })
+        .attr('text-anchor', 'end')
+        .attr("fill", "#fff43c")
+        .attr("fill-opacity", lawYearTextOpacity)
+        .attr("font-size", "16px")
+        .text("Publicação da lei");
 
       g.append("g")
         .attr("class", "axis axis--x")
