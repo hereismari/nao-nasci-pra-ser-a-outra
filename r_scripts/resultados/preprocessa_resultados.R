@@ -19,14 +19,17 @@ del_cols <- function(df) {
 
 summarise_votos <- function(df) {
   df %>% 
-    group_by(ano_eleicao, sigla_uf, nome_municipio, 
-                  numero_cand) %>%
-    summarise(total_votos = sum(tot_votos))
+    filter_not_segundo_turno() %>%
+    dplyr::group_by(ano_eleicao, sigla_uf, nome_municipio, 
+                  numero_cand, nome_candidato, 
+                  nome_urna_candidato,
+                  descricao_cargo, sigla_partido,
+                  desc_sit_cand_tot) %>%
+    dplyr::summarize(total_votos = sum(tot_votos))
 }
 
 preprocess_resultados <- function(df) {
   df %>% 
-    filter_not_segundo_turno() %>%
     del_cols %>%
     summarise_votos
 }
@@ -43,10 +46,10 @@ get_resultado_columns <- function(ano) {
 # Retorna um dataframe único para os resultados das votações em um ano
 get_resultados_por_ano <- function(ano = 2012) {
   # Nome de todos os arquivos necessários
-  filenames <- list.files(paste0(here::here("data/candidatos/"), ano), pattern="votacao_candidato_munzona_*", full.names=TRUE)
+  filenames <- list.files(paste0("data/candidatos/", ano), pattern="votacao_candidato_munzona_*", full.names=TRUE)
   
   # Lendo todos os arquivos e sumarizando em um único arquivo
-  read_latin <- Curry(read.csv2, header=FALSE, stringsAsFactors=FALSE, fileEncoding="latin1")
+  read_latin <- Curry(read_delim, delim = ";", col_names=FALSE, local = locale("br", encoding = "latin1"))
   ldf <- lapply(filenames, read_latin)
   df <- ldply(ldf, data.frame)
   
@@ -62,7 +65,7 @@ preprocess_resultados_por_ano <- function (ano = 2012) {
   df <- preprocess_resultados(df)
   
   # Salva o arquivo no diretório '../data/candidatos/<ano>/resultados_<ano>.csv'
-  #write_csv(df, paste0(here::here("data/candidatos/"), ano, "/resultados_", ano, ".csv"))
+  write_csv(df, paste0(here::here("data/candidatos/"), ano, "/resultados_", ano, ".csv"))
   
   return(df)
 } 
@@ -75,6 +78,6 @@ preprocess_resultados_total <- function(ano_inicial, ano_final) {
   return(df)
 }
 
-#df <- salva_votacao_candidatos_total(2000, 2016)
+df <- preprocess_resultados_por_ano(2002)
 
 

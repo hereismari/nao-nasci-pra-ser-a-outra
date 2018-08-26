@@ -40,9 +40,11 @@ process_candidatos_resultados  <- function(ano = 2016) {
   
   resultados_candidatos_joined <- join_resultados_and_candidatos(resultados_df, candidatos_df)
   
-  write.csv2(resultados_candidatos_joined, paste0(here::here("data/preprocessed/candidatos/auxiliar/"), "candidatos_auxiliar_", ano, ".csv"), row.names = FALSE)
+  #write.csv(resultados_candidatos_joined, paste0(here::here("data/preprocessed/candidatos/auxiliar/"), "candidatos_auxiliar_", ano, ".csv"), row.names = FALSE)
   
   return(resultados_candidatos_joined)
 }
 
-df <- process_candidatos_resultados(2000)
+#ano = 2006
+#df <- process_candidatos_resultados(ano)
+#write.csv(df, paste0(here::here("data/preprocessed/candidatos/auxiliar/"), "candidatos_auxiliar_", ano, ".csv"), row.names = FALSE)

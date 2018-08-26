@@ -14,11 +14,7 @@ source(here::here("r_scripts/utils/filters.R"))
 # Deleta colunas desnecessárias
 dell_cols = function(df) {
   return(df %>%
-           select(-c(X1, 
-                     nome_coligacao, 
-                     nome_urna_candidato, 
-                     composicao_legenda, 
-                     nome_partido, 
+           select(-c(nome_urna_candidato,
                      descricao_cargo))
   )
 }
@@ -54,15 +50,15 @@ preprocess = function(df) {
            head(1))
 }
 
-data_2000 = readr::read_csv2(here::here("data/preprocessed/candidatos/auxiliar/candidatos_2000.csv"), local=readr::locale("br"))
-data_2002 = readr::read_csv2(here::here("data/preprocessed/candidatos/auxiliar/candidatos_2002.csv"), local=readr::locale("br"))
-data_2004 = readr::read_csv2(here::here("data/preprocessed/candidatos/auxiliar/candidatos_2004.csv"), local=readr::locale("br"))
-data_2006 = readr::read_csv2(here::here("data/preprocessed/candidatos/auxiliar/candidatos_2006.csv"), local=readr::locale("br"))
-data_2008 = readr::read_csv2(here::here("data/preprocessed/candidatos/auxiliar/candidatos_2008.csv"), local=readr::locale("br"))
-data_2010 = readr::read_csv2(here::here("data/preprocessed/candidatos/auxiliar/candidatos_2010.csv"), local=readr::locale("br"))
-data_2012 = readr::read_csv2(here::here("data/preprocessed/candidatos/auxiliar/candidatos_2012.csv"), local=readr::locale("br"))
-data_2014 = readr::read_csv2(here::here("data/preprocessed/candidatos/auxiliar/candidatos_2014.csv"), local=readr::locale("br"))
-data_2016 = readr::read_csv2(here::here("data/preprocessed/candidatos/auxiliar/candidatos_2016.csv"), local=readr::locale("br"))
+data_2000 = readr::read_csv2(here::here("data/preprocessed/candidatos/auxiliar/candidatos_auxiliar_2000.csv"), local=readr::locale("br"))
+data_2002 = readr::read_csv2(here::here("data/preprocessed/candidatos/auxiliar/candidatos_auxiliar_2002.csv"), local=readr::locale("br"))
+data_2004 = readr::read_csv2(here::here("data/preprocessed/candidatos/auxiliar/candidatos_auxiliar_2004.csv"), local=readr::locale("br"))
+data_2006 = readr::read_csv2(here::here("data/preprocessed/candidatos/auxiliar/candidatos_auxiliar_2006.csv"), local=readr::locale("br"))
+data_2008 = readr::read_csv2(here::here("data/preprocessed/candidatos/auxiliar/candidatos_auxiliar_2008.csv"), local=readr::locale("br"))
+data_2010 = readr::read_csv2(here::here("data/preprocessed/candidatos/auxiliar/candidatos_auxiliar_2010.csv"), local=readr::locale("br"))
+data_2012 = readr::read_csv2(here::here("data/preprocessed/candidatos/auxiliar/candidatos_auxiliar_2012.csv"), local=readr::locale("br"))
+data_2014 = readr::read_csv2(here::here("data/preprocessed/candidatos/auxiliar/candidatos_auxiliar_2014.csv"), local=readr::locale("br"))
+data_2016 = readr::read_csv2(here::here("data/preprocessed/candidatos/auxiliar/candidatos_auxiliar_2016.csv"), local=readr::locale("br"))
 
 data_2000 = preprocess(data_2000)
 data_2002 = preprocess(data_2002)
