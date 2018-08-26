@@ -15,12 +15,17 @@
     font-size: 10px;
 }
 
-.gaxis > text,
-.gaxis.tick > text {
+.leftaxis > text,
+.rightaxis > text {
+    font-size: 16px;
+}
+
+.rightaxis > text,
+.rightaxis .tick > text {
     stroke: none;
     fill: #ff9b27;
 }
-.gaxis > path {
+.rightaxis  > path {
     stroke: #ff9b27;
 }
 
@@ -30,7 +35,7 @@
     stroke-width: 2px;
 }
 
-.line-linechart-gaxis {
+.line-linechart-rightaxis  {
     fill: none;
     stroke: #ff9b27;
     stroke-width: 2px;

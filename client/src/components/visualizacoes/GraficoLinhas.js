@@ -111,7 +111,7 @@ class LineChart extends Component {
       // Add the valueline path.
       g.append("path")
         .data([data])
-        .attr("class", "line-linechart-gaxis")
+        .attr("class", "line-linechart-rightaxis")
         .attr("d", valueline2);
 
       const parsedYear2009 = parseTime("2009");
@@ -131,7 +131,7 @@ class LineChart extends Component {
         .call(axisBottom(x).ticks(6));
 
       g.append("g")
-        .attr("class", "axis axis--y")
+        .attr("class", "axis axis--y leftaxis")
         .call(d3.axisLeft(y).ticks(10).tickFormat(function(data) {return parseInt(data / 1000) + "k";}))
         .attr("fill", "#fff")
         .append("text")
@@ -139,19 +139,17 @@ class LineChart extends Component {
         .attr("y", 6)
         .attr("dy", ".71em")
         .attr("text-anchor", "end")
-        .attr("font-size", "23px")
-        .attr("fill", "white")
-        .text("Candidatas)");
+        .text("Candidatas");
   
       g.append("g")
-        .attr("class", "axis axis--y gaxis")
+        .attr("class", "axis axis--y rightaxis")
         .attr("transform", "translate( " + width + ", 0 )")
         .call(d3.axisRight(y).tickSize(0).tickFormat(""))
         .attr("fill", "#FF9B27")
         .append("text")
         .attr("transform", "rotate(270)")
         .attr("y", 10)
-        .attr("x", -height + 105)
+        .attr("x", -height + 160)
         .attr("dy", "0.71em")
         .attr("text-anchor", "end")
         .text("Candidatas fanstamas");
