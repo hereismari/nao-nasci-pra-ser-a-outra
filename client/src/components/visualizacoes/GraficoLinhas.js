@@ -24,7 +24,12 @@ class LineChart extends Component {
     axios
       .get(API_DADOS)
       .then(res => res.data)
-      .then(data => this.setState({ dados: data }))
+      .then(data => {
+        const presidentialElections = data.filter(function (d) {
+          return (d.ano_eleicao - 2000) % 4 === 0;
+        });
+        this.setState({ dados: presidentialElections })
+      })
       .catch(err => console.log(err));
     this.createLineChart();
   }
@@ -64,9 +69,8 @@ class LineChart extends Component {
       });
 
     function draw(mData) {
-      var data = mData;
-
-      // format the data
+      const data = mData;
+      
       data.forEach(function(d) {
         d.ano_eleicao = parseTime(d.ano_eleicao);
         d.total_candidate_fem = +d.total_candidate_fem;
@@ -77,30 +81,22 @@ class LineChart extends Component {
       data.sort(function(a, b) {
         return a["Date"] - b["Date"];
       });
-
+  
+      const dataMax = d3.max(data, function(d) {
+        return Math.max(d.total_candidate_fem, d.total_ghosts_fem);
+      });
+      
       // Scale the range of the data
       x.domain(
         d3.extent(data, function(d) {
           return d.ano_eleicao;
         })
       );
+      
       y.domain([
         0,
-        d3.max(data, function(d) {
-          return Math.max(d.total_candidate_fem, d.total_ghosts_fem);
-        })
+        dataMax,
       ]);
-
-      const dataIn2009 = data.filter(function(elem) {
-        return elem.ano_eleicao === 2009;
-      });
-
-      var dataMax = max(dataIn2009, function(d) {
-        return Math.max(d.total_candidate_fem, d.total_ghosts_fem);
-      });
-      var dataMin = min(dataIn2009, function(d) {
-        return Math.min(d.total_candidate_fem, d.total_ghosts_fem);
-      });
       
       const g = chart
         .append("g")
@@ -118,10 +114,11 @@ class LineChart extends Component {
         .attr("class", "line-linechart-gaxis")
         .attr("d", valueline2);
 
+      const parsedYear2009 = parseTime("2009");
       g.append("line")
-        .attr("x1", x(2009))
+        .attr("x1", x(parsedYear2009))
         .attr("y1", y(0))
-        .attr("x2", x(2009))
+        .attr("x2", x(parsedYear2009))
         .attr("y2", y(dataMax))
         .style("stroke-dasharray", "3, 3")
         .style("stroke-width", 2)
@@ -160,7 +157,7 @@ class LineChart extends Component {
         .text("Candidatas fanstamas");
     }
     
-    draw(this.props.data);
+    draw(this.state.dados);
   }
   
   render() {
