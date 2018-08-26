@@ -132,7 +132,7 @@ class App extends Component {
                           <a href={"https://twitter.com/intent/tweet/?text=O partido " + this.state.dadosRanking[0]._id.sigla_partido +
                           " possuiu " + Math.round(this.state.dadosRanking[0].porcent_zero * 100) + "%25 de candidatas fantasmas nas ultimas" +
                           " eleições%21 Confira no naonascipraseraoutra.com quais partidos cumprem efetivamente a cota dos 30%25 e " +
-                          "quais possuem" + "tend%C3%AAncias a candidaturas laranjas " +
+                          "quais possuem " + "tend%C3%AAncias a candidaturas laranjas " +
                           "%20%23ContraCorrup%C3%A7%C3%A3o%20%23ContraCandidatoFantasma%20%23NaoNasciPraSerAOutra"}>
                             Exija explicações!
                             <i className="fa fa-twitter" />
@@ -170,7 +170,7 @@ class App extends Component {
                           <a href={"https://twitter.com/intent/tweet/?text=O partido " + this.state.dadosRanking[1]._id.sigla_partido +
                           " possuiu " + Math.round(this.state.dadosRanking[1].porcent_zero * 100) + "%25 de candidatas fantasmas nas ultimas" +
                           " eleições%21 Confira no naonascipraseraoutra.com quais partidos cumprem efetivamente a cota dos 30%25 e " +
-                          "quais possuem" + "tend%C3%AAncias a candidaturas laranjas " +
+                          "quais possuem " + "tend%C3%AAncias a candidaturas laranjas " +
                           "%20%23ContraCorrup%C3%A7%C3%A3o%20%23ContraCandidatoFantasma%20%23NaoNasciPraSerAOutra"}>
                             Exija explicações!
                             <i className="fa fa-twitter" />
@@ -210,7 +210,7 @@ class App extends Component {
                           <a href={"https://twitter.com/intent/tweet/?text=O partido " + this.state.dadosRanking[2]._id.sigla_partido +
                           " possuiu " + Math.round(this.state.dadosRanking[2].porcent_zero * 100) + "%25 de candidatas fantasmas nas ultimas" +
                           " eleições%21 Confira no naonascipraseraoutra.com quais partidos cumprem efetivamente a cota dos 30%25 e " +
-                          "quais possuem" + "tend%C3%AAncias a candidaturas laranjas " +
+                          "quais possuem " + "tend%C3%AAncias a candidaturas laranjas " +
                           "%20%23ContraCorrup%C3%A7%C3%A3o%20%23ContraCandidatoFantasma%20%23NaoNasciPraSerAOutra"}>
                             Exija explicações!
                             <i className="fa fa-twitter" />
