@@ -7,7 +7,6 @@ import * as d3 from "d3";
 import axios from "axios";
 
 const margin = { top: 40, right: 10, bottom: 40, left: 10 };
-// const margin = {top: 20, right: 80, bottom: 30, left: 100};
 const width = 600 - margin.left - margin.right;
 const height = 600 - margin.top - margin.bottom;
 
@@ -41,7 +40,9 @@ class LineChart extends Component {
       .attr("viewBox", "0 0 " + (width + margin.left) + " " + (height + margin.top + margin.bottom))
       .attr("width", "90%");
 
-    const x = d3.scaleLinear().range([0, width]);
+    const parseTime = d3.timeParse("%Y");
+    
+    const x = d3.scaleTime().range([0, width]);
     const y = d3.scaleLinear().range([height, 0]);
 
     const valueline = d3
@@ -67,7 +68,7 @@ class LineChart extends Component {
 
       // format the data
       data.forEach(function(d) {
-        d.ano_eleicao = +d.ano_eleicao;
+        d.ano_eleicao = parseTime(d.ano_eleicao);
         d.total_candidate_fem = +d.total_candidate_fem;
         d.total_ghosts_fem = +d.total_ghosts_fem;
       });
