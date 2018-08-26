@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import "./App.css";
 import GraficoBarras from "./components/visualizacoes/GraficoBarras";
 import LineChart from "./components/visualizacoes/GraficoLinhas";
-import LineChartData from "./data.json";
 import axios from "axios";
 import ContributorsGallery from "./components/auxiliar/ContributorsGallery";
 
@@ -80,7 +79,7 @@ class App extends Component {
               Evolução do número de candidatas
             </h1>
             <div className="col-md-8 col-xs-8 col-12 col-sm-12">
-              <LineChart data={LineChartData} size={[520, 520]} />
+              <LineChart size={[520, 520]} />
             </div>
             <div className="col-md-4 col-xs-4 col-12 col-sm-12 text-part3">
               <div>
