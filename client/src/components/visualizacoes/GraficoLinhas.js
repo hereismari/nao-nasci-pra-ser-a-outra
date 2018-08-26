@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./../../App.css";
+import "./../../style/lineChart.css";
 import { select } from "d3-selection";
 import { max, min } from "d3-array";
 import { axisBottom } from "d3-axis";
@@ -7,7 +7,6 @@ import * as d3 from "d3";
 import axios from "axios";
 
 const margin = { top: 40, right: 10, bottom: 40, left: 10 };
-// const margin = {top: 20, right: 80, bottom: 30, left: 100};
 const width = 600 - margin.left - margin.right;
 const height = 600 - margin.top - margin.bottom;
 
@@ -25,7 +24,12 @@ class LineChart extends Component {
     axios
       .get(API_DADOS)
       .then(res => res.data)
-      .then(data => this.setState({ dados: data }))
+      .then(data => {
+        const presidentialElections = data.filter(function (d) {
+          return (d.ano_eleicao - 2000) % 4 === 0;
+        });
+        this.setState({ dados: presidentialElections })
+      })
       .catch(err => console.log(err));
     this.createLineChart();
   }
@@ -41,7 +45,9 @@ class LineChart extends Component {
       .attr("viewBox", "0 0 " + (width + margin.left) + " " + (height + margin.top + margin.bottom))
       .attr("width", "90%");
 
-    const x = d3.scaleLinear().range([0, width]);
+    const parseTime = d3.timeParse("%Y");
+    
+    const x = d3.scaleTime().range([0, width]);
     const y = d3.scaleLinear().range([height, 0]);
 
     const valueline = d3
@@ -63,11 +69,10 @@ class LineChart extends Component {
       });
 
     function draw(mData) {
-      var data = mData;
-
-      // format the data
+      const data = mData;
+      
       data.forEach(function(d) {
-        d.ano_eleicao = +d.ano_eleicao;
+        d.ano_eleicao = parseTime(d.ano_eleicao);
         d.total_candidate_fem = +d.total_candidate_fem;
         d.total_ghosts_fem = +d.total_ghosts_fem;
       });
@@ -76,30 +81,22 @@ class LineChart extends Component {
       data.sort(function(a, b) {
         return a["Date"] - b["Date"];
       });
-
+  
+      const dataMax = d3.max(data, function(d) {
+        return Math.max(d.total_candidate_fem, d.total_ghosts_fem);
+      });
+      
       // Scale the range of the data
       x.domain(
         d3.extent(data, function(d) {
           return d.ano_eleicao;
         })
       );
+      
       y.domain([
         0,
-        d3.max(data, function(d) {
-          return Math.max(d.total_candidate_fem, d.total_ghosts_fem);
-        })
+        dataMax,
       ]);
-
-      const dataIn2009 = data.filter(function(elem) {
-        return elem.ano_eleicao === 2009;
-      });
-
-      var dataMax = max(dataIn2009, function(d) {
-        return Math.max(d.total_candidate_fem, d.total_ghosts_fem);
-      });
-      var dataMin = min(dataIn2009, function(d) {
-        return Math.min(d.total_candidate_fem, d.total_ghosts_fem);
-      });
       
       const g = chart
         .append("g")
@@ -114,18 +111,30 @@ class LineChart extends Component {
       // Add the valueline path.
       g.append("path")
         .data([data])
-        .attr("class", "line-linechart-gaxis")
+        .attr("class", "line-linechart-rightaxis")
         .attr("d", valueline2);
 
+      const parsedYear2009 = parseTime("2009");
       g.append("line")
-        .attr("x1", x(2009))
+        .attr("x1", x(parsedYear2009))
         .attr("y1", y(0))
-        .attr("x2", x(2009))
+        .attr("x2", x(parsedYear2009))
         .attr("y2", y(dataMax))
         .style("stroke-dasharray", "3, 3")
         .style("stroke-width", 2)
         .style("stroke", "#fff43c")
         .style("fill", "none");
+      
+      const lawYearTextOpacity = !isNaN(x(parsedYear2009)) ? 1 : 0;
+      g.append("text")
+        .attr("transform", "rotate(270)")
+        .attr("y", function(){ return x(parsedYear2009) + 15 })
+        .attr("x", function(){ return -(height / 2) })
+        .attr('text-anchor', 'end')
+        .attr("fill", "#fff43c")
+        .attr("fill-opacity", lawYearTextOpacity)
+        .attr("font-size", "16px")
+        .text("Publicação da lei");
 
       g.append("g")
         .attr("class", "axis axis--x")
@@ -133,7 +142,7 @@ class LineChart extends Component {
         .call(axisBottom(x).ticks(6));
 
       g.append("g")
-        .attr("class", "axis axis--y")
+        .attr("class", "axis axis--y leftaxis")
         .call(d3.axisLeft(y).ticks(10).tickFormat(function(data) {return parseInt(data / 1000) + "k";}))
         .attr("fill", "#fff")
         .append("text")
@@ -141,25 +150,23 @@ class LineChart extends Component {
         .attr("y", 6)
         .attr("dy", ".71em")
         .attr("text-anchor", "end")
-        .attr("font-size", "23px")
-        .attr("fill", "white")
-        .text("Candidatas)");
+        .text("Candidatas");
   
       g.append("g")
-        .attr("class", "axis axis--y gaxis")
+        .attr("class", "axis axis--y rightaxis")
         .attr("transform", "translate( " + width + ", 0 )")
         .call(d3.axisRight(y).tickSize(0).tickFormat(""))
         .attr("fill", "#FF9B27")
         .append("text")
         .attr("transform", "rotate(270)")
         .attr("y", 10)
-        .attr("x", -height + 105)
+        .attr("x", -height + 160)
         .attr("dy", "0.71em")
         .attr("text-anchor", "end")
         .text("Candidatas fanstamas");
     }
     
-    draw(this.props.data);
+    draw(this.state.dados);
   }
   
   render() {
