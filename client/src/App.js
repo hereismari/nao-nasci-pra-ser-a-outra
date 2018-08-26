@@ -133,7 +133,11 @@ class App extends Component {
                       </div>
                       <div className="botao">
                         <div className="denuncia">
-                          <a href="https://twitter.com/intent/tweet/?text=Veja%20quais%20partidos%20cumprem%20efetivamente%20a%20cota%20dos%2030%25%20e%20quais%20possuem%20tend%C3%AAncias%20a%20candidaturas%20laranjas%20no%20N%C3%A3o%20nasci%20pra%20ser%20a%20outra%20:naonascipraseraoutra.com.%20%23ContraCorrup%C3%A7%C3%A3o%20%23ContraCandidatoFantasma%20%23NaoNasciPraSerAOutra">
+                          <a href={"https://twitter.com/intent/tweet/?text=O partido " + this.state.dadosRanking[0]._id.sigla_partido +
+                          " possuiu " + Math.round(this.state.dadosRanking[0].porcent_zero * 100) + "%25 de candidatas fantasmas nas ultimas" +
+                          " eleições%21 Confira no naonascipraseraoutra.com quais partidos cumprem efetivamente a cota dos 30%25 e " +
+                          "quais possuem" + "tend%C3%AAncias a candidaturas laranjas " +
+                          "%20%23ContraCorrup%C3%A7%C3%A3o%20%23ContraCandidatoFantasma%20%23NaoNasciPraSerAOutra"}>
                             Exija explicações!
                             <i className="fa fa-twitter" />
                           </a>
@@ -167,7 +171,11 @@ class App extends Component {
                       </div>
                       <div className="botao">
                         <div className="denuncia">
-                          <a href="https://twitter.com/intent/tweet/?text=Veja%20quais%20partidos%20cumprem%20efetivamente%20a%20cota%20dos%2030%25%20e%20quais%20possuem%20tend%C3%AAncias%20a%20candidaturas%20laranjas%20no%20N%C3%A3o%20nasci%20pra%20ser%20a%20outra%20:naonascipraseraoutra.com.%20%23ContraCorrup%C3%A7%C3%A3o%20%23ContraCandidatoFantasma%20%23NaoNasciPraSerAOutra">
+                          <a href={"https://twitter.com/intent/tweet/?text=O partido " + this.state.dadosRanking[1]._id.sigla_partido +
+                          " possuiu " + Math.round(this.state.dadosRanking[1].porcent_zero * 100) + "%25 de candidatas fantasmas nas ultimas" +
+                          " eleições%21 Confira no naonascipraseraoutra.com quais partidos cumprem efetivamente a cota dos 30%25 e " +
+                          "quais possuem" + "tend%C3%AAncias a candidaturas laranjas " +
+                          "%20%23ContraCorrup%C3%A7%C3%A3o%20%23ContraCandidatoFantasma%20%23NaoNasciPraSerAOutra"}>
                             Exija explicações!
                             <i className="fa fa-twitter" />
                           </a>
@@ -203,7 +211,11 @@ class App extends Component {
                       </div>
                       <div className="botao">
                         <div className="denuncia">
-                          <a href="https://twitter.com/intent/tweet/?text=Veja%20quais%20partidos%20cumprem%20efetivamente%20a%20cota%20dos%2030%25%20e%20quais%20possuem%20tend%C3%AAncias%20a%20candidaturas%20laranjas%20no%20N%C3%A3o%20nasci%20pra%20ser%20a%20outra%20:naonascipraseraoutra.com.%20%23ContraCorrup%C3%A7%C3%A3o%20%23ContraCandidatoFantasma%20%23NaoNasciPraSerAOutra">
+                          <a href={"https://twitter.com/intent/tweet/?text=O partido " + this.state.dadosRanking[2]._id.sigla_partido +
+                          " possuiu " + Math.round(this.state.dadosRanking[2].porcent_zero * 100) + "%25 de candidatas fantasmas nas ultimas" +
+                          " eleições%21 Confira no naonascipraseraoutra.com quais partidos cumprem efetivamente a cota dos 30%25 e " +
+                          "quais possuem" + "tend%C3%AAncias a candidaturas laranjas " +
+                          "%20%23ContraCorrup%C3%A7%C3%A3o%20%23ContraCandidatoFantasma%20%23NaoNasciPraSerAOutra"}>
                             Exija explicações!
                             <i className="fa fa-twitter" />
                           </a>
