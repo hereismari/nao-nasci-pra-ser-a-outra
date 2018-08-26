@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./../../App.css";
+import "./../../style/lineChart.css";
 import { select } from "d3-selection";
 import { max, min } from "d3-array";
 import { axisBottom } from "d3-axis";
