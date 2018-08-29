@@ -1,0 +1,42 @@
+.axis {
+    font-size: 10px;
+}
+
+.axis line,
+.axis path {
+    fill: none;
+    stroke: white;
+    stroke-width: 1px;
+    shape-rendering: crispEdges;
+}
+
+.axis text {
+    fill: white;
+    font-size: 10px;
+}
+
+.leftaxis > text,
+.rightaxis > text {
+    font-size: 16px;
+}
+
+.rightaxis > text,
+.rightaxis .tick > text {
+    stroke: none;
+    fill: #ff9b27;
+}
+.rightaxis  > path {
+    stroke: #ff9b27;
+}
+
+.line-linechart {
+    fill: none;
+    stroke: white;
+    stroke-width: 2px;
+}
+
+.line-linechart-rightaxis  {
+    fill: none;
+    stroke: #ff9b27;
+    stroke-width: 2px;
+}
