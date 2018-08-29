@@ -1,19 +1,24 @@
 # Author:  Jair Neto, jair.neto@ccc.ufcg.edu.br
 # Last change: 08/2018 
 # ------------------------- Entrada -----------------------------
-# TODO 
+# Recebe como entrada os dados combinados dos tse de candidatos com gênero e o total de receitas utilizadas pelo candidato em 2016
+# Recebe como entrada os dados combinados dos tse de candidatos com gênero e o total de receitas recebidas pelo candidato em 2016
+# dadas pelo partido
 # ------------------------- Saída -------------------------------
-# TODO
+# Produz como saída um csv com todos os candidatos que não receberam verbas do partido
 
 # ESSE SCRIPT TEM COMO OBJETIVO FILTRAR APENAS OS CANDIDATOS QUE RECEBERAM VERBAS DO PARTIDO.
 #  PARA AQUELES QUE N RECEBERAM, INSERIMOS COMO 0.
 
 library(tidyverse)
 
-receitas_por_candidato_merged_2016 <- read_csv("~/Área de Trabalho/hackfest-NNPSAO/nao-nasci-pra-ser-a-outra/data/investimentos_com_genero/receitas_por_candidato_merged_2016.csv") %>%
+receitas_por_candidato_merged_2016 <- 
+  read_csv("~/Área de Trabalho/hackfest-NNPSAO/nao-nasci-pra-ser-a-outra/data/investimentos_com_genero/receitas_por_candidato_merged_2016.csv") %>%
   select(-X1)
 
-receitas_por_candidatos_dadas_pelo_partido_merged_2016 <- read_csv("~/Área de Trabalho/hackfest-NNPSAO/nao-nasci-pra-ser-a-outra/data/investimentos_com_genero/receitas_por_candidatos_dadas_pelo_partido_merged_2016.csv") %>% select(-c(X1_1, X1))
+receitas_por_candidatos_dadas_pelo_partido_merged_2016 <- 
+  read_csv("~/Área de Trabalho/hackfest-NNPSAO/nao-nasci-pra-ser-a-outra/data/investimentos_com_genero/receitas_por_candidatos_dadas_pelo_partido_merged_2016.csv") %>% 
+  select(-c(X1_1, X1))
 
 dt_all = data.table::data.table(receitas_por_candidato_merged_2016)
 dt_part = data.table::data.table(receitas_por_candidatos_dadas_pelo_partido_merged_2016)

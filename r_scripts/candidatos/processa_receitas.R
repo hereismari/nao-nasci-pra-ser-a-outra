@@ -1,9 +1,12 @@
 # Author: Jair Neto, jair.neto@ccc.ufcg.edu.br
 # Last change: 08/2018 
 # ------------------------- Entrada -----------------------------
-# Recebe como entrada dados do TSE: receitas_candidatos_prestacao_contas_final_<ano>_brasil.csv, onde ano pertence a [2000, 2018]. 
+# Recebe como entrada dados do TSE: receitas_candidatos_prestacao_contas_final_<ano>_brasil.csv, onde ano pertence a [2000, 2018].
+# Recebe como entrada os dados do TSE de candidatos: all_munzona_candidatos_<ano>.csv
+# Os dados do genero dos candidatos: genero_<ano>.csv
 # ------------------------- Saída -------------------------------
-# TODO
+# Um csv com todos as receita totais de todos os candidatos
+# Um csv com todas as receitas de um candidato dadas pelo partido
 
 library(tidyverse)
 library(data.table)
@@ -37,8 +40,11 @@ formata_colunas_receitas <- function(receitas) {
   new_names = names(receitas) %>%
     to_underscore()
   
-  names(receitas) <- new_names
+  new_names
 }
+
+names(receitas_candidatos_2014) <- formata_colunas_receitas(receitas_candidatos_2014)
+names(receitas_candidatos_2016) <- formata_colunas_receitas(receitas_candidatos_2016)
 
 receita_total_por_candidato <- function(receita, candidatos, genero) {
   
@@ -54,7 +60,7 @@ receita_total_por_candidato <- function(receita, candidatos, genero) {
   merge(receitas_por_candidatos_merged, genero, by = c("numero_cand", "nome_municipio", "descricao_cargo"))
 }
 
-receita_total_por_candidato <- function(receita, candidatos, genero) {
+receita_total_por_candidato_por_partido <- function(receita, candidatos, genero) {
   #Quanto cada candidato teve de receita dada pelo partido
   receita <-
     receita %>%
@@ -72,5 +78,5 @@ receita_total_por_candidato <- function(receita, candidatos, genero) {
 
 write_csv(receita_total_por_candidato(receitas_candidatos_2016, all_munzona_candidatos_data, generos_2016),
           "receitas_por_candidato_merged_2016.csv")
-write.csv(receita_total_por_candidato(receitas_candidatos_2016, all_munzona_candidatos_data, generos_2016),
+write.csv(receita_total_por_candidato_por_partido(receitas_candidatos_2016, all_munzona_candidatos_data, generos_2016),
           "receitas_por_candidatos_dadas_pelo_partido_merged_2016.csv")
