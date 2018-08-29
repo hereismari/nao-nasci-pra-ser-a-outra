@@ -9,6 +9,11 @@
     url(./fonts/Gloss_And_Bloom.ttf) format("truetype");
 }
 
+@font-face {
+  font-family: "Roboto Thin";
+  src: local("Roboto Thin"), url(./fonts/Roboto-Thin.ttf) format("truetype");
+}
+
 .part1 {
   background-image: url(img/bg-part1.jpg);
   background-size: cover;
@@ -34,14 +39,14 @@
 }
 
 .part5 {
-  background-image: linear-gradient(to right, #3b0d34 , #891233);
+  background-image: linear-gradient(to right, #3b0d34, #891233);
 }
 
-.part6{
-	padding-left: 10%;
-	padding-right: 10%;
-	padding-top: 2%;
-	padding-bottom: 2%;
+.part6 {
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 2%;
+  padding-bottom: 2%;
   background-color: #001020;
 }
 
@@ -88,7 +93,6 @@
   font-family: "GoBold";
 }
 
-
 .right-container h1 {
   font-size: 30px;
   text-align: center;
@@ -116,7 +120,6 @@
   font-size: 1em;
   font-family: "GoBold";
 }
-
 
 .left-container span {
   position: absolute;
@@ -213,31 +216,31 @@ span {
 }
 
 .line-linechart {
-    fill: none;
-    stroke: white;
-    stroke-width: 2px;
+  fill: none;
+  stroke: white;
+  stroke-width: 2px;
 }
 
 .line-linechart-gaxis {
-    fill: none;
-    stroke: #FF9B27;
-    stroke-width: 2px;
+  fill: none;
+  stroke: #ff9b27;
+  stroke-width: 2px;
 }
 
-.card{
-	margin: auto;
-    padding: 10%;
-    box-shadow: 10px 10px 0px 0px #fff43c;
-    background-color: #430d34;
+.card {
+  margin: auto;
+  padding: 10%;
+  box-shadow: 10px 10px 0px 0px #fff43c;
+  background-color: #430d34;
 }
 
-.rr-1{
-	margin-right: auto;
-    text-align: center;
-    justify-content: center;
-    margin-left: auto;
-    margin-top: 10%;
-    margin-bottom: 10%;
+.rr-1 {
+  margin-right: auto;
+  text-align: center;
+  justify-content: center;
+  margin-left: auto;
+  margin-top: 10%;
+  margin-bottom: 10%;
 }
 
 .rr1-img-part {
@@ -259,28 +262,28 @@ span {
   justify-content: center;
 }
 
-.nomepartido{
-	-ms-flex-line-pack: center;
-    align-content: center;
-    font-size: 2em;
-    margin-top: auto;
-    margin-bottom: auto;
-    font-family: 'GoBold';
-    color: white;
+.nomepartido {
+  -ms-flex-line-pack: center;
+  align-content: center;
+  font-size: 2em;
+  margin-top: auto;
+  margin-bottom: auto;
+  font-family: "GoBold";
+  color: white;
 }
 
-.ttpartido{
-	font-size: 1em;
-    font-family: 'GoBold';
-    color: #dee2e6;
+.ttpartido {
+  font-size: 1em;
+  font-family: "GoBold";
+  color: #dee2e6;
 }
 
-.ttpartido i{
-	margin-right: 10px;
+.ttpartido i {
+  margin-right: 10px;
 }
 
-.rr1-img-part img{
-	width: 100%;
+.rr1-img-part img {
+  width: 100%;
 }
 
 .ghost-size {
@@ -292,98 +295,97 @@ span {
   width: 100%;
 }
 
-.nota{
-	margin: auto;
-    width: 50%;
-    padding-right: 5%;
+.nota {
+  margin: auto;
+  width: 50%;
+  padding-right: 5%;
 }
 
-.nota h3{
-	margin: auto;
-    font-size: 1em;
-    text-align: left;
+.nota h3 {
+  margin: auto;
+  font-size: 1em;
+  text-align: left;
 }
 
-.denuncia{
-	border-style: solid;
-    border-width: 3px;
-    border-color: white;
-    padding: 5%;
-    -webkit-transition: .1s;
-    -o-transition: .1s;
-    transition: .1s;
+.denuncia {
+  border-style: solid;
+  border-width: 3px;
+  border-color: white;
+  padding: 5%;
+  -webkit-transition: 0.1s;
+  -o-transition: 0.1s;
+  transition: 0.1s;
 }
 
 .denuncia:hover {
   background-color: white;
 }
 
-.denuncia:hover p{
-	color: black;
+.denuncia:hover p {
+  color: black;
 }
 
-
-.denuncia p{
-    font-family: 'GoBold';
-    margin: auto;
-    color: white;
-    font-size: 15px;
+.denuncia p {
+  font-family: "GoBold";
+  margin: auto;
+  color: white;
+  font-size: 15px;
 }
 
-.denuncia a{
-    font-family: 'GoBold';
-    margin: auto;
-    color: white;
-    font-size: 15px;
+.denuncia a {
+  font-family: "GoBold";
+  margin: auto;
+  color: white;
+  font-size: 15px;
 }
 
-.denuncia i{
-	font-size: 20px;
-   margin-left: 10%;
+.denuncia i {
+  font-size: 20px;
+  margin-left: 10%;
 }
 
-.twitter i{
-	font-size: 40px;
-   margin-left: 10%;
+.twitter i {
+  font-size: 40px;
+  margin-left: 10%;
 }
 
-.botao{
-	text-align: center;
+.botao {
+  text-align: center;
 }
 
-.row-ranking{
-	padding-left: 5%;
-    padding-right: 5%;
-    padding-bottom: 5%;
+.row-ranking {
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-bottom: 5%;
 }
 
-.ajust-margin{
-	margin: auto;
+.ajust-margin {
+  margin: auto;
 }
 
-.ajust-margin2{
-	margin-top: auto;
-    margin-bottom: auto;
+.ajust-margin2 {
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
-.colaborartext{
-	text-align: center;
-	margin: auto;
+.colaborartext {
+  text-align: center;
+  margin: auto;
 }
 
-.colaborartext p{
-	color: white;
-	font-family: "GoBold";
-	font-size: 2em;
-	margin-bottom: 5%;
+.colaborartext p {
+  color: white;
+  font-family: "GoBold";
+  font-size: 2em;
+  margin-bottom: 5%;
 }
 
-.colaborartext img{
-	width: 35%;
+.colaborartext img {
+  width: 35%;
 }
 
-.megaphonediv{
-	width: 30%;
+.megaphonediv {
+  width: 30%;
 }
 
 .blink_me {
@@ -391,53 +393,70 @@ span {
 }
 
 @keyframes blinker {
-  50% { color: #fff43c; }
+  50% {
+    color: #fff43c;
+  }
 }
 
-.part5 h1{
-	font-family: "Gobold";
-    color: white;
+.part5 h1 {
+  font-family: "Gobold";
+  color: white;
 }
 
-.footer{
-	background-color: #001020;
-    padding-top: 10%;
-    padding-bottom: 10%;
+.footer {
+  background-color: #001020;
+  padding-top: 10%;
+  padding-bottom: 10%;
 }
 
-.ajust-img-pocs{
-	width: 10%;
-	height: 10%;
-	border-radius: 50%;
-	margin: auto;
+@media only screen and (min-width: 990px) {
+  .contributor-image {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
 }
 
-.text-footer{
-	font-family: "GoBold";
-	color: white;
-	font-size: 8px;
+.contributor-name {
+  margin: 0;
+  margin-top: 10px;
+  padding: 0;
+  text-align: center;
+  font-size: 0.8em;
+  font-weight: bold;
 }
 
-.logo-footer{
-	text-align: center;
-	align-items: center;
-	justify-content: center;
-	margin: auto;
-	margin-top: 5%;
+.ajust-img-pocs {
+  width: 100%;
+  border-radius: 50%;
+  margin: auto;
 }
 
-.logo-hack{
-	width: 25%;
-	margin-right: 60px;
+.text-footer {
+  font-family: "GoBold";
+  color: white;
+  font-size: 8px;
 }
 
-.denuncia:hover a  {
+.logo-footer {
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  margin-top: 5%;
+}
+
+.logo-hack {
+  width: 25%;
+  margin-right: 60px;
+}
+
+.denuncia:hover a {
   color: black;
 }
- .denuncia:hover i  {
+.denuncia:hover i {
   color: black;
 }
- .twitter {
+.twitter {
   -ms-flex-line-pack: center;
   align-content: center;
   -ms-flex-pack: center;
@@ -446,46 +465,48 @@ span {
   font-weight: 200;
   text-align: center;
 }
- .twitter a {
-  color:white;
+.twitter a {
+  color: white;
   font-family: "Gobold";
   vertical-align: middle;
   font-size: 2rem;
 }
- .twitter-logo-size {
+.twitter-logo-size {
   width: 2.5rem;
   filter: none;
   margin-right: 4%;
   vertical-align: middle;
-  transition: .1s;
+  transition: 0.1s;
 }
 
-.logo-nossa{
-	width: 20%;
-    margin-left: 60px;
+.logo-nossa {
+  width: 20%;
+  margin-left: 60px;
 }
 
-.axis { font: 34px sans-serif; }
+.axis {
+  font: 34px sans-serif;
+}
 
-.axis line{
-    stroke: white;
+.axis line {
+  stroke: white;
 }
 
 .axis path {
-    stroke: white;
-    stroke-width: 1px;
+  stroke: white;
+  stroke-width: 1px;
 }
 
-.axis text{
-    fill: white;
-    font-size: 10px;
+.axis text {
+  fill: white;
+  font-size: 10px;
 }
 
 .gaxis > text,
 .gaxis.tick > text {
-    stroke: none;
-    fill: #FF9B27;
+  stroke: none;
+  fill: #ff9b27;
 }
 .gaxis > path {
-    stroke: #FF9B27;
+  stroke: #ff9b27;
 }

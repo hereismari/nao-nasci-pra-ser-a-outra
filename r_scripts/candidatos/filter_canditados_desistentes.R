@@ -1,7 +1,13 @@
+# Author:  Jair Neto, jair.neto@ccc.ufcg.edu.br
+# Last change: 08/2018 
+# ------------------------- Entrada -----------------------------
+# TODO 
+# ------------------------- Saída -------------------------------
+# TODO
+
 # ESSE SCRIPT TEM COMO OBJETIVO FILTRAR APENAS OS CANDIDATOS QUE RECEBERAM VERBAS DO PARTIDO.
 #  PARA AQUELES QUE N RECEBERAM, INSERIMOS COMO 0.
 
-library(readr)
 library(tidyverse)
 
 receitas_por_candidato_merged_2016 <- read_csv("~/Área de Trabalho/hackfest-NNPSAO/nao-nasci-pra-ser-a-outra/data/investimentos_com_genero/receitas_por_candidato_merged_2016.csv") %>%

@@ -9,7 +9,15 @@ Projeto desenvolvido no [4º Hackfest contra a corrupção](http://hackfest.com.
 
 ## Obtendo os dados
 
-Entre em contato com um dos desenvolvedores via email!
+```
+cd r_scripts
+# baixar dados do tse
+python buscar_dados_tse.py
+# preprocessar dados
+# TODO
+```
+
+Mais detalhes em [r_scripts/README.md](r_scripts/README.md).
 
 ## Front End
 
@@ -41,5 +49,7 @@ Python 3.6.
 
 ```bash
 cd populate_database
-python populate --caminho-dados <pasta onde os dados estao armazenados>
+export MONGODB_URI='mongodb://localhost:27017/nao-nasci'  # para o deploy buscar URI no heroku
+export MONGODB_NAME='nao_nasci'  # para o deploy buscar o nome no heroku
+python populate --caminho-dados <pasta onde os dados estão armazenados>
 ```

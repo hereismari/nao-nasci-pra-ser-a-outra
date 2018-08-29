@@ -65,11 +65,24 @@ export default class GraficoBarras extends Component {
       dados2016: [],
       dados2014: [],
       isLoading: false,
-      dados: []
+      dados: [],
+      width: 0,
+      height: 0
     };
+    this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.updateWindowDimensions);
+  }
+
+  updateWindowDimensions() {
+    this.setState({ width: window.innerWidth, height: window.innerHeight });
   }
 
   componentDidMount() {
+    this.updateWindowDimensions();
+    window.addEventListener("resize", this.updateWindowDimensions);
     this.setState({ isLoading: true });
 
     axios
@@ -109,9 +122,9 @@ export default class GraficoBarras extends Component {
     const menosMulheres = [];
 
     if (this.state.isLoading || this.state.dados.length === 0) {
-      return <div>Loadgin</div>;
+      return <div>Loading......</div>;
     }
-    
+
     const partidos = this.state.dados.map(elem => elem._id.sigla_partido);
 
     this.state.dados.map(elem => {
@@ -149,6 +162,12 @@ export default class GraficoBarras extends Component {
       else return 0;
     });
 
+    const defineTamFonte = () => {
+      if (this.state.width < 500) return 6;
+      else if (this.state.width < 645) return 11;
+      else return 14;
+    };
+
     var finalData = [];
 
     maisMulheres.map(elem => {
@@ -163,13 +182,16 @@ export default class GraficoBarras extends Component {
         <XAxis
           orientation="top"
           hideLine
+          tickLabelAngle={-90}
           tickValues={partidos}
+          tickSize={3}
           style={{
             line: { stroke: purple },
             text: {
               stroke: "white",
               fill: "white",
-              fontWeight: 100
+              fontFamily: "Roboto Thin",
+              fontSize: defineTamFonte()
             }
           }}
         />
@@ -235,7 +257,9 @@ export default class GraficoBarras extends Component {
           </div>
         </div>
         <div className="col-12 col-sm-12 col-md-12 col-xs-12 col-lg-12">
-          <div className="termometro">.</div>
+          <div className="termometro" style={{ marginBottom: "1vh" }}>
+            .
+          </div>
           <FlexibleBarChart />
         </div>
       </div>
